@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Ready-to-Use Templates",
+    "slug": "ready-to-use-templates",
+    "icon": "<svg viewBox='0 0 94 94' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='93.3333' height='93.3333' rx='20' fill='#E5D9F2'/><path fill-rule='evenodd' clip-rule='evenodd' d='M59.0027 38.6421C60.7556 38.6421 62.3355 37.5877 63.005 35.9712C63.6744 34.3548 63.3012 32.4951 62.0596 31.2605C60.818 30.0259 58.953 29.6598 57.3352 30.3333C55.7175 31.0067 54.6662 32.5868 54.6722 34.3358C54.6803 36.7165 56.6167 38.6421 59.0027 38.6421ZM59.0027 32.4693C60.0358 32.4693 60.8734 33.3049 60.8734 34.3358C60.8734 35.3667 60.0358 36.2023 59.0027 36.2023C57.9696 36.2023 57.132 35.3667 57.132 34.3358C57.132 33.3049 57.9696 32.4693 59.0027 32.4693ZM32.4599 53.3246C32.4599 58.204 35.1554 60.8789 40.0309 60.8789C40.7109 60.8868 41.2602 61.435 41.2682 62.1135C41.2601 62.7896 40.7085 63.3334 40.0309 63.3333C33.8444 63.3333 30 59.4974 30 53.3246V41.317C30 35.1294 33.8444 31.2935 40.0309 31.2935H50.8719C51.5495 31.3015 52.0945 31.8519 52.0945 32.528C52.0945 32.8541 51.9637 33.1667 51.7312 33.3959C51.4988 33.6251 51.184 33.7518 50.8572 33.7479H40.0309C35.1554 33.7479 32.4599 36.4375 32.4599 41.317V53.3246ZM49.7819 50.1206C49.5756 50.3747 49.2813 50.5425 48.9571 50.5909C48.6344 50.6236 48.3117 50.5286 48.0586 50.3263L43.5366 46.7843L39.4712 52.0606C39.2773 52.3238 38.9858 52.4984 38.6619 52.5453C38.338 52.5923 38.0087 52.5077 37.7478 52.3104C37.2154 51.8939 37.1169 51.1279 37.5269 50.5909L42.3435 44.3299C42.5444 44.0703 42.8406 43.9012 43.1667 43.8598C43.4928 43.8184 43.8219 43.9083 44.0816 44.1094L48.6036 47.6514L52.5806 42.5809C53.0171 42.1668 53.6909 42.1316 54.1684 42.4981C54.6459 42.8645 54.7846 43.5234 54.4954 44.0506L49.7819 50.1206ZM60.9323 41.317C60.2571 41.317 59.7097 41.8631 59.7097 42.5368V53.3246C59.6655 58.204 56.97 60.8789 52.0945 60.8789H47.1748C46.4948 60.8868 45.9455 61.4349 45.9375 62.1135C45.9456 62.7896 46.4972 63.3334 47.1748 63.3333H52.0945C58.281 63.3333 62.1401 59.4974 62.1401 53.3246V42.5368C62.1402 41.8688 61.6017 41.325 60.9323 41.317Z' fill='#130F26'/></svg>",
+    "description": "Launch your website faster with professionally designed, responsive templates.",
+    "introduction": "Our Ready-to-Use Templates are designed to help you publish your website quickly and efficiently without sacrificing quality. Each template is modern, attractive, and optimized for performance across all devices.",
+    "sections": [
+      {
+        "heading": "Why Choose Ready-to-Use Templates?",
+        "content": "Building a website from scratch can be time-consuming and expensive. Our templates offer a smart alternative, giving you access to professional layouts created by experienced designers. You don’t need any technical skills—just pick a template that fits your brand and start customizing."
+      },
+      {
+        "heading": "Features That Set Us Apart",
+        "content": "Each template is fully responsive, SEO-friendly, and optimized for fast loading. You can easily adjust colors, fonts, images, and content to make the design truly yours. New templates are regularly added so you’ll always have fresh options."
+      },
+      {
+        "heading": "How It Works",
+        "content": "Simply browse our library, preview the templates, and choose the one that suits your goals. After selection, you can use our intuitive editor or your favorite CMS to update content and customize the design. In just a few hours, your site can be live and ready to impress visitors."
+      },
+      {
+        "heading": "Ongoing Support and Updates",
+        "content": "We continuously improve our templates to ensure compatibility with the latest web standards and devices. If you ever need help, our support team is ready to assist you with setup, customization, and best practices."
+      }
+    ]
+  },
+  {
+    "title": "Custom Adjustments",
+    "slug": "custom-adjustments",
+    "icon": "<svg viewBox='0 0 94 92' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='93.3333' height='91.6667' rx='20' fill='#E5D9F2'/><path fill-rule='evenodd' clip-rule='evenodd' d='M55.8677 30.5045C58.558 31.3412 60.7951 33.2629 62.0589 35.823C63.5367 38.926 63.7378 42.5014 62.6178 45.756C61.5868 48.7521 59.8966 51.4682 57.6765 53.6963C56.2209 55.1924 54.6524 56.57 52.9853 57.8163L52.8971 57.8912C52.3433 58.2641 51.5985 58.1176 51.2206 57.5616C51.0285 57.2931 50.9514 56.9567 51.0068 56.6293C51.0622 56.3018 51.2455 56.0112 51.5147 55.8237C53.079 54.6451 54.5538 53.348 55.9265 51.9434C57.9036 49.9979 59.4133 47.6139 60.3383 44.9769C61.228 42.3493 61.048 39.4681 59.8383 36.9766C58.8649 35.0167 57.1498 33.5453 55.0883 32.9016C52.4589 32.064 49.5942 32.5717 47.3971 34.2649C46.9603 34.5946 46.3633 34.5946 45.9265 34.2649C43.7303 32.5694 40.8645 32.0614 38.2353 32.9016C36.1599 33.531 34.4277 34.998 33.4411 36.9617C32.2588 39.4513 32.0896 42.3159 32.9705 44.932C33.8994 47.5626 35.4088 49.9409 37.3823 51.8835C40.2983 54.732 43.5139 57.2442 46.9706 59.3744C47.4102 59.6851 47.6036 60.2488 47.4495 60.7708C47.2955 61.2928 46.829 61.6545 46.2941 61.6666C46.053 61.6681 45.8171 61.5949 45.6176 61.4569C42.0168 59.2382 38.6679 56.6205 35.6323 53.6514C33.3999 51.4306 31.7035 48.7126 30.6764 45.711C29.595 42.4609 29.817 38.9073 31.294 35.823C32.5578 33.2629 34.7949 31.3412 37.4852 30.5045C40.5784 29.5312 43.9344 29.9797 46.6765 31.733C49.4185 29.9797 52.7745 29.5312 55.8677 30.5045ZM54.6618 41.9806C54.6004 40.596 53.6953 39.3986 52.3971 38.9842C51.9144 38.6772 51.7001 38.074 51.8779 37.5234C52.0557 36.9727 52.5798 36.6171 53.1471 36.662C55.3399 37.3672 56.9007 39.3474 57.103 41.6809C57.1445 42.0072 57.0558 42.3368 56.8568 42.5958C56.6577 42.8549 56.365 43.0218 56.0442 43.0592C55.3707 43.1479 54.7532 42.6661 54.6618 41.9806Z' fill='#130F26'/></svg>",
+    "description": "Personalize your website to reflect your unique brand identity and engage your audience effectively.",
+    "introduction": "With our Custom Adjustments service, you can transform any template into a truly unique online presence that matches your brand perfectly.",
+    "sections": [
+      {
+        "heading": "What Makes Custom Adjustments Essential?",
+        "content": "Generic designs can make your website look just like everyone else’s. By customizing layouts, colors, and content, you can differentiate yourself and build stronger trust with your audience."
+      },
+      {
+        "heading": "Tailored to Your Vision",
+        "content": "Our experts collaborate with you to understand your goals, preferences, and target market. We then translate that insight into a design that aligns with your business objectives and brand personality."
+      },
+      {
+        "heading": "Flexible Scope of Work",
+        "content": "Whether you need small tweaks or a complete overhaul, we adapt our services to fit your budget and timeline. Every adjustment is planned carefully to deliver maximum impact without unnecessary complexity."
+      },
+      {
+        "heading": "Long-Term Value",
+        "content": "A customized website doesn’t just look better—it performs better. Visitors spend more time engaging with content that feels authentic and relevant, helping you achieve higher conversions and stronger brand loyalty."
+      }
+    ]
+  },
+  {
+    "title": "Easy Integration Support",
+    "slug": "easy-integration-support",
+    "icon": "<svg viewBox='0 0 94 93' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='93.3167' height='92.8905' rx='20' fill='#E5D9F2'/><path fill-rule='evenodd' clip-rule='evenodd' d='M56.9717 34.3017H53.7C53.39 31.8783 51.315 30 48.81 30H44.5067C42.0017 30 39.9267 31.8767 39.6167 34.3L36.3617 34.3017C32.8533 34.3017 30 37.1483 30 40.6467V46.425C30 46.845 30.21 47.2367 30.5617 47.4683C33.9933 49.7333 38.055 51.2417 42.3067 51.8333C42.9383 51.9267 43.5183 51.5317 43.685 50.925C44.0567 49.5733 45.2483 48.665 46.65 48.665C48.0367 48.665 49.24 49.5933 49.5767 50.9183C49.7183 51.4783 50.2233 51.8617 50.7867 51.8617C50.845 51.8617 50.9017 51.8583 50.96 51.85C55.24 51.2583 59.32 49.7417 62.7567 47.4683C63.1067 47.235 63.3167 46.845 63.3167 46.425V40.6467C63.3167 37.1483 60.47 34.3017 56.9717 34.3017ZM60.8167 45.7417C58.0783 47.4433 54.9217 48.635 51.5983 49.22C50.685 47.375 48.785 46.165 46.65 46.165C44.5317 46.165 42.6233 47.3717 41.685 49.205C38.3817 48.6233 35.235 47.4383 32.5 45.7417V40.6467C32.5 38.5267 34.2317 36.8017 36.3633 36.8017L40.8267 36.7983C41.16 36.7983 41.4767 36.6667 41.7117 36.4317C41.945 36.195 42.0767 35.8783 42.0767 35.5467L42.075 34.93C42.075 33.59 43.1667 32.5 44.5067 32.5H48.81C49.9317 32.5 50.88 33.265 51.1583 34.3017H46.6583C45.9683 34.3017 45.4083 34.8617 45.4083 35.5517C45.4083 36.2417 45.9683 36.8017 46.6583 36.8017H56.9717C59.0917 36.8017 60.8167 38.5267 60.8167 40.6467V45.7417ZM47.908 52.3057V54.4623C47.908 55.1523 47.348 55.7123 46.658 55.7123C45.968 55.7123 45.408 55.1523 45.408 54.4623V52.3057C45.408 51.6157 45.968 51.0557 46.658 51.0557C47.348 51.0557 47.908 51.6157 47.908 52.3057ZM62.025 51.2088C61.37 51.2088 60.8483 51.7188 60.7983 52.3588C60.7983 52.3588 60.5417 55.2738 60.4883 56.1938C60.4267 57.2122 60.0133 58.3205 59.435 59.0155C58.62 59.9988 57.7167 60.3838 56.2133 60.3872C55.2267 60.3888 49.905 60.3905 45.885 60.3905C45.1933 60.3905 44.6333 60.9505 44.6333 61.6405C44.6333 62.3305 45.1933 62.8905 45.8833 62.8905C49.7633 62.8905 55.2867 62.8888 56.2183 62.8872C58.4417 62.8822 60.0767 62.1588 61.36 60.6122C62.2817 59.5022 62.8883 57.9072 62.9833 56.3438C63.0211 55.701 63.1503 54.0335 63.2222 53.1044L63.2223 53.1038C63.2518 52.7228 63.2717 52.4662 63.2717 52.4555C63.2717 51.7672 62.7133 51.2088 62.025 51.2088ZM37.1037 60.3868C37.4303 60.3885 38.107 60.3885 38.9953 60.3885C39.6853 60.3885 40.2503 60.9485 40.2503 61.6385C40.2503 62.3285 39.6837 62.8885 38.992 62.8885C38.092 62.8885 37.4353 62.8885 37.1003 62.8868C34.8753 62.8818 33.2403 62.1585 31.957 60.6102C31.037 59.5018 30.4287 57.9068 30.3353 56.3435C30.2969 55.7099 30.1705 54.0807 30.0979 53.1444C30.0666 52.741 30.0453 52.4662 30.0453 52.4552C30.0453 51.7668 30.6037 51.2085 31.292 51.2085C31.947 51.2085 32.467 51.7185 32.5187 52.3602C32.5187 52.3602 32.7753 55.2752 32.8303 56.1935C32.892 57.2118 33.3037 58.3202 33.882 59.0135C34.6987 60.0002 35.602 60.3835 37.1037 60.3868Z' fill='#130F26'/></svg>",
+    "description": "Connect your website with powerful tools and platforms for seamless workflows and enhanced functionality.",
+    "introduction": "Our Easy Integration Support makes it simple to connect your website to the tools you already use, so you can work smarter and deliver a better experience to your customers.",
+    "sections": [
+      {
+        "heading": "Why Integrate Your Website?",
+        "content": "Integrations allow your website to communicate with marketing tools, payment gateways, CRM systems, and analytics platforms. This streamlines your workflow, automates repetitive tasks, and ensures you never miss critical insights."
+      },
+      {
+        "heading": "Popular Integrations We Support",
+        "content": "We help you connect your site with services like Mailchimp, HubSpot, Google Analytics, Stripe, and many more. Whether you’re capturing leads, processing payments, or tracking user behavior, we’ll make sure everything works smoothly."
+      },
+      {
+        "heading": "Step-by-Step Assistance",
+        "content": "Our team guides you through every step of the integration process—from initial setup to testing and troubleshooting. You’ll receive clear documentation and personal support whenever you need it."
+      },
+      {
+        "heading": "Future-Proof Your Business",
+        "content": "As your company grows, your integration needs will evolve. We provide ongoing support to help you adapt your digital ecosystem and keep everything connected, secure, and up to date."
+      }
+    ]
+  }
+]

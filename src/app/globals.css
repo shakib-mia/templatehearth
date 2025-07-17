@@ -1,26 +1,144 @@
+/* Tailwind Import */
 @import "tailwindcss";
 
+/* Default Light Theme Colors */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Default Colors (Base - same as original you gave) */
+  --background: #ffffff; /* White Background */
+  --foreground: #171717; /* Almost Black Text */
+  --primary: #5b1592; /* Deep Purple */
+  --accent: #7f00e1; /* Vibrant Violet */
+  --muted: #e5d9f2; /* Soft Light Purple */
+  --highlight: #ffb400; /* Amber Accent */
+
+  /* Background Shades */
+  --background-50: #ffffff;
+  --background-100: #f7f7f9;
+  --background-200: #efeff3;
+  --background-300: #e5e5eb;
+  --background-400: #ffffff; /* same as --background */
+  --background-500: #dcdce2;
+  --background-600: #c3c3cc;
+  --background-700: #a9a9b6;
+  --background-800: #8e8e9f;
+  --background-900: #757583;
+
+  /* Foreground Shades */
+  --foreground-50: #f9f9f9;
+  --foreground-100: #d4d4d4;
+  --foreground-200: #b0b0b0;
+  --foreground-300: #8d8d8d;
+  --foreground-400: #171717; /* same as --foreground */
+  --foreground-500: #121212;
+  --foreground-600: #0e0e0e;
+  --foreground-700: #0a0a0a;
+  --foreground-800: #070707;
+  --foreground-900: #030303;
+
+  /* Primary Shades */
+  --primary-50: #f1e8fb;
+  --primary-100: #d5c5f5;
+  --primary-200: #b9a2ef;
+  --primary-300: #9d7fed;
+  --primary-400: #5b1592; /* same as --primary */
+  --primary-500: #4a137a;
+  --primary-600: #3a0f61;
+  --primary-700: #2a0b48;
+  --primary-800: #1a062f;
+  --primary-900: #0a0317;
+
+  /* Accent Shades */
+  --accent-50: #f4e8ff;
+  --accent-100: #d9c3ff;
+  --accent-200: #be9fff;
+  --accent-300: #a57bff;
+  --accent-400: #7f00e1; /* same as --accent */
+  --accent-500: #6a00b9;
+  --accent-600: #540091;
+  --accent-700: #3e0068;
+  --accent-800: #280040;
+  --accent-900: #140020;
+
+  /* Muted Shades */
+  --muted-50: #faf7fd;
+  --muted-100: #ede7f8;
+  --muted-200: #ded4f1;
+  --muted-300: #d0c1ea;
+  --muted-400: #e5d9f2; /* same as --muted */
+  --muted-500: #bca9d6;
+  --muted-600: #9a80b7;
+  --muted-700: #7f6696;
+  --muted-800: #654d75;
+  --muted-900: #493653;
+
+  /* Highlight Shades */
+  --highlight-50: #fff5cc;
+  --highlight-100: #ffea99;
+  --highlight-200: #ffe066;
+  --highlight-300: #ffd433;
+  --highlight-400: #ffb400; /* same as --highlight */
+  --highlight-500: #e6a200;
+  --highlight-600: #b37800;
+  --highlight-700: #805200;
+  --highlight-800: #4d2b00;
+  --highlight-900: #1a0500;
 }
 
-@theme inline {
+/* Tailwind Inline Theme Tokens */
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-highlight: var(--highlight);
+  --font-poppins: "Poppins", "sans-serif";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer base {
+  h1 {
+    @apply text-[32px] md:text-[50px] font-bold;
+  }
+  h2 {
+    @apply text-[26px] md:text-[40px] font-semibold;
+  }
+  h3 {
+    @apply text-[22px] md:text-[30px] font-medium;
+  }
+
+  h4 {
+    @apply text-[20px] md:text-[24px] font-medium;
+  }
+
+  h5 {
+    @apply text-[18px] md:text-[20px] font-normal;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply font-poppins selection:bg-highlight;
+}
+
+.container {
+  @apply px-4 mx-auto max-w-7xl;
+}
+
+@media (max-width: 1023px) {
+  /* lg breakpoint er niche */
+  .hide-bg-mobile {
+    background-image: none !important;
+  }
+}
+
+section {
+  @apply py-10 lg:py-16;
 }
