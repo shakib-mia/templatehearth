@@ -3,7 +3,7 @@ import React from "react";
 
 const TemplateDetails = ({ data }) => {
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-6 text-gray-800 text-justify">
+    <div className="max-w-5xl mx-auto py-6 space-y-6 text-gray-800 text-justify">
       {/* Hero */}
       <>
         <Image
@@ -13,21 +13,19 @@ const TemplateDetails = ({ data }) => {
           height={100}
           className=" w-full rounded-xl shadow-md"
         />
-        <h1 className="text-3xl md:text-3xl font-bold mt-6">{data.headline}</h1>
+        <h3 className="font-bold mt-6">{data.headline}</h3>
         <p className="text-gray-600 mt-2">{data.shortDescription}</p>
       </>
 
       {/* Overview */}
       <div>
-        <h2 className="text-2xl font-semibold mb-2">Overview</h2>
+        <h4 className="font-semibold mb-2">Overview</h4>
         <p className="text-gray-700">{data.overview}</p>
       </div>
 
       {/* Why Choose */}
       <div>
-        <h2 className="text-2xl font-semibold mb-2">
-          Why Choose This Template?
-        </h2>
+        <h4 className="font-semibold mb-2">Why Choose This Template?</h4>
         <ul className="list-disc pl-6 space-y-1 text-gray-700">
           {data.whyChoose.map((item, index) => (
             <li key={index}>{item}</li>
@@ -57,7 +55,7 @@ const TemplateDetails = ({ data }) => {
 
       {/* Customization */}
       <div>
-        <h2 className="text-2xl font-semibold mb-2">Customization</h2>
+        <h4 className="font-semibold mb-2">Customization</h4>
         <p>{data.customization.intro}</p>
         <ul className="list-disc pl-6 mt-2 space-y-1 text-gray-700">
           {data.customization.highlights.map((highlight, index) => (
@@ -71,7 +69,7 @@ const TemplateDetails = ({ data }) => {
 
       {/* Useful Links */}
       <div>
-        <h2 className="text-2xl font-semibold mb-2">Useful Links</h2>
+        <h4 className="font-semibold mb-2">Useful Links</h4>
         <ul className="list-disc pl-6 space-y-1">
           {data.usefulLinks.map((link, index) => (
             <li key={index}>
@@ -90,11 +88,11 @@ const TemplateDetails = ({ data }) => {
 
       {/* Getting Started */}
       <div>
-        <h2 className="text-2xl font-semibold mb-2">Getting Started</h2>
+        <h4 className="font-semibold mb-2">Getting Started</h4>
         <ol className="space-y-4">
           {data.gettingStartedSteps.map((stepObj, index) => (
             <li key={index} className="bg-gray-100 p-4 rounded-md shadow-sm">
-              <h3 className="font-semibold text-lg">{stepObj.step}</h3>
+              <h5 className="font-semibold">{stepObj.step}</h5>
               <p className="text-sm text-gray-700">{stepObj.description}</p>
               <ul className="mt-2 bg-gray-800 text-green-300 font-mono text-sm rounded p-2 space-y-1">
                 {stepObj.commands.map((cmd, i) => (
