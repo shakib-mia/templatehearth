@@ -2,58 +2,30 @@ import Image from "next/image";
 import React from "react";
 import Button from "../Button/Button";
 import SeeAllButton from "../SeeAllButton/SeeAllButton";
+import Link from "next/link";
+import axios from "axios";
 
-const Templates = () => {
+const Templates = async () => {
+  const templates = (await axios.get("http://localhost:5000/templates")).data;
+
   return (
-    <div className="bg-muted">
-      <section className="container">
-        <h5 className="text-primary">Top Templates</h5>
-        <h3 className="font-semibold lg:w-5/12 mt-4">
-          We provide the Perfect Solution to your business growth
-        </h3>
-
-        <div className="grid grid-cols-2 gap-4 mt-16">
-          <article>
+    <>
+      <div className="grid grid-cols-2 gap-4">
+        {templates.map((work, key) => (
+          <Link href={"/templates/" + work.slug} key={key}>
             <Image
               width={600}
               height={100}
-              src="https://i.ibb.co/tTt79Q94/Nexcent-Thumb.png"
-              alt=""
-              className="w-full"
+              src={work.image}
+              alt={work.headline}
+              className="w-full rounded-lg"
             />
-          </article>
-          <article>
-            <Image
-              width={600}
-              height={100}
-              src="https://i.ibb.co/tTt79Q94/Nexcent-Thumb.png"
-              alt=""
-              className="w-full"
-            />
-          </article>
-          <article>
-            <Image
-              width={600}
-              height={100}
-              src="https://i.ibb.co/tTt79Q94/Nexcent-Thumb.png"
-              alt=""
-              className="w-full"
-            />
-          </article>
-          <article>
-            <Image
-              width={600}
-              height={100}
-              src="https://i.ibb.co/tTt79Q94/Nexcent-Thumb.png"
-              alt=""
-              className="w-full"
-            />
-          </article>
-        </div>
-
-        <SeeAllButton />
-      </section>
-    </div>
+            <h4 className="font-semibold mt-8 mb-2">{work.headline}</h4>
+            <p>{work.shortDescription}</p>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 };
 
