@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const TemplateDetails = ({ data }) => {
@@ -43,14 +44,14 @@ const TemplateDetails = ({ data }) => {
         >
           Live Demo
         </a>
-        <a
+        {/* <a
           href={data.repository}
           target="_blank"
           rel="noreferrer"
           className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900 transition"
         >
           GitHub Repo
-        </a>
+        </a> */}
       </div>
 
       {/* Customization */}
@@ -75,7 +76,7 @@ const TemplateDetails = ({ data }) => {
             <li key={index}>
               <a
                 href={link.url}
-                className="text-blue-600 hover:underline"
+                className="text-primary hover:underline"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -86,33 +87,20 @@ const TemplateDetails = ({ data }) => {
         </ul>
       </div>
 
-      {/* Getting Started */}
-      <div>
-        <h4 className="font-semibold mb-2">Getting Started</h4>
-        <ol className="space-y-4">
-          {data.gettingStartedSteps.map((stepObj, index) => (
-            <li key={index} className="bg-gray-100 p-4 rounded-md shadow-sm">
-              <h5 className="font-semibold">{stepObj.step}</h5>
-              <p className="text-sm text-gray-700">{stepObj.description}</p>
-              <ul className="mt-2 bg-gray-800 text-green-300 font-mono text-sm rounded p-2 space-y-1">
-                {stepObj.commands.map((cmd, i) => (
-                  <li key={i}>$ {cmd}</li>
-                ))}
-              </ul>
-              {stepObj.note && (
-                <p className="text-xs mt-1 text-gray-500 italic">
-                  {stepObj.note}
-                </p>
-              )}
-            </li>
-          ))}
-        </ol>
-      </div>
-
       {/* Help */}
-      <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-md">
+      <p>
+        Wanna make your business live?{" "}
+        <Link
+          className="text-primary underline hover:no-underline"
+          href={"/contact"}
+        >
+          Contact Us
+        </Link>{" "}
+        to get started
+      </p>
+      {/* <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-md">
         <p className="text-purple-800 font-medium">{data.needHelp}</p>
-      </div>
+      </div> */}
     </div>
   );
 };

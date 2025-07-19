@@ -7,12 +7,19 @@ import Head from "next/head";
 
 export const metadata = {
   title: "Templates - Template Hearth",
+  description:
+    "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
 };
 
 const page = () => {
   return (
     <>
-      <PageHeader title={`Templates`} />
+      <PageHeader
+        title={`Templates`}
+        description={
+          "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project."
+        }
+      />
 
       <section className="container">
         <Templates />

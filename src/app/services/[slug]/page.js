@@ -62,7 +62,7 @@ const Page = async ({ params }) => {
           </p>
 
           {service.sections?.map((section, idx) => (
-            <section id={`section-${idx}`} key={idx} className="mb-8">
+            <section id={`section-${idx}`} key={idx} className="mb-4 !py-0">
               <h2 className="text-2xl font-semibold mb-3 text-gray-800">
                 {section.heading}
               </h2>

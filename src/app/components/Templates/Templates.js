@@ -1,12 +1,16 @@
 import Image from "next/image";
 import React from "react";
-import Button from "../Button/Button";
-import SeeAllButton from "../SeeAllButton/SeeAllButton";
 import Link from "next/link";
 import axios from "axios";
 
 const Templates = async () => {
-  const templates = (await axios.get("http://localhost:5000/templates")).data;
+  const templates = (
+    await axios.get("https://templatehearth-be.onrender.com/templates")
+  ).data;
+
+  // let templates;
+
+  // const templates = [];
 
   return (
     <>
@@ -20,7 +24,7 @@ const Templates = async () => {
               alt={work.headline}
               className="w-full rounded-lg"
             />
-            <h4 className="font-semibold mt-8 mb-2">{work.headline}</h4>
+            <h4 className="font-semibold mt-4 mb-2">{work.headline}</h4>
             <p>{work.shortDescription}</p>
           </Link>
         ))}
