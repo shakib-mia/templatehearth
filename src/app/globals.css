@@ -125,7 +125,7 @@
 }
 
 body {
-  @apply font-poppins selection:bg-highlight;
+  @apply font-poppins selection:bg-highlight selection:text-white;
 }
 
 .container {

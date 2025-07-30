@@ -5,12 +5,16 @@ import Link from "next/link";
 import logo from "@/app/assets/logo.png";
 import Image from "next/image";
 import Button from "../Button/Button";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
   const lastScrollY = useRef(0);
+  const pathname = usePathname();
+
+  console.log(pathname);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -31,6 +35,25 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const links = [
+    {
+      href: "/",
+      text: "Home",
+    },
+    {
+      href: "/templates",
+      text: "Templates",
+    },
+    {
+      href: "/pricing",
+      text: "Pricing",
+    },
+    {
+      href: "/services",
+      text: "Services",
+    },
+  ];
 
   return (
     <nav
@@ -55,30 +78,15 @@ export default function Navbar() {
 
           {/* Center: Nav Items (absolute center) */}
           <div className="hidden lg:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
-            <Link
-              href="/"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              Home
-            </Link>
-            <Link
-              href="/templates"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              Templates
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/services"
-              className="text-gray-700 hover:text-indigo-600 font-medium"
-            >
-              Services
-            </Link>
+            {links.map(({ href, text }, key) => (
+              <Link
+                href={href}
+                key={key}
+                className="text-gray-700 hover:text-indigo-600 font-medium"
+              >
+                {text}
+              </Link>
+            ))}
           </div>
 
           {/* Right: CTA Button */}

@@ -14,15 +14,12 @@ const TemplateDetails = ({ data }) => {
           height={100}
           className=" w-full rounded-xl shadow-md"
         />
-        <h3 className="font-bold mt-6">{data.headline}</h3>
-        <p className="text-gray-600 mt-2">{data.shortDescription}</p>
+        {/* <h3 className="font-bold mt-6">{data.headline}</h3> */}
+        {/* <p className="text-gray-600 mt-2">{data.shortDescription}</p> */}
       </>
 
       {/* Overview */}
-      <div>
-        <h4 className="font-semibold mb-2">Overview</h4>
-        <p className="text-gray-700">{data.overview}</p>
-      </div>
+      <p className="text-gray-700">{data.overview}</p>
 
       {/* Why Choose */}
       <div>

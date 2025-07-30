@@ -1,0 +1,108 @@
+[
+  {
+    "image": "https://i.ibb.co/pjpDSNhx/Nexcent-Thumb.png",
+    "headline": "Nexcent – The Minimal SaaS Landing Page",
+    "slug": "nexcent-minimal-saas-landing-page",
+    "shortDescription": "A clean, modern, and fully responsive template built with Vite.js and Tailwind CSS. Perfect for SaaS startups and agencies ready to launch fast.",
+    "overview": "Nexcent is a clean, modern, and fully responsive single-page landing page template built with vanilla Vite.js, Tailwind CSS, and minimal JavaScript. Designed for SaaS startups, marketing agencies, and small businesses that need a professional, lightweight, and fast-loading online presence without complex frameworks.",
+    "whyChoose": [
+      "Lightweight & Fast – Built with Vite.js for blazing fast development and optimized builds.",
+      "Responsive Design – Looks perfect on desktop, tablet, and mobile.",
+      "Easy to Customize – Semantic Tailwind CSS utility classes and custom config for colors, fonts, and layouts.",
+      "SEO Friendly – Semantic HTML, headings, meta tags, and fast load times.",
+      "Minimal JavaScript – Only essential scripts to keep the experience smooth."
+    ],
+    "liveDemo": "https://nexcent-shakib.netlify.app/",
+    "repository": "https://github.com/shakib-mia/nexcent",
+    "customization": {
+      "intro": "Nexcent uses Tailwind CSS with a custom configuration for colors, fonts, and layout.",
+      "highlights": [
+        "Container is centered with responsive max-widths: sm (100%), md (768px), lg (1000px), xl (1200px).",
+        "Custom neutral and primary color palette.",
+        "Semantic font sizes: headline-1, body-1, etc."
+      ],
+      "configFile": "tailwind.config.js"
+    },
+    "usefulLinks": [
+      { "label": "Vite Documentation", "url": "https://vitejs.dev/" },
+      { "label": "Node.js Download", "url": "https://nodejs.org/" },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you have any questions or need support customizing this template, feel free to contact me. Thank you for your interest and happy coding! 🚀",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"]
+  },
+  {
+    "image": "https://i.ibb.co/nqThSPWf/magnifico.png",
+    "headline": "Magnifico – Team Collaboration SaaS Landing Page",
+    "slug": "team-collaboration-saas-landing-page",
+    "shortDescription": "A clean, modern, and fully responsive team collaboration template built with Vite.js and Tailwind CSS. Perfect for SaaS startups and project management platforms ready to launch fast.",
+    "overview": "Magnifico is a sleek, professional, and fully responsive team collaboration landing page template crafted with modern web technologies including HTML5, CSS3, and JavaScript. Designed specifically for SaaS companies, project management platforms, and team productivity tools that need a compelling, conversion-focused online presence to showcase their collaboration features and attract business clients looking to streamline their workflow processes.",
+    "whyChoose": [
+      "Lightweight & Fast – Built with Vite.js for blazing fast development and optimized performance.",
+      "Responsive Design – Looks perfect across all devices and screen sizes.",
+      "Easy to Customize – Clean Tailwind CSS utility classes with flexible styling options.",
+      "SEO Optimized – Semantic HTML structure with proper meta tags and fast loading speeds.",
+      "Team-Focused – Designed specifically for collaboration platforms and productivity tools."
+    ],
+    "liveDemo": "https://magnifico-th.netlify.app/",
+    "repository": "https://github.com/shakib-mia/magnifico",
+    "customization": {
+      "intro": "Magnifico uses Tailwind CSS with a custom configuration for colors, fonts, and layout.",
+      "highlights": [
+        "Container is centered with responsive max-widths: sm (100%), md (768px), lg (1000px), xl (1200px).",
+        "Custom neutral and primary color palette.",
+        "Semantic font sizes: headline-1, body-1, etc."
+      ],
+      "configFile": "tailwind.config.js"
+    },
+    "usefulLinks": [
+      { "label": "Vite Documentation", "url": "https://vitejs.dev/" },
+      { "label": "Node.js Download", "url": "https://nodejs.org/" },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you have any questions or need support customizing this template, feel free to contact me. Thank you for your interest and happy coding! 🚀",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"]
+  },
+
+  {
+    "image": "https://i.ibb.co/q3yrFCqn/Collers.png",
+    "headline": "Collers – Collectible Sneakers Marketplace Landing Page",
+    "slug": "collectible-sneakers-marketplace-landing-page",
+    "shortDescription": "A vibrant, modern, and fully responsive sneaker collectibles template built with Vite.js and Tailwind CSS. Perfect for sneaker marketplaces, collectible platforms, and e-commerce startups ready to launch fast.",
+    "overview": "Collers is a dynamic, professional, and fully responsive collectible sneakers marketplace landing page template crafted with modern web technologies including HTML5, CSS3, and JavaScript. Designed specifically for sneaker resellers, collectible marketplaces, and e-commerce platforms that need a compelling, conversion-focused online presence to showcase their rare sneakers and attract collectors looking to buy, sell, and trade premium footwear.",
+    "whyChoose": [
+      "Lightweight & Fast – Built with Vite.js for blazing fast development and optimized performance.",
+      "Responsive Design – Looks perfect across all devices and screen sizes.",
+      "Easy to Customize – Clean Tailwind CSS utility classes with flexible styling options.",
+      "SEO Optimized – Semantic HTML structure with proper meta tags and fast loading speeds.",
+      "E-commerce Focused – Designed specifically for sneaker marketplaces and collectible platforms."
+    ],
+    "liveDemo": "https://collers-th.netlify.app/",
+    "repository": "https://github.com/shakib-mia/collers",
+    "customization": {
+      "intro": "Collers uses Tailwind CSS with a custom configuration for colors, fonts, and layout.",
+      "highlights": [
+        "Container is centered with responsive max-widths: sm (100%), md (768px), lg (1000px), xl (1200px).",
+        "Custom warm and vibrant color palette with yellow accents.",
+        "Semantic font sizes: headline-1, body-1, etc."
+      ],
+      "configFile": "tailwind.config.js"
+    },
+    "usefulLinks": [
+      { "label": "Vite Documentation", "url": "https://vitejs.dev/" },
+      { "label": "Node.js Download", "url": "https://nodejs.org/" },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you have any questions or need support customizing this template, feel free to contact me. Thank you for your interest and happy coding! 🚀",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"]
+  }
+]
