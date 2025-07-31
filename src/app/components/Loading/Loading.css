@@ -1,0 +1,130 @@
+#block1 {
+  animation: block1 1s infinite;
+  opacity: 0;
+}
+#block2 {
+  animation: block2 1s infinite;
+  opacity: 0;
+}
+#block3 {
+  animation: block3 1s infinite;
+  opacity: 0;
+}
+#block4 {
+  animation: block4 1s infinite;
+  opacity: 0;
+}
+#block5 {
+  animation: block5 1s infinite;
+  opacity: 0;
+}
+#block6 {
+  animation: block6 1s infinite;
+  opacity: 0;
+}
+
+@keyframes block1 {
+  10%,
+  90% {
+    opacity: 0;
+    top: -36px;
+    left: -36px;
+    /* opacity: 0; */
+  }
+
+  40%,
+  60% {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    /* opacity: 1; */
+  }
+}
+
+@keyframes block2 {
+  10%,
+  90% {
+    opacity: 0;
+    top: -36px;
+    right: -36px;
+    /* opacity: 0; */
+  }
+
+  40%,
+  60% {
+    opacity: 1;
+    top: 0;
+    right: 0;
+    /* opacity: 1; */
+  }
+}
+
+@keyframes block3 {
+  10%,
+  90% {
+    opacity: 0;
+    bottom: -36px;
+    left: -36px;
+    /* opacity: 0; */
+  }
+
+  40%,
+  60% {
+    opacity: 1;
+    bottom: 0;
+    left: 0;
+    /* opacity: 1; */
+  }
+}
+
+@keyframes block4 {
+  10%,
+  90% {
+    opacity: 0;
+    scale: 0;
+    /* opacity: 0; */
+  }
+
+  40%,
+  60% {
+    opacity: 1;
+    scale: 1;
+    /* opacity: 1; */
+  }
+}
+
+@keyframes block5 {
+  10%,
+  90% {
+    opacity: 0;
+    bottom: -36px;
+    left: 0;
+    /* opacity: 0; */
+  }
+
+  40%,
+  60% {
+    opacity: 1;
+    bottom: 0;
+    left: 0;
+    /* opacity: 1; */
+  }
+}
+
+@keyframes block6 {
+  10%,
+  90% {
+    opacity: 0;
+    bottom: -36px;
+    right: -36px;
+    /* opacity: 0; */
+  }
+
+  40%,
+  60% {
+    opacity: 1;
+    bottom: 0;
+    right: 0;
+    /* opacity: 1; */
+  }
+}
