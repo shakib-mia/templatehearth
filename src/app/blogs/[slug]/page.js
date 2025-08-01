@@ -6,7 +6,7 @@ import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
 
 // Optional: dynamic metadata
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const res = await fetch(
     `https://templatehearth-be.onrender.com/blogs/${slug}`
   );
