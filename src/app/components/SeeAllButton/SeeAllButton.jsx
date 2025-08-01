@@ -5,12 +5,12 @@ import React from "react";
 import Button from "../Button/Button";
 import Link from "next/link";
 
-const SeeAllButton = ({ path }) => {
+const SeeAllButton = ({ path, children }) => {
   // const navigate = useRouter();
 
   return (
     <Link href={path} className="flex justify-center mt-8">
-      <Button>Explore More</Button>
+      <Button>{children}</Button>
     </Link>
   );
 };

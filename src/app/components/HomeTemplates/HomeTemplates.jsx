@@ -16,7 +16,7 @@ const HomeTemplates = () => {
       </div>
 
       <div className="mt-8 flex justify-center">
-        <SeeAllButton path={"/templates"}></SeeAllButton>
+        <SeeAllButton path={"/templates"}>Explore All Templates</SeeAllButton>
       </div>
     </section>
   );

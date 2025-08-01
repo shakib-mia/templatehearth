@@ -46,8 +46,8 @@ export default function Navbar() {
       text: "Templates",
     },
     {
-      href: "/pricing",
-      text: "Pricing",
+      href: "/blogs",
+      text: "Blogs",
     },
     {
       href: "/services",

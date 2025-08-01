@@ -1,4 +1,6 @@
+import Blogs from "./components/Blogs/Blogs";
 import Header from "./components/Header/Header";
+import HomeBlogs from "./components/HomeBlogs/HomeBlogs";
 import HomeTemplates from "./components/HomeTemplates/HomeTemplates";
 import Services from "./components/Services/Services";
 import Templates from "./components/Templates/Templates";
@@ -10,7 +12,8 @@ export default function Home() {
       <Header />
       <Services />
       <HomeTemplates />
-      <WhyUs />
+      {/* <WhyUs /> */}
+      <HomeBlogs />
     </>
   );
 }
