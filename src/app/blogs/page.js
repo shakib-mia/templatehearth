@@ -2,6 +2,13 @@ import React from "react";
 import Blogs from "../components/Blogs/Blogs";
 import PageHeader from "../components/PageHeader/PageHeader";
 
+export async function generateMetadata({ params }) {
+  return {
+    title: "Blogs",
+    // description: blog.shortDescription,
+  };
+}
+
 const page = () => {
   return (
     <>

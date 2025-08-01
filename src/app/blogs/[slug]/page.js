@@ -1,21 +1,32 @@
 import React from "react";
 import axios from "axios";
 import PageHeader from "@/app/components/PageHeader/PageHeader";
-import Image from "next/image";
 import BlogDetails from "@/app/components/BlogDetails/BlogDetails";
 import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
 
 // Optional: dynamic metadata
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
+  const { slug } = params;
   const res = await fetch(
     `https://templatehearth-be.onrender.com/blogs/${slug}`
   );
   const blog = await res.json();
 
   return {
-    title: blog.title,
+    title: `${blog.title} - Template Hearth`,
     description: blog.shortDescription,
+    keywords: blog.tags?.map((tag) => tag.replace(/^#/, "")), // removes # if present
+    openGraph: {
+      title: blog.title,
+      description: blog.shortDescription,
+      type: "article",
+      url: `https://templatehearth.vercel.app/blogs/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.shortDescription,
+    },
   };
 }
 
@@ -35,7 +46,7 @@ const BlogDetailsPage = async ({ params }) => {
         </aside>
 
         <aside className="w-full xl:w-1/3 sticky top-10 h-fit">
-          <h2 className="font-semibold mb-4">Related Blogs</h2>
+          <h2 className="font-semibold mb-4">Rest Blogs</h2>
           <RestBlogs slug={blog.slug} />
         </aside>
       </div>

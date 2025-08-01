@@ -19,7 +19,7 @@ const RestBlogs = async ({ slug }) => {
           >
             <Image
               src={item.image}
-              className="w-1/3 aspect-square rounded-lg"
+              className="w-1/3 aspect-square rounded-lg object-cover"
               width={156}
               height={156}
               alt={item.slug}
