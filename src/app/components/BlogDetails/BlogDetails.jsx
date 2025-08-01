@@ -64,7 +64,7 @@ const BlogDetails = ({ blog }) => {
       ))}
 
       {/* Conclusion */}
-      <section className="mt-12 border-t pt-8 space-y-4">
+      <section className="mt-6 border-t border-blue-300 pt-6 space-y-4">
         <h2 className="text-xl font-semibold">Conclusion</h2>
         {blog.conclusion.summary && (
           <p>{convertBoldText(blog.conclusion.summary)}</p>

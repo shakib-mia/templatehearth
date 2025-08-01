@@ -5,7 +5,7 @@ import React from "react";
 
 const Blogs = async ({ route = "/" }) => {
   const blogs = (
-    await axios.get("http://localhost:5000/blogs", {
+    await axios.get("https://templatehearth-be.onrender.com/blogs", {
       headers: {
         route,
       },

@@ -3,7 +3,9 @@ import Link from "next/link";
 import React from "react";
 
 const RestBlogs = async ({ slug }) => {
-  const response = await fetch("http://localhost:5000/rest-blogs/" + slug);
+  const response = await fetch(
+    "https://templatehearth-be.onrender.com/rest-blogs/" + slug
+  );
   const blogs = await response.json();
 
   if (blogs.length > 0) {
