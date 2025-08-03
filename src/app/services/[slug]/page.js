@@ -5,16 +5,6 @@ import Image from "next/image";
 import path from "path";
 import React from "react";
 
-export async function generateStaticParams() {
-  const filePath = path.join(process.cwd(), "public", "services.json");
-  const jsonData = await fs.readFile(filePath, "utf-8");
-  const services = JSON.parse(jsonData);
-
-  return services.map((service) => ({
-    slug: service.slug,
-  }));
-}
-
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
@@ -31,7 +21,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: service.title + " - Template Hearth",
-    description: service.description || "",
+    description: service.shortDescription || "",
   };
 }
 
