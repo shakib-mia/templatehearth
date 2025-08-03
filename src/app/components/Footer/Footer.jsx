@@ -2,6 +2,12 @@
 
 import Link from "next/link";
 import Button from "../Button/Button";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -10,11 +16,49 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold mb-4">TemplateHearth</h3>
-            <p className="text-sm">
+            <h3 className="text-xl font-bold">TemplateHearth</h3>
+            <p className="text-sm my-4">
               Your trusted hub for beautiful & modern templates. Ready. Set.
               Launch.
             </p>
+
+            <div className="flex gap-2 items-center">
+              <a
+                href="https://www.facebook.com/templatehearth"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+              >
+                <FaFacebookF />
+              </a>
+
+              <a
+                href="https://www.youtube.com/@TemplateHearth"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+              >
+                <FaYoutube />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/templatehearth"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+              >
+                <FaLinkedinIn />
+              </a>
+
+              <a
+                href="https://x.com/TemplateHearth"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+              >
+                <FaXTwitter />
+              </a>
+            </div>
           </div>
 
           {/* Links */}
@@ -74,10 +118,7 @@ export default function Footer() {
             </p>
             <form className="flex items-center space-x-2">
               <input type="email" placeholder="Enter your email" />
-              <Button
-                type="submit"
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm"
-              >
+              <Button type="submit" className="!px-2 !py-2 text-sm">
                 Subscribe
               </Button>
             </form>

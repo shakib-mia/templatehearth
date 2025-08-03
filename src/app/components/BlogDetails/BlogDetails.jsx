@@ -27,8 +27,8 @@ const BlogDetails = ({ blog }) => {
         className="w-full rounded-2xl mb-6 object-cover aspect-video"
       />
 
-      <h1 className="text-3xl md:text-4xl font-bold">{blog.title}</h1>
-      <p className="text-lg text-gray-600 mt-4">{blog.shortDescription}</p>
+      {/* <h1 className="text-3xl md:text-4xl font-bold">{blog.title}</h1>
+      <p className="text-lg text-gray-600 mt-4">{blog.shortDescription}</p> */}
 
       {/* Introduction Section */}
       <section className="!py-6 space-y-4">

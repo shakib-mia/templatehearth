@@ -13,9 +13,11 @@ const page = () => {
         <h1 className="lg:text-7xl lg:mb-4 text-highlight">Oops</h1>
         <p className="lg:text-xl mb-4">Looks like this page doesn’t exist.</p>
 
-        <Link href={"/"}>
-          <Button>Back To Home</Button>
-        </Link>
+        <div className="flex justify-center">
+          <Link href={"/"}>
+            <Button>Back To Home</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

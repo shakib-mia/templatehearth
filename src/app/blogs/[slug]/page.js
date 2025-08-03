@@ -46,7 +46,7 @@ const BlogDetailsPage = async ({ params }) => {
         </aside>
 
         <aside className="w-full xl:w-1/3 sticky top-10 h-fit">
-          <h2 className="font-semibold mb-4">Rest Blogs</h2>
+          <h2 className="font-semibold mb-4">More Blogs</h2>
           <RestBlogs slug={blog.slug} />
         </aside>
       </div>
