@@ -18,8 +18,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
-  const service = (await axios.get("http://localhost:5000/services/" + slug))
-    .data;
+  const service = (
+    await axios.get("https://templatehearth-be.onrender.com/services/" + slug)
+  ).data;
 
   if (!service) {
     return {
@@ -38,8 +39,9 @@ const Page = async ({ params }) => {
   const { slug } = await params;
   // console.log({ slug });
 
-  const service = (await axios.get("http://localhost:5000/services/" + slug))
-    .data;
+  const service = (
+    await axios.get("https://templatehearth-be.onrender.com/services/" + slug)
+  ).data;
 
   if (!service) {
     return <div>Service Not Found</div>;

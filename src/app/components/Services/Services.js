@@ -7,11 +7,14 @@ import Button from "../Button/Button";
 import Image from "next/image";
 
 const Services = async ({ route }) => {
-  const res = await axios.get("http://localhost:5000/services", {
-    headers: {
-      route,
-    },
-  });
+  const res = await axios.get(
+    "https://templatehearth-be.onrender.com/services",
+    {
+      headers: {
+        route,
+      },
+    }
+  );
 
   const services = res.data;
 
