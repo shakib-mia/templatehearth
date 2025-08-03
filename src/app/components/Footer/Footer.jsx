@@ -73,11 +73,7 @@ export default function Footer() {
               Get the latest templates in your inbox.
             </p>
             <form className="flex items-center space-x-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="px-3 py-2 w-full border-b border-gray-700 placeholder-gray-400 focus:outline-0 text-sm"
-              />
+              <input type="email" placeholder="Enter your email" />
               <Button
                 type="submit"
                 className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm"

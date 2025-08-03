@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Services />
+      <Services route={"/"} />
       <HomeTemplates />
       {/* <WhyUs /> */}
       <HomeBlogs />

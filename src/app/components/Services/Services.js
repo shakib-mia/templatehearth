@@ -2,12 +2,18 @@ import fs from "fs/promises";
 import path from "path";
 import Link from "next/link";
 import React from "react";
+import axios from "axios";
+import Button from "../Button/Button";
+import Image from "next/image";
 
-const Services = async () => {
-  // Absolute path to /public/services.json
-  const filePath = path.join(process.cwd(), "public", "services.json");
-  const jsonData = await fs.readFile(filePath, "utf-8");
-  const services = JSON.parse(jsonData);
+const Services = async ({ route }) => {
+  const res = await axios.get("http://localhost:5000/services", {
+    headers: {
+      route,
+    },
+  });
+
+  const services = res.data;
 
   return (
     <section className="container">
@@ -16,32 +22,35 @@ const Services = async () => {
         We provide the Perfect Solution to your business growth
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-4 md:gap-7 lg:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-4 md:gap-6 lg:gap-">
         {services.map((service, index) => (
           <Link
             href={"/services/" + service.slug}
             key={index}
-            className="p-6 bg-white rounded shadow-lg"
+            className="bg-white rounded-md shadow-lg overflow-hidden"
           >
-            <div
-              className="w-14 h-14 text-primary mb-4"
-              dangerouslySetInnerHTML={{ __html: service.icon }}
-            >
-              {/* {service.icon} */}
+            <Image
+              src={service.image}
+              width={600}
+              height={600}
+              className="w-full aspect-video"
+              alt={service.title}
+            />
+            <div className="p-6">
+              <h5 className="font-semibold mb-2">{service.title}</h5>
+              <p>{service.shortDescription}</p>
             </div>
-            <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-            <p>{service.description}</p>
-
-            {/* <Link
-              href={"/services/" + service.slug}
-              className="text-primary relative group inline-block"
-            >
-              Learn More
-              <div className="absolute -bottom-1 bg-primary h-px w-0 group-hover:w-full transition-[width] right-0 group-hover:left-0"></div>
-            </Link> */}
           </Link>
         ))}
       </div>
+
+      {route === "/" && (
+        <div className="flex justify-center mt-8">
+          <Link href={"/services"}>
+            <Button>Explore all Services</Button>
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

@@ -90,9 +90,9 @@ export default function Navbar() {
           </div>
 
           {/* Right: CTA Button */}
-          <div className="hidden lg:flex flex-1 justify-end">
+          <Link href={"/contact"} className="hidden lg:flex flex-1 justify-end">
             <Button>Contact Us</Button>
-          </div>
+          </Link>
 
           {/* Mobile menu toggle */}
           <div className="lg:hidden ml-2">
@@ -153,7 +153,7 @@ export default function Navbar() {
             Contact
           </Link>
           <Link
-            href="/get-started"
+            href="/contact"
             className="block text-center mt-2 px-4 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
           >
             Contact Us
