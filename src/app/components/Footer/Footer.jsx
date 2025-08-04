@@ -93,8 +93,8 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-3">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/blog" className="hover">
-                  Blog
+                <Link href="/blogs" className="hover">
+                  Blogs
                 </Link>
               </li>
               <li>

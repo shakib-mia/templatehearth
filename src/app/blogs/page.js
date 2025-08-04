@@ -4,8 +4,9 @@ import PageHeader from "../components/PageHeader/PageHeader";
 
 export async function generateMetadata({ params }) {
   return {
-    title: "Blogs",
-    // description: blog.shortDescription,
+    title: "Blogs - Template Hearth",
+    description:
+      "Explore web design insights, template tips, updates, and inspiration to help you build better websites faster with Template Hearth. Stay ahead with the latest trends and creative strategies.",
   };
 }
 
