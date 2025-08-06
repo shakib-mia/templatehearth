@@ -4,6 +4,7 @@ import Link from "next/link";
 import Button from "../Button/Button";
 import {
   FaFacebookF,
+  FaInstagram,
   FaLinkedinIn,
   FaXTwitter,
   FaYoutube,
@@ -27,7 +28,7 @@ export default function Footer() {
                 href="https://www.facebook.com/templatehearth"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+                className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaFacebookF />
               </a>
@@ -36,7 +37,7 @@ export default function Footer() {
                 href="https://www.youtube.com/@TemplateHearth"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+                className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaYoutube />
               </a>
@@ -45,7 +46,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/templatehearth"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+                className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaLinkedinIn />
               </a>
@@ -54,9 +55,18 @@ export default function Footer() {
                 href="https://x.com/TemplateHearth"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex justify-center items-center w-12 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+                className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaXTwitter />
+              </a>
+
+              <a
+                href="https://www.instagram.com/templatehearth"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+              >
+                <FaInstagram />
               </a>
             </div>
           </div>
