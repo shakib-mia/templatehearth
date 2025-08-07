@@ -9,6 +9,7 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
+import { TbBrandGumroad } from "react-icons/tb";
 
 export default function Footer() {
   return (
@@ -67,6 +68,15 @@ export default function Footer() {
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaInstagram />
+              </a>
+
+              <a
+                href="https://www.instagram.com/templatehearth"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
+              >
+                <TbBrandGumroad />
               </a>
             </div>
           </div>

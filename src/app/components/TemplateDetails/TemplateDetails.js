@@ -3,6 +3,48 @@ import Link from "next/link";
 import React from "react";
 
 const TemplateDetails = ({ data }) => {
+  const features = [
+    {
+      heading: "Lightweight & Fast",
+      text: "Built with Vite.js for blazing fast development and optimized builds.",
+    },
+    {
+      heading: "Smooth UX",
+      text: "Includes buttery-smooth scrolling and elegant animation effects.",
+    },
+    {
+      heading: "Responsive Design",
+      text: "Looks perfect on all devices — desktop, tablet, and mobile.",
+    },
+    {
+      heading: "Easy to Customize",
+      text: "Uses Tailwind CSS with semantic utility classes and custom config for colors, fonts, and layout.",
+    },
+    {
+      heading: "SEO Friendly",
+      text: "Semantic HTML, proper heading structure, meta tags, and fast load times for better search rankings.",
+    },
+    {
+      heading: "Minimal JavaScript",
+      text: "Only essential scripts to keep your site fast and smooth.",
+    },
+  ];
+
+  const usefulLinks = [
+    {
+      label: "Vite Documentation",
+      url: "https://vitejs.dev/guide/",
+    },
+    {
+      label: "Node.js Download",
+      url: "https://nodejs.org/",
+    },
+    {
+      label: "GitHub: How to clone a repo",
+      url: "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto py-6 space-y-6 text-gray-800 text-justify">
       {/* Hero */}
@@ -25,8 +67,10 @@ const TemplateDetails = ({ data }) => {
       <div>
         <h4 className="font-semibold mb-2">Why Choose This Template?</h4>
         <ul className="list-disc pl-6 space-y-1 text-gray-700">
-          {data.whyChoose.map((item, index) => (
-            <li key={index}>{item}</li>
+          {features.map(({ heading, text }, index) => (
+            <li key={index}>
+              <b>{heading}:</b> {text}
+            </li>
           ))}
         </ul>
       </div>
@@ -41,14 +85,14 @@ const TemplateDetails = ({ data }) => {
         >
           Live Demo
         </a>
-        {/* <a
-          href={data.repository}
+        <a
+          href={data.gumroadLink}
           target="_blank"
           rel="noreferrer"
-          className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900 transition"
+          className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-purple-700 transition"
         >
-          GitHub Repo
-        </a> */}
+          Make it Your
+        </a>
       </div>
 
       {/* Customization */}
@@ -69,7 +113,7 @@ const TemplateDetails = ({ data }) => {
       <div>
         <h4 className="font-semibold mb-2">Useful Links</h4>
         <ul className="list-disc pl-6 space-y-1">
-          {data.usefulLinks.map((link, index) => (
+          {usefulLinks.map((link, index) => (
             <li key={index}>
               <a
                 href={link.url}

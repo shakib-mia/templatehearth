@@ -37,7 +37,7 @@ const Services = async ({ route }) => {
               width={600}
               height={600}
               className="w-full aspect-video"
-              alt={service.title}
+              alt={service.slug}
             />
             <div className="p-6">
               <h5 className="font-semibold mb-2">{service.title}</h5>
