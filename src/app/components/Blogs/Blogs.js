@@ -14,7 +14,11 @@ const Blogs = async ({ route = "/" }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-4 ${
+          route === "/" && "mt-10"
+        }`}
+      >
         {blogs.map((item) => (
           <Link
             className="inline-block w-full"
@@ -29,7 +33,7 @@ const Blogs = async ({ route = "/" }) => {
               className="w-full aspect-video object-cover rounded-2xl"
             />
 
-            <h4 className="mt-4">{item.title}</h4>
+            <h4 className="mt-2">{item.title}</h4>
             <p>{item.shortDescription}</p>
           </Link>
         ))}
