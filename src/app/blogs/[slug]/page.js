@@ -6,26 +6,51 @@ import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
 
 // Optional: dynamic metadata
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
+  const { slug } = await params; // params আসবে route থেকে, await লাগবে না
   const res = await fetch(
     `https://templatehearth-be.onrender.com/blogs/${slug}`
   );
+  if (!res.ok) {
+    // যদি fetch ব্যর্থ হয়, fallback metadata দিতে পারো
+    return {
+      title: "Template Hearth Blog",
+      description: "Read our latest blog posts on web design and templates.",
+    };
+  }
   const blog = await res.json();
 
   return {
     title: `${blog.title} - Template Hearth`,
     description: blog.shortDescription,
-    keywords: blog.tags?.map((tag) => tag.replace(/^#/, "")), // removes # if present
+    keywords: blog.tags?.map((tag) => tag.replace(/^#/, "")).join(", "), // # সরিয়ে comma separated string
     openGraph: {
       title: blog.title,
       description: blog.shortDescription,
       type: "article",
       url: `https://templatehearth.vercel.app/blogs/${slug}`,
+      images: [
+        {
+          url:
+            blog.image ||
+            "https://templatehearth.vercel.app/default-og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${blog.title} - Template Hearth`,
+        },
+      ],
+      siteName: "Template Hearth",
     },
     twitter: {
       card: "summary_large_image",
       title: blog.title,
       description: blog.shortDescription,
+      images: [
+        blog.image || "https://templatehearth.vercel.app/default-og-image.jpg",
+      ],
+      creator: "@TemplateHearth", // Twitter হ্যান্ডেল
+    },
+    alternates: {
+      canonical: `https://templatehearth.vercel.app/blogs/${slug}`,
     },
   };
 }

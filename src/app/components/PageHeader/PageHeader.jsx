@@ -12,7 +12,7 @@ export default function PageHeader({ description, title }) {
   return (
     <div className="bg-muted pt-40 pb-10 text-center">
       <div className="container">
-        <h1 className="text-4xl lg:text-6xl font-bold mb-2 text-gray-900">
+        <h1 className="text-4xl lg:text-6xl font-bold mb-2 text-gray-900 leading-[1.5]">
           {title ||
             (pageTitle.includes("-") ? pageTitle.split("-")[0] : pageTitle)}
         </h1>
