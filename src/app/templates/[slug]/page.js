@@ -1,4 +1,5 @@
 import PageHeader from "@/app/components/PageHeader/PageHeader";
+import RestTemplates from "@/app/components/RestTemplates/RestTemplates";
 import TemplateDetails from "@/app/components/TemplateDetails/TemplateDetails";
 import axios from "axios";
 import { notFound } from "next/navigation";
@@ -11,12 +12,12 @@ export async function generateMetadata({ params }) {
     const res = await axios.get(
       "https://templatehearth-be.onrender.com/templates/" + slug
     );
-    const blog = res.data;
+    const template = res.data;
 
-    if (blog) {
+    if (template) {
       return {
-        title: blog.headline,
-        description: blog.shortDescription,
+        title: template.headline,
+        description: template.shortDescription,
       };
     } else {
       return {
@@ -40,28 +41,31 @@ const page = async ({ params }) => {
       "https://templatehearth-be.onrender.com/templates/" + slug
     );
 
-    const blog = await data.data;
-    console.log({ blog });
+    const template = await data.data;
+    console.log({ template });
 
-    if (!blog) {
+    if (!template) {
       return notFound();
     }
 
     return (
       <>
-        {blog ? (
+        {template ? (
           <>
             <PageHeader
-              title={blog?.headline}
-              description={blog?.shortDescription}
+              title={template?.headline}
+              description={template?.shortDescription}
             />
 
             <section className="container">
               <div className="flex flex-col lg:flex-row gap-8">
-                <aside className="w-8/12">
-                  <TemplateDetails data={blog} />
+                <aside className="w-full lg:w-8/12">
+                  <TemplateDetails data={template} />
                 </aside>
-                <aside className="w-4/12"></aside>
+                <aside className="w-full xl:w-4/12 sticky top-10 h-fit">
+                  <h2 className="font-semibold mb-4">More templates</h2>
+                  <RestTemplates slug={template.slug} />
+                </aside>
               </div>
             </section>
           </>

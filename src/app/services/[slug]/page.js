@@ -1,4 +1,5 @@
 import PageHeader from "@/app/components/PageHeader/PageHeader";
+import RestServices from "@/app/components/RestServices/RestServices";
 import axios from "axios";
 import fs from "fs/promises";
 import Image from "next/image";
@@ -46,8 +47,8 @@ const Page = async ({ params }) => {
         description={service.shortDescription}
       />
 
-      <div className="container mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-10 mt-8 pb-8">
-        <main className="lg:w-8/12 w-full text-justify">
+      <div className="container mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-10 mt-10 pb-8">
+        <main className="lg:w-8/12 w-full">
           <Image
             src={service.image}
             width={600}
@@ -55,16 +56,20 @@ const Page = async ({ params }) => {
             alt={service.slug}
             className="w-full aspect-video rounded-lg mb-8"
           />
-          <p className="mb-8 text-lg leading-relaxed text-gray-700">
+          <p className="mb-8 text-lg leading-relaxed text-gray-700 text-justify">
             {service.fullDescription}
           </p>
 
           {service.features?.map((section, idx) => (
-            <section id={`section-${idx}`} key={idx} className="mb-6 !py-0">
+            <section
+              id={section.title.split(" ").join("-").toLowerCase()}
+              key={idx}
+              className="mb-6 !py-0"
+            >
               <h2 className="text-2xl font-semibold mb-3 text-gray-800">
                 {section.title}
               </h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-justify">
                 {section.description}
               </p>
             </section>
@@ -82,13 +87,16 @@ const Page = async ({ params }) => {
               Quick Links
             </h3>
             <ul className="space-y-3 mb-6">
-              {service.sections?.map((section, idx) => (
+              {service.features?.map((section, idx) => (
                 <li key={idx}>
                   <a
-                    href={`#section-${idx}`}
+                    href={`#${section.title
+                      .split(" ")
+                      .join("-")
+                      .toLowerCase()}`}
                     className="text-blue-600 hover:text-blue-800 transition-colors"
                   >
-                    {section.heading}
+                    {section.title}
                   </a>
                 </li>
               ))}
@@ -96,23 +104,12 @@ const Page = async ({ params }) => {
           </div>
 
           {/* এখানে বাকি সার্ভিস গুলো দেখানো */}
-          {/* <div className="bg-gray-50 rounded-lg p-6 shadow-md">
+          <div className="bg-gray-50 rounded-lg p-6 shadow-md">
             <h3 className="text-xl font-semibold mb-4 text-gray-800">
               More Services
             </h3>
-            <ul className="space-y-3">
-              {restServices.map((restService) => (
-                <li key={restService.slug}>
-                  <a
-                    href={`/services/${restService.slug}`}
-                    className="text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    {restService.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div> */}
+            <RestServices slug={slug} />
+          </div>
         </aside>
       </div>
     </>

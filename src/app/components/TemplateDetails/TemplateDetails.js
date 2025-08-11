@@ -46,7 +46,7 @@ const TemplateDetails = ({ data }) => {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto py-6 space-y-6 text-gray-800 text-justify">
+    <div className="max-w-5xl mx-auto pb-6 space-y-6 text-gray-800 text-justify">
       {/* Hero */}
       <>
         <Image
