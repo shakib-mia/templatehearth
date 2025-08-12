@@ -71,7 +71,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://www.instagram.com/templatehearth"
+                href="https://templatehearth.gumroad.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
