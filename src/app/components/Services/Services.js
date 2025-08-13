@@ -19,13 +19,24 @@ const Services = async ({ route }) => {
   const services = res.data;
 
   return (
-    <section className="container">
-      <h5 className="text-primary">What we do</h5>
-      <h3 className="font-semibold lg:w-5/12 mt-4">
-        We provide the Perfect Solution to your business growth
-      </h3>
+    <section className={`container`}>
+      {route === "/" ? (
+        <>
+          {" "}
+          <h5 className="text-primary">What we do</h5>
+          <h3 className="font-semibold lg:w-5/12 mt-4">
+            We provide the Perfect Solution to your business growth
+          </h3>
+        </>
+      ) : (
+        <></>
+      )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-4 md:gap-6 lg:gap-">
+      <div
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ${
+          route === "/" ? "mt-10" : "!mt-0"
+        } gap-4 md:gap-6`}
+      >
         {services.map((service, index) => (
           <Link
             href={"/services/" + service.slug}
