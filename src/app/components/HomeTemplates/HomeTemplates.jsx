@@ -11,7 +11,7 @@ const HomeTemplates = () => {
           Discover the Perfect Template for your next project
         </h3>
         <div className="mt-10">
-          <Templates />
+          <Templates route={"/"} />
         </div>
       </div>
 

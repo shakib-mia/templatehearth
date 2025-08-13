@@ -3,9 +3,11 @@ import React from "react";
 import Link from "next/link";
 import axios from "axios";
 
-const Templates = async () => {
+const Templates = async ({ route }) => {
   const templates = (
-    await axios.get("https://templatehearth-be.onrender.com/templates")
+    await axios.get("https://templatehearth-be.onrender.com/templates", {
+      headers: { route },
+    })
   ).data;
 
   // let templates;

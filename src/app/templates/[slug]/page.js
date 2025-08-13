@@ -25,7 +25,6 @@ export async function generateMetadata({ params }) {
       };
     }
   } catch (error) {
-    console.log("Metadata fetch error:", error.message);
     return {
       title: "Not Found",
     };
@@ -42,7 +41,6 @@ const page = async ({ params }) => {
     );
 
     const template = await data.data;
-    console.log({ template });
 
     if (!template) {
       return notFound();
