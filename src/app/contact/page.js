@@ -7,6 +7,18 @@ import { FaPaperPlane } from "react-icons/fa6";
 import emailjs from "emailjs-com";
 import axios from "axios";
 
+const title = `Contact - Template Hearth`;
+
+const description =
+  "We'd love to hear from you. Whether you have a question, a project idea, or just want to say hello — our inbox is always open.";
+
+// export async function generateMetadata() {
+//   return {
+//     title,
+//     description,
+//   };
+// }
+
 const Page = () => {
   const [formData, setFormData] = useState({
     from_name: "",
@@ -81,6 +93,12 @@ const Page = () => {
 
   return (
     <>
+      <head>
+        <title>{title}</title>
+        <meta name="title" content="Contact - Template Hearth" />
+        <meta name="description" content={description} />
+      </head>
+
       <PageHeader
         title={"Get in Touch"}
         description={
@@ -128,9 +146,11 @@ const Page = () => {
             required
           />
 
-          <Button type="submit">
-            Send Message <FaPaperPlane />
-          </Button>
+          <div className="flex justify-center">
+            <Button type="submit">
+              Send Message <FaPaperPlane />
+            </Button>
+          </div>
 
           {status && (
             <p className="mt-4 text-center text-sm font-semibold">{status}</p>
