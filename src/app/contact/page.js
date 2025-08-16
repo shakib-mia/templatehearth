@@ -88,16 +88,9 @@ const Page = () => {
         }
       />
 
-      <section className="container grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <aside>
-          lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-          lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-          lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-          lorem lorem lorem lorem lorem lorem lorem lorem lorem
-        </aside>
-
+      <section className="container flex justify-center gap-12">
         <form
-          className="space-y-4 col-span-2"
+          className="space-y-4 col-span-2 lg:w-1/2 mx-auto"
           onSubmit={handleSubmit}
           ref={formRef}
         >
