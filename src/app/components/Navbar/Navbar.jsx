@@ -42,6 +42,10 @@ export default function Navbar() {
       text: "Home",
     },
     {
+      href: "/services",
+      text: "Services",
+    },
+    {
       href: "/templates",
       text: "Templates",
     },
@@ -50,8 +54,8 @@ export default function Navbar() {
       text: "Blogs",
     },
     {
-      href: "/services",
-      text: "Services",
+      href: "/pricing",
+      text: "Pricing",
     },
   ];
 
@@ -129,9 +133,21 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden px-4 pt-2 pb-4 space-y-2 bg-white shadow">
-          <Link href="/" className="block text-gray-700 hover:text-indigo-600">
+      {/* {isOpen && ( */}
+      <div
+        className="lg:hidden bg-white shadow divide-y divide-gray-900 overflow-hidden max-h-52 transition-[height] ease-linear duration-500"
+        style={{ height: isOpen ? "9999px" : "0px" }}
+      >
+        {links.map(({ href, text }, key) => (
+          <Link
+            href={href}
+            key={key}
+            className="inline-block container py-2 text-gray-700 hover:text-indigo-600"
+          >
+            {text}
+          </Link>
+        ))}
+        {/* <Link href="/" className="block text-gray-700 hover:text-indigo-600">
             Home
           </Link>
           <Link
@@ -157,9 +173,9 @@ export default function Navbar() {
             className="block text-center mt-2 px-4 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
           >
             Contact Us
-          </Link>
-        </div>
-      )}
+          </Link> */}
+      </div>
+      {/* )} */}
     </nav>
   );
 }

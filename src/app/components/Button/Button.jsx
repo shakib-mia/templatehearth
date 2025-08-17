@@ -5,6 +5,7 @@ const Button = ({ outline, type = "button", children, onClick, className }) => {
     return (
       <button
         type={type}
+        onClick={onClick}
         className={`px-6 py-3 border-accent text-accent rounded-lg cursor-pointer ${className}`}
       >
         {children}
@@ -14,6 +15,7 @@ const Button = ({ outline, type = "button", children, onClick, className }) => {
     return (
       <button
         type={type}
+        onClick={onClick}
         className={`px-6 py-3 bg-accent hover:bg-white border border-accent transition flex items-center gap-2 hover:text-accent text-white rounded-lg cursor-pointer ${className}`}
       >
         {children}
