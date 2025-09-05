@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://templatehearth.vercel.app/sitemap.xml

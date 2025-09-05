@@ -17,6 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>
+      <head>
+        <meta name="robots" content="index, follow" />
+      </head>
       <body className={`antialiased`}>
         <Animation />
         <Layout>{children}</Layout>
