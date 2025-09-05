@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
     const template = res.data;
 
     if (template) {
+      console.log(template);
       return {
         title: template.headline,
         description: template.shortDescription,

@@ -100,7 +100,7 @@ const TemplateDetails = ({ data }) => {
         <h4 className="font-semibold mb-2">Customization</h4>
         <p>{data.customization.intro}</p>
         <ul className="list-disc pl-6 mt-2 space-y-1 text-gray-700">
-          {data.customization.highlights.map((highlight, index) => (
+          {data.customization.highlights?.map((highlight, index) => (
             <li key={index}>{highlight}</li>
           ))}
         </ul>
