@@ -19,6 +19,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className={poppins.variable}>
       <head>
         <meta name="robots" content="index, follow" />
+        <meta
+          name="google-site-verification"
+          content="6mY5DUE_r-6_TFQBAgw6akpZgBgyjYxF4GXrYDaz6lI"
+        />
       </head>
       <body className={`antialiased`}>
         <Animation />
