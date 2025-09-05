@@ -1,43 +1,531 @@
 [
   {
-    "image": "https://i.ibb.co/pjpDSNhx/Nexcent-Thumb.png",
-    "headline": "Nexcent – The Minimal SaaS Landing Page",
-    "slug": "nexcent-minimal-saas-landing-page",
-    "shortDescription": "A clean, modern, and fully responsive template built with Vite.js and Tailwind CSS. Perfect for SaaS startups and agencies ready to launch fast.",
-    "overview": "Nexcent is a clean, modern, and fully responsive single-page landing page template built with vanilla Vite.js, Tailwind CSS, and minimal JavaScript. Designed for SaaS startups, marketing agencies, and small businesses that need a professional, lightweight, and fast-loading online presence without complex frameworks.",
-    "liveDemo": "https://nexcent-shakib.netlify.app/",
-    "gumroadLink": "https://templatehearth.gumroad.com/l/nexcent",
-    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"]
+    "image": "https://i.ibb.co/jv975pXC/xinder.png",
+    "headline": "Xinder – Modern Art Gallery & Creative Marketplace Template",
+    "slug": "xinder-modern-art-gallery-creative-marketplace-template",
+    "shortDescription": "A clean, elegant, and fully responsive landing page template designed for online art galleries, creative marketplaces, and artist-focused platforms.",
+    "liveDemo": "https://xinder-th.netlify.app/",
+    "gumroadLink": "https://templatehearth.gumroad.com/l/xinder-modern-art-gallery-creative-marketplace-template",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"],
+    "overview": "Xinder is a refined landing page template crafted to showcase curated collections, exclusive art events, and featured masterpieces. Designed with buttery-smooth scrolling, subtle animations, and modern UI, it helps platforms inspire art discovery, support creators, and elevate the digital gallery experience without writing complex code.",
+    "whyChoose": [
+      {
+        "heading": "Lightweight & Fast",
+        "text": "Built with Vite.js for blazing fast development and optimized builds."
+      },
+      {
+        "heading": "Smooth UX",
+        "text": "Buttery-smooth scroll and elegant animations for a premium user experience."
+      },
+      {
+        "heading": "Responsive Design",
+        "text": "Perfect across desktop, tablet, and mobile devices."
+      },
+      {
+        "heading": "Easy to Customize",
+        "text": "Tailwind CSS with semantic utility classes and custom config for fonts, colors, and layout."
+      },
+      {
+        "heading": "SEO Friendly",
+        "text": "Semantic HTML, proper heading structure, meta tags, and fast load times for better search ranking."
+      },
+      {
+        "heading": "Minimal JavaScript",
+        "text": "Only essential scripts, keeping your site super smooth."
+      }
+    ],
+    "customization": {
+      "intro": "Xinder uses Tailwind CSS with a clean design system, making customization fast and simple.",
+      "steps": [
+        "Images: Replace files in /src/assets/ for all images and icons.",
+        "Design System: Modify /src/globals.css to update core colors, spacing, and Tailwind configurations.",
+        "Custom Styles: Edit /src/style.css for font families, button styles, section gaps, input styling, and font-size scaling from h1 to the smallest text.",
+        "HTML Content: Update /index.html to change section text, headings, and layout."
+      ]
+    },
+    "usefulLink": [
+      {
+        "label": "Vite Documentation",
+        "url": "https://vitejs.dev/"
+      },
+      {
+        "label": "Node.js Download",
+        "url": "https://nodejs.org/"
+      },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you face any issues or want support customizing the template, feel free to contact me. Thank you for your interest and happy coding! 🚀"
   },
   {
-    "image": "https://i.ibb.co/nqThSPWf/magnifico.png",
-    "headline": "Magnifico – Team Collaboration SaaS Landing Page",
-    "slug": "team-collaboration-saas-landing-page",
-    "shortDescription": "A clean, modern, and fully responsive team collaboration template built with Vite.js and Tailwind CSS. Perfect for SaaS startups and project management platforms ready to launch fast.",
+    "image": "https://i.ibb.co/YF4DhGhh/consultiqo.jpg",
+    "headline": "Consultiqo – Business Consultancy & Agency Landing Page Template",
+    "slug": "consultiqo-business-consultancy-agency-landing-page-template",
+    "shortDescription": "A sleek, modern, and fully responsive consultancy website template built with Vite.js and Tailwind CSS. Perfect for consultancy firms, agencies, startups, and freelancers who want a polished online presence.",
+    "liveDemo": "https://consultiqo-th.netlify.app/",
+    "gumroadLink": "https://templatehearth.gumroad.com/l/consultiqo-business-consultancy-agency-landing-page-template",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"],
+    "overview": "Consultiqo is a professional and modern agency landing page template designed for consultancy firms, startups, marketing agencies, and freelancers. With pixel-perfect design, blazing fast performance, and seamless responsiveness, this template makes your business look credible, trustworthy, and professional.",
+    "gettingStartedSteps": [
+      {
+        "step": "Install Required Packages",
+        "description": "Run this command to install all dependencies:",
+        "commands": ["npm install"]
+      },
+      {
+        "step": "Start the Development Server",
+        "description": "Start the local dev server by running:",
+        "commands": ["npm run dev"],
+        "note": "This will open the project in your default browser at http://localhost:5173"
+      },
+      {
+        "step": "Build for production (optional)",
+        "description": "To create a production build, run:",
+        "commands": ["npm run build"],
+        "note": "The compiled files will be generated in the dist folder."
+      }
+    ],
+    "whyChoose": [
+      {
+        "heading": "Engaging Home Section",
+        "text": "Capture attention immediately with a strong hero area and actionable buttons."
+      },
+      {
+        "heading": "Services & Features",
+        "text": "Showcase offerings like Business Strategy Consulting, Digital Marketing, SEO Services, Project Management, and more."
+      },
+      {
+        "heading": "Client Testimonials",
+        "text": "Build trust with authentic feedback from clients and brands."
+      },
+      {
+        "heading": "Statistics & Achievements",
+        "text": "Display measurable results to boost confidence in your services."
+      },
+      {
+        "heading": "Lead Capture Forms",
+        "text": "Responsive contact forms to generate inquiries effortlessly."
+      },
+      {
+        "heading": "SEO & Responsiveness",
+        "text": "Fully SEO optimized and responsive Tailwind agency template design for all devices."
+      },
+      {
+        "heading": "Easy Customization",
+        "text": "Update colors, fonts, content, and layout easily with the HTML/CSS structure."
+      }
+    ],
+    "customization": {
+      "intro": "Consultiqo uses Tailwind CSS with a clean design system, making customization fast and simple.",
+      "highlights": [
+        "Replace images inside /src/assets/ for all visuals and icons.",
+        "Modify /src/globals.css to update core colors, spacing, and Tailwind configurations.",
+        "Edit /src/style.css for font families, button styles, section gaps, and font-size scaling.",
+        "Update /index.html to change section text, headings, and layout."
+      ],
+      "configFile": "tailwind.config.js"
+    },
+    "usefulLink": [
+      {
+        "label": "Vite Documentation",
+        "url": "https://vitejs.dev/"
+      },
+      {
+        "label": "Node.js Download",
+        "url": "https://nodejs.org/"
+      },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you have any questions or need support customizing this template, feel free to contact me. Thank you for your interest and happy coding! 🚀"
+  },
+  {
+    "image": "https://i.ibb.co/LdhXVR9K/Collers.png",
+    "headline": "Collers – Collectible Sneaker Landing Page Template",
+    "slug": "collers-collectible-sneaker-landing-page-template",
+    "shortDescription": "A sleek, modern, and fully responsive landing page template designed for collectible sneaker brands and communities. Built with Vite.js and Tailwind CSS for blazing performance and stunning visuals.",
+    "liveDemo": "https://collers-th.netlify.app/",
+    "gumroadLink": "https://templatehearth.gumroad.com/l/collers-collectible-sneaker-landing-page-template",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"],
+    "overview": "Collers is a visually striking and fast-loading landing page template built for sneaker brands, marketplaces, and collectors. With smooth animations, SEO optimization, and responsive design, it’s perfect for showcasing exclusive sneakers and building a passionate community of collectors.",
+    "gettingStartedSteps": [
+      {
+        "step": "Install Required Packages",
+        "description": "Run this command to install all dependencies:",
+        "commands": ["npm install"]
+      },
+      {
+        "step": "Start the Development Server",
+        "description": "Start the local dev server by running:",
+        "commands": ["npm run dev"],
+        "note": "This will open the project in your default browser at http://localhost:5173"
+      },
+      {
+        "step": "Build for production (optional)",
+        "description": "To create a production build, run:",
+        "commands": ["npm run build"],
+        "note": "The compiled files will be generated in the dist folder."
+      }
+    ],
+    "whyChoose": [
+      {
+        "heading": "Category Section",
+        "text": "Organizes sneakers into intuitive categories, making browsing simple and enjoyable."
+      },
+      {
+        "heading": "Testimonial Section",
+        "text": "Features real reviews from satisfied sneaker collectors, building trust and social proof."
+      },
+      {
+        "heading": "Community & Collectors Section",
+        "text": "Highlights the growing community of sneaker collectors sharing their collections and stories."
+      },
+      {
+        "heading": "Statistics & Achievements",
+        "text": "Displays impressive numbers like total sneakers collected and active members."
+      },
+      {
+        "heading": "Articles & Blog",
+        "text": "Provides informative articles on sneaker trends, collecting tips, and industry news."
+      },
+      {
+        "heading": "Events Section",
+        "text": "Promotes sneaker-related events and exclusive releases."
+      },
+      {
+        "heading": "Support & Contact",
+        "text": "Offers easy access to customer support and contact details."
+      }
+    ],
+    "customization": {
+      "intro": "Collers is built with Tailwind CSS and a simple design system for quick customization.",
+      "highlights": [
+        "Replace images inside /src/assets/ for all visuals and icons.",
+        "Modify /src/globals.css to update colors, spacing, and Tailwind configurations.",
+        "Edit /src/style.css for fonts, buttons, section gaps, and typography scaling.",
+        "Update /index.html to change content, headings, and layout."
+      ],
+      "configFile": "tailwind.config.js"
+    },
+    "usefulLink": [
+      {
+        "label": "Vite Documentation",
+        "url": "https://vitejs.dev/guide"
+      },
+      {
+        "label": "Node.js Download",
+        "url": "https://nodejs.org/"
+      },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you get stuck or want help customizing, feel free to reach out anytime. Thank you for using Collers! 🚀"
+  },
+  {
+    "image": "https://i.ibb.co/gKw7cgf/magnifico.png",
+    "headline": "Magnifico – Team Collaboration & Project Management Landing Page",
+    "slug": "magnifico-team-collaboration-project-management-landing-page",
+    "shortDescription": "A sleek, fully responsive landing page template designed for team collaboration and project management SaaS platforms. Built with Vite.js and Tailwind CSS for fast performance, SEO optimization, and easy customization.",
     "liveDemo": "https://magnifico-th.netlify.app/",
-    "gumroadLink": "https://templatehearth.gumroad.com/l/magnifico",
-    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"]
+    "gumroadLink": "https://templatehearth.gumroad.com/l/magnifico-team-collaboration-landing-page-template",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"],
+    "overview": "Magnifico is a fully responsive landing page template crafted for startups, SaaS companies, and agencies that focus on team collaboration and project management. With a clean design, feature highlights, testimonials, and optimized SEO, it’s the perfect tool to attract users and increase conversions.",
+    "gettingStartedSteps": [
+      {
+        "step": "Install Required Packages",
+        "description": "Run this command to install all dependencies:",
+        "commands": ["npm install"]
+      },
+      {
+        "step": "Start the Development Server",
+        "description": "Start the local dev server by running:",
+        "commands": ["npm run dev"],
+        "note": "This will open the project in your default browser at http://localhost:5173"
+      },
+      {
+        "step": "Build for production (optional)",
+        "description": "To create a production build, run:",
+        "commands": ["npm run build"],
+        "note": "The compiled files will be generated in the dist folder."
+      }
+    ],
+    "whyChoose": [
+      {
+        "heading": "Clean & Modern Design",
+        "text": "Professional layout that instantly grabs attention and builds trust. Perfect for showcasing collaboration tools with clarity."
+      },
+      {
+        "heading": "Fully Responsive",
+        "text": "Optimized for smartphones, tablets, and desktops to ensure a seamless experience."
+      },
+      {
+        "heading": "Clear Call to Action",
+        "text": "Prominent sign-up buttons and intuitive navigation to drive conversions."
+      },
+      {
+        "heading": "Feature Highlights",
+        "text": "Showcases functionalities like project management, task tracking, workflow improvements, and collaboration tools."
+      },
+      {
+        "heading": "User Testimonials",
+        "text": "Includes client feedback and success stories to build credibility."
+      },
+      {
+        "heading": "SEO Optimized",
+        "text": "Clean code and semantic HTML improve search engine ranking."
+      },
+      {
+        "heading": "Fast Loading Speed",
+        "text": "Lightweight code ensures quick loading times and better engagement."
+      },
+      {
+        "heading": "Easy Customization",
+        "text": "Tailwind CSS makes it simple to adjust colors, fonts, and layouts."
+      },
+      {
+        "heading": "Support & Documentation",
+        "text": "Comes with setup guides and support for a smooth launch."
+      }
+    ],
+    "customization": {
+      "intro": "Magnifico uses Tailwind CSS and modular design files for easy customization.",
+      "highlights": [
+        "Replace images inside /src/assets/ for visuals and icons.",
+        "Modify /src/globals.css to update colors, spacing, and Tailwind settings.",
+        "Edit /src/style.css for typography, buttons, spacing, and scaling.",
+        "Update /index.html to edit headings, sections, and layout."
+      ],
+      "configFile": "tailwind.config.js"
+    },
+    "usefulLink": [
+      {
+        "label": "Vite Documentation",
+        "url": "https://vitejs.dev/guide"
+      },
+      {
+        "label": "Node.js Download",
+        "url": "https://nodejs.org/"
+      },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you get stuck or want help customizing, feel free to reach out anytime. Thanks again for using Magnifico! 🚀"
+  },
+  {
+    "image": "https://i.ibb.co/rKFvDZtn/Nexcent-Thumb.png",
+    "headline": "Nexcent – SaaS Landing Page Template",
+    "slug": "nexcent-saas-landing-page-template",
+    "shortDescription": "A clean, modern, and fully responsive SaaS landing page template built with Vite.js and Tailwind CSS. Optimized for SEO, fast performance, and cross-browser compatibility.",
+    "liveDemo": "https://nexcent-th.netlify.app/",
+    "gumroadLink": "https://templatehearth.gumroad.com/l/nexcent-saas-landing-page-template",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"],
+    "overview": "Nexcent is a fast, responsive SaaS landing page template designed for startups, agencies, and small businesses to build a professional online presence. With optimized SEO, minimal JavaScript, and smooth performance, Nexcent helps your software or service stand out and attract more customers.",
+    "gettingStartedSteps": [
+      {
+        "step": "Install Required Packages",
+        "description": "Run this command to install all dependencies:",
+        "commands": ["npm install"]
+      },
+      {
+        "step": "Start the Development Server",
+        "description": "Start the local dev server by running:",
+        "commands": ["npm run dev"],
+        "note": "This will open the project in your default browser at http://localhost:5173"
+      },
+      {
+        "step": "Build for production (optional)",
+        "description": "To create a production build, run:",
+        "commands": ["npm run build"],
+        "note": "The compiled files will be generated in the dist folder."
+      }
+    ],
+    "keyFeatures": [
+      {
+        "heading": "Home Section",
+        "text": "Organized homepage introducing your SaaS platform with strong first impressions and clear navigation."
+      },
+      {
+        "heading": "Service Section",
+        "text": "Outlines core services with concise descriptions and visuals."
+      },
+      {
+        "heading": "Feature Section",
+        "text": "Highlights automation, renewals, and payment handling to show product value."
+      },
+      {
+        "heading": "Product Section",
+        "text": "Visually appealing layout showcasing your product’s capabilities."
+      },
+      {
+        "heading": "Testimonial Section",
+        "text": "Real client testimonials for trust and credibility."
+      },
+      {
+        "heading": "FAQ Section",
+        "text": "Answers common questions clearly to reduce support requests."
+      },
+      {
+        "heading": "Login & Sign Up",
+        "text": "User-friendly authentication pages for smooth onboarding."
+      },
+      {
+        "heading": "Insights & Blog",
+        "text": "Share lessons, tips, and industry trends to engage users."
+      },
+      {
+        "heading": "Client Showcase",
+        "text": "Showcase partnerships with big clients for credibility."
+      },
+      {
+        "heading": "Community Management",
+        "text": "Manage memberships, renewals, payments, and communications seamlessly."
+      },
+      {
+        "heading": "Statistics & Achievements",
+        "text": "Display total members, clubs, bookings, and processed payments."
+      },
+      {
+        "heading": "Responsive & Mobile-Friendly",
+        "text": "Ensures flawless experience across devices."
+      },
+      {
+        "heading": "SEO Optimized",
+        "text": "Semantic HTML and SEO best practices for higher rankings."
+      },
+      {
+        "heading": "Cross-Browser Compatibility",
+        "text": "Tested on Chrome, Firefox, Safari, and Edge."
+      },
+      {
+        "heading": "Regular Updates & Support",
+        "text": "Keeps up with latest web standards with reliable support."
+      }
+    ],
+    "customization": {
+      "intro": "Built with Tailwind CSS and Vite.js for fast customization.",
+      "highlights": [
+        "All colors, spacing, and fonts can be updated inside tailwind.config.js.",
+        "Images and icons can be replaced in /src/assets/.",
+        "HTML content can be updated in /index.html for headings and sections."
+      ],
+      "configFile": "tailwind.config.js"
+    },
+    "usefulLink": [
+      {
+        "label": "Vite Documentation",
+        "url": "https://vitejs.dev/guide"
+      },
+      {
+        "label": "Node.js Download",
+        "url": "https://nodejs.org/"
+      },
+      {
+        "label": "GitHub – How to clone a repo",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you get stuck or want help customizing, feel free to reach out anytime. Thanks again for using Nexcent! 🚀"
   },
 
   {
-    "image": "https://i.ibb.co/q3yrFCqn/Collers.png",
-    "headline": "Collers – Collectible Sneakers Marketplace Landing Page",
-    "slug": "collectible-sneakers-marketplace-landing-page",
-    "shortDescription": "A vibrant, modern, and fully responsive sneaker collectibles template built with Vite.js and Tailwind CSS. Perfect for sneaker marketplaces, collectible platforms, and e-commerce startups ready to launch fast.",
-    "overview": "Collers is a dynamic, professional, and fully responsive collectible sneakers marketplace landing page template crafted with modern web technologies including HTML5, CSS3, and JavaScript. Designed specifically for sneaker resellers, collectible marketplaces, and e-commerce platforms that need a compelling, conversion-focused online presence to showcase their rare sneakers and attract collectors looking to buy, sell, and trade premium footwear.",
-    "liveDemo": "https://collers-th.netlify.app/",
-    "gumroadLink": "https://templatehearth.gumroad.com/l/collers",
-    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"]
-  },
-
-  {
-    "image": "https://i.ibb.co/q3yrFCqn/Collers.png",
-    "headline": "Xinder – Elegant Art Gallery & Creative Marketplace Template",
-    "slug": "collectible-sneakers-marketplace-landing-page",
-    "shortDescription": " Clean, modern landing page template for online art galleries and marketplaces. Showcases curated collections, artists, and elegant user experiences.",
-    "overview": "Xinder is a clean, elegant, and fully responsive landing page template designed for online art galleries, creative marketplaces, and artist-focused platforms. Built to highlight curated collections, exclusive art events, and featured masterpieces, it blends sophisticated design with a seamless user experience. The template offers dynamic category showcases, artist collaboration features, and personalized services for collectors. With buttery-smooth scroll effects and subtle animations, every interaction feels refined, fluid, and visually engaging. Perfect for platforms aiming to inspire art discovery, support creators, and elevate the digital gallery experience with a refined, modern look.",
-    "liveDemo": "https://collers-th.netlify.app/",
-    "gumroadLink": "https://templatehearth.gumroad.com/l/collers",
-    "techStack": ["HTML5", "CSS3", "JavaScript", "Vite.js", "Tailwind CSS"]
+    "image": "https://i.ibb.co/XkCTqGqq/saasperia-responsive-project-management-remote-team-collaboration-template.jpg",
+    "headline": "SaaSPeria - Responsive Project Management & Remote Team Collaboration SaaS Landing Page Template",
+    "slug": "saasperia-responsive-project-management-remote-team-collaboration-template",
+    "shortDescription": "A sleek, modern, and fully responsive SaaS landing page template designed for project management tools, remote team collaboration platforms, and productivity-focused SaaS startups, built with Vite.js and Tailwind CSS.",
+    "liveDemo": "https://saasperia.netlify.app/",
+    "gumroadLink": "https://templatehearth.gumroad.com/l/saasperia-responsive-project-management-remote-team-collaboration-saas-landing-page-html-template-vitejs-tailwind-css",
+    "techStack": ["HTML5", "Tailwind CSS", "Vite.js", "JavaScript", "CSS3"],
+    "introSections": [
+      {
+        "title": "About SaaSPeria",
+        "text": "SaaSPeria is a meticulously designed SaaS landing page template built using Vite.js and Tailwind CSS. It is ideal for project management platforms, remote team collaboration tools, and productivity-focused SaaS startups. The template combines clean, modern design with high performance and full responsiveness, providing a polished, professional online presence straight out of the box."
+      },
+      {
+        "title": "Why It Matters",
+        "text": "Your landing page is the first impression for potential users. SaaSPeria highlights your software’s features and capabilities, helping visitors quickly understand the platform's value. Its intuitive layout, engaging sections, and clear call-to-actions build trust, improve conversion rates, and guide users effectively."
+      },
+      {
+        "title": "Fast & Responsive",
+        "text": "Powered by Vite.js, SaaSPeria delivers blazing-fast load times and optimized builds. Tailwind CSS ensures a responsive, modular design that looks excellent on desktops, tablets, and mobile devices, providing a seamless experience for all users."
+      },
+      {
+        "title": "Developer-Friendly",
+        "text": "With semantic HTML, organized CSS structure, and minimal JavaScript, SaaSPeria is easy to customize, extend, or integrate with additional features. Developers can quickly update layouts, fonts, colors, and content without hassle."
+      }
+    ],
+    "whyChoose": [
+      {
+        "heading": "Project Management Overview",
+        "text": "Organize tasks, assign responsibilities, and keep teams on track with intuitive interfaces."
+      },
+      {
+        "heading": "Time Tracking & Deadlines",
+        "text": "Monitor progress in real-time, manage deadlines efficiently, and optimize team productivity."
+      },
+      {
+        "heading": "Beautiful Mobile App",
+        "text": "Showcase your responsive mobile app for on-the-go access and productivity."
+      },
+      {
+        "heading": "Getting Started Made Easy",
+        "text": "Pre-designed onboarding and call-to-action sections convert visitors into users."
+      },
+      {
+        "heading": "Customer Stats & Testimonials",
+        "text": "Build trust with audience using metrics like monthly visitors, satisfaction rate, and star ratings."
+      },
+      {
+        "heading": "Pricing & Plans",
+        "text": "Highlight tiered plans (Basic, Standard, Premium) with clear purchase options."
+      },
+      {
+        "heading": "FAQ Section",
+        "text": "Answer common questions such as client usage, compatibility, updates, and support."
+      },
+      {
+        "heading": "SEO Optimized & Mobile-Friendly",
+        "text": "Fully optimized for search engines and responsive on all devices."
+      },
+      {
+        "heading": "Easy Customization",
+        "text": "Update colors, fonts, content, and layout effortlessly with HTML/Tailwind CSS structure."
+      }
+    ],
+    "customization": {
+      "intro": "SaaSPeria uses Tailwind CSS with a modular design system, making customization fast, flexible, and developer-friendly.",
+      "steps": [
+        "Images: Replace files in /src/assets/ for all images, icons, and illustrations.",
+        "Design System: Modify /src/globals.css or Tailwind config to update core colors, spacing, and typography.",
+        "Custom Styles: Edit /src/style.css for font families, button styles, section gaps, input styling, and font-size scaling.",
+        "HTML Content: Update /index.html to change headings, paragraph text, and layout as per your brand."
+      ]
+    },
+    "usefulLink": [
+      {
+        "label": "Vite Documentation",
+        "url": "https://vitejs.dev/"
+      },
+      {
+        "label": "Tailwind CSS Documentation",
+        "url": "https://tailwindcss.com/docs"
+      },
+      {
+        "label": "Node.js Download",
+        "url": "https://nodejs.org/"
+      },
+      {
+        "label": "GitHub – Cloning a Repository",
+        "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+      }
+    ],
+    "needHelp": "If you have any questions or need support customizing this template, feel free to reach out. Happy coding and launch your SaaS product with confidence! 🚀"
   }
 ]

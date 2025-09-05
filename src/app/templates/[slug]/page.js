@@ -41,6 +41,7 @@ const page = async ({ params }) => {
     );
 
     const template = await data.data;
+    console.log(template);
 
     if (!template) {
       return notFound();

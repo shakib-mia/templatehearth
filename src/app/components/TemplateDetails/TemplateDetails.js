@@ -1,147 +1,166 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import CopyToClipboard from "../CopyToClipboard/CopyToClipboard";
 
 const TemplateDetails = ({ data }) => {
-  const features = [
-    {
-      heading: "Lightweight & Fast",
-      text: "Built with Vite.js for blazing fast development and optimized builds.",
-    },
-    {
-      heading: "Smooth UX",
-      text: "Includes buttery-smooth scrolling and elegant animation effects.",
-    },
-    {
-      heading: "Responsive Design",
-      text: "Looks perfect on all devices — desktop, tablet, and mobile.",
-    },
-    {
-      heading: "Easy to Customize",
-      text: "Uses Tailwind CSS with semantic utility classes and custom config for colors, fonts, and layout.",
-    },
-    {
-      heading: "SEO Friendly",
-      text: "Semantic HTML, proper heading structure, meta tags, and fast load times for better search rankings.",
-    },
-    {
-      heading: "Minimal JavaScript",
-      text: "Only essential scripts to keep your site fast and smooth.",
-    },
-  ];
-
-  const usefulLinks = [
-    {
-      label: "Vite Documentation",
-      url: "https://vitejs.dev/guide/",
-    },
-    {
-      label: "Node.js Download",
-      url: "https://nodejs.org/",
-    },
-    {
-      label: "GitHub: How to clone a repo",
-      url: "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository",
-    },
-  ];
-
   return (
-    <div className="max-w-5xl mx-auto pb-6 space-y-6 text-gray-800 text-justify">
+    <div className="max-w-5xl mx-auto pb-6 space-y-10 text-gray-800 text-justify">
       {/* Hero */}
-      <>
-        <Image
-          src={data.image}
-          alt={data.headline}
-          width={600}
-          height={100}
-          className=" w-full rounded-xl shadow-md"
-        />
-        {/* <h3 className="font-bold mt-6">{data.headline}</h3> */}
-        {/* <p className="text-gray-600 mt-2">{data.shortDescription}</p> */}
-      </>
+      <Image
+        src={data.image}
+        alt={data.headline}
+        width={600}
+        height={100}
+        className="w-full rounded-xl shadow-md"
+      />
 
       {/* Overview */}
-      <p className="text-gray-700">{data.overview}</p>
-
-      {/* Why Choose */}
-      <div>
-        <h4 className="font-semibold mb-2">Why Choose This Template?</h4>
-        <ul className="list-disc pl-6 space-y-1 text-gray-700">
-          {features.map(({ heading, text }, index) => (
-            <li key={index}>
-              <b>{heading}:</b> {text}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {data.overview && <p className="text-gray-700">{data.overview}</p>}
 
       {/* Links */}
       <div className="flex gap-4 flex-wrap">
-        <a
-          href={data.liveDemo}
-          target="_blank"
-          rel="noreferrer"
-          className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
-        >
-          Live Demo
-        </a>
-        <a
-          href={data.gumroadLink}
-          target="_blank"
-          rel="noreferrer"
-          className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-purple-700 transition"
-        >
-          Make it Your
-        </a>
+        {data.liveDemo && (
+          <a
+            href={data.liveDemo}
+            target="_blank"
+            rel="noreferrer"
+            className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+          >
+            Live Demo
+          </a>
+        )}
+        {data.gumroadLink && (
+          <a
+            href={data.gumroadLink}
+            target="_blank"
+            rel="noreferrer"
+            className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-purple-700 transition"
+          >
+            Make it Yours
+          </a>
+        )}
       </div>
+
+      {/* Getting Started Steps */}
+      {data.gettingStartedSteps && data.gettingStartedSteps.length > 0 && (
+        <div>
+          <h4 className="font-semibold mb-2">Getting Started</h4>
+          <div className="space-y-4">
+            {data.gettingStartedSteps.map((step, index) => (
+              <div key={index} className="border-l-4 border-purple-600 pl-4">
+                <h5 className="font-medium text-gray-800">{step.step}</h5>
+                <p className="text-gray-600 text-sm">{step.description}</p>
+                {step.commands && step.commands.length > 0 && (
+                  <div className="mt-2">
+                    {step.commands.map((command, cmdIndex) => (
+                      <CopyToClipboard command={command} key={cmdIndex} />
+                    ))}
+                  </div>
+                )}
+                {step.note && (
+                  <p className="text-sm text-gray-500 mt-1 italic">
+                    {step.note}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Features / Why Choose */}
+      {data.whyChoose && data.whyChoose.length > 0 && (
+        <>
+          <h4 className="font-semibold mb-4">
+            {data.featuresTitle || "Why Choose This Template?"}
+          </h4>
+          <ul className="space-y-2 text-gray-700 list-none">
+            {data.whyChoose.map((feature, index) => (
+              <li key={index}>
+                {/* <b>{feature.heading}:</b> {feature.text} */}
+                <h5 className="font-medium">{feature.heading}</h5>
+                <p>{feature.text}</p>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {/* Sections */}
+      {data.sections && data.sections.length > 0 && (
+        <div>
+          <h4 className="font-semibold mb-2">
+            {data.sectionsTitle || "Key Sections"}
+          </h4>
+          <ul className="list-disc pl-6 space-y-1 text-gray-700">
+            {data.sections.map((section, index) => (
+              <li key={index}>
+                <b>{section.heading}:</b> {section.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Customization */}
-      <div>
-        <h4 className="font-semibold mb-2">Customization</h4>
-        <p>{data.customization.intro}</p>
-        <ul className="list-disc pl-6 mt-2 space-y-1 text-gray-700">
-          {data.customization.highlights.map((highlight, index) => (
-            <li key={index}>{highlight}</li>
-          ))}
-        </ul>
-        <p className="mt-2 text-sm text-gray-500">
-          Config File: <code>{data.customization.configFile}</code>
-        </p>
-      </div>
+      {data.customization && (
+        <div>
+          <h4 className="font-semibold mb-2">
+            {data.customizationTitle || "Customization"}
+          </h4>
+          {data.customization.intro && <p>{data.customization.intro}</p>}
+          {data.customization.steps && (
+            <ul className="list-disc pl-6 mt-2 space-y-2 text-gray-700">
+              {data.customization.steps.map((step, index) => (
+                <li key={index}>{step}</li>
+              ))}
+            </ul>
+          )}
+          {data.customization.configFile && (
+            <p className="mt-2 text-sm text-gray-500">
+              Config File: <code>{data.customization.configFile}</code>
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Useful Links */}
-      <div>
-        <h4 className="font-semibold mb-2">Useful Links</h4>
-        <ul className="list-disc pl-6 space-y-1">
-          {usefulLinks.map((link, index) => (
-            <li key={index}>
-              <a
-                href={link.url}
-                className="text-primary hover:underline"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {data.usefulLinks && data.usefulLinks.length > 0 && (
+        <div>
+          <h4 className="font-semibold mb-2">
+            {data.usefulLinksTitle || "Useful Links"}
+          </h4>
+          <ul className="list-disc pl-6 space-y-2">
+            {data.usefulLinks.map((link, index) => (
+              <li key={index}>
+                <a
+                  href={link.url}
+                  className="text-primary hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Help */}
-      <p>
-        Wanna make your business live?{" "}
-        <Link
-          className="text-primary underline hover:no-underline"
-          href={"/contact"}
-        >
-          Contact Us
-        </Link>{" "}
-        to get started
-      </p>
-      {/* <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-md">
-        <p className="text-purple-800 font-medium">{data.needHelp}</p>
-      </div> */}
+      {data.needHelp && (
+        <p>
+          {data.needHelp}{" "}
+          <Link
+            className="text-primary underline hover:no-underline"
+            href="/contact"
+          >
+            Contact Us
+          </Link>{" "}
+          to get started.
+        </p>
+      )}
     </div>
   );
 };
