@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa6";
 import { TbBrandGumroad } from "react-icons/tb";
 import axios from "axios";
+import { HiMiniChevronDoubleRight } from "react-icons/hi2";
 // import { useEffect, useState } from "react";
 // import { useState } from "react";
 
@@ -102,28 +103,48 @@ export default async function Footer() {
             <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover:text-primary">
+                <Link
+                  href="/"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
                   Home
                 </Link>
               </li>
 
               <li>
-                <Link href="/services" className="hover:text-primary">
+                <Link
+                  href="/services"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/templates" className="hover:text-primary">
+                <Link
+                  href="/templates"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
                   Templates
                 </Link>
               </li>
               <li>
-                <Link href="/blogs" className="hover:text-primary">
+                <Link
+                  href="/blogs"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
                   Blogs
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="hover:text-primary">
+                <Link
+                  href="/pricing"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
                   Pricing
                 </Link>
               </li>
@@ -138,9 +159,9 @@ export default async function Footer() {
                 <li key={_id}>
                   <Link
                     href={`/services/${slug}`}
-                    className="hover:text-primary"
+                    className="flex gap-1 items-center hover:text-primary"
                   >
-                    {title}
+                    <HiMiniChevronDoubleRight /> {title}
                   </Link>
                 </li>
               ))}
