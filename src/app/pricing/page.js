@@ -1,6 +1,8 @@
 import PageHeader from "../components/PageHeader/PageHeader";
 import Button from "../components/Button/Button";
 import { PricingGrid } from "../components/PricingGrid/PricingGrid";
+import PlanCategorySelector from "../components/PlanCategorySelector/PlanCategorySelector";
+import PlansSelectorWrapper from "../components/PlansSelectorWrapper/PlansSelectorWrapper";
 
 // PricingPage কে async Server Component বানালাম
 const PricingPage = async () => {
@@ -9,6 +11,8 @@ const PricingPage = async () => {
     cache: "no-store", // always fresh
   });
   const pricing = await plansRes.json();
+
+  // console.log(pricing);
 
   // Get IP & Country
   const ipRes = await fetch("https://api.ipify.org?format=json", {
@@ -22,10 +26,14 @@ const PricingPage = async () => {
       cache: "no-store",
     }
   );
+
   const countryData = await countryRes.json();
   const country = countryData?.country || "unknown";
+  // console.log(countryData);
 
   const currency = country === "BD" ? "BDT" : country === "IN" ? "INR" : "USD";
+  // const [cateogry, setCategory] = useState('')
+  // let category = "web-design-and-development";
 
   // Expand/Collapse client side দরকার, তাই ছোট client component বানাই
   return (
@@ -35,9 +43,11 @@ const PricingPage = async () => {
         description="Explore custom web development pricing for Next.js + MERN stack projects. Get premium, scalable, and SEO-friendly landing pages, multipage websites, ecommerce stores, and SaaS solutions tailored to your business"
       />
 
-      <div className="container my-10">
-        <PricingGrid pricing={pricing} country={country} currency={currency} />
-      </div>
+      <PlansSelectorWrapper
+        pricing={pricing}
+        currency={currency}
+        country={country}
+      />
     </>
   );
 };
