@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import Link from "next/link";
 import Button from "../Button/Button";
@@ -10,8 +10,24 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { TbBrandGumroad } from "react-icons/tb";
+import axios from "axios";
+// import { useEffect, useState } from "react";
+// import { useState } from "react";
 
-export default function Footer() {
+export default async function Footer() {
+  // const [services, setServices] = useState([]);
+  const { data: services } = await axios.get(
+    "https://templatehearth-be.onrender.com/services/all"
+  );
+
+  // console.log(services);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://templatehearth-be.onrender.com/services/all")
+  //     .then(({ data }) => setServices(data));
+  // }, []);
+
   return (
     <footer className="bg-muted-100 pt-10 pb-8">
       <div className="px-4 max-w-7xl mx-auto mb-8">
@@ -86,23 +102,29 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover">
+                <Link href="/" className="hover:text-primary">
                   Home
                 </Link>
               </li>
+
               <li>
-                <Link href="/about" className="hover">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover">
+                <Link href="/services" className="hover:text-primary">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover">
-                  Contact
+                <Link href="/templates" className="hover:text-primary">
+                  Templates
+                </Link>
+              </li>
+              <li>
+                <Link href="/blogs" className="hover:text-primary">
+                  Blogs
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="hover:text-primary">
+                  Pricing
                 </Link>
               </li>
             </ul>
@@ -110,23 +132,18 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-3">Resources</h4>
+            <h4 className="text-lg font-semibold mb-3">Services</h4>
             <ul className="space-y-2">
-              <li>
-                <Link href="/blogs" className="hover">
-                  Blogs
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="hover">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover">
-                  Terms & Conditions
-                </Link>
-              </li>
+              {services.map(({ _id, title, slug }) => (
+                <li key={_id}>
+                  <Link
+                    href={`/services/${slug}`}
+                    className="hover:text-primary"
+                  >
+                    {title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
