@@ -47,7 +47,7 @@ const Services = async ({ route }) => {
               src={service.image}
               width={600}
               height={600}
-              className="w-full aspect-video"
+              className="w-full aspect-video object-cover"
               alt={service.slug}
             />
             <div className="p-6">
