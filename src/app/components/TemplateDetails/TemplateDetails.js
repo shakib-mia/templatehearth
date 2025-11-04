@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Command from "../Command/Command";
 
 const TemplateDetails = ({ data }) => {
   return (
@@ -18,40 +19,11 @@ const TemplateDetails = ({ data }) => {
 
       {/* Overview */}
       <div>
-        {/* <h3 className="font-semibold mb-2">Overview</h3> */}
-        <p className="text-gray-700">{data.overview}</p>
-      </div>
-
-      {/* Getting Started Steps */}
-      <div>
-        <h3 className="font-semibold mb-2">Getting Started</h3>
-        <ul className="list-disc pl-6 space-y-2">
-          {data.gettingStartedSteps?.map((stepObj, idx) => (
-            <li key={idx}>
-              <b>{stepObj.step}:</b> {stepObj.description}
-              {stepObj.commands && (
-                <pre className="bg-gray-100 p-2 rounded mt-1">
-                  {stepObj.commands.join("\n")}
-                </pre>
-              )}
-              {stepObj.note && (
-                <p className="text-gray-500 text-sm mt-1">{stepObj.note}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Why Choose */}
-      <div>
-        <h3 className="font-semibold mb-2">Why Choose This Template?</h3>
-        <ul className="list-disc pl-6 space-y-1">
-          {data.whyChoose?.map((item, idx) => (
-            <li key={idx}>
-              <b>{item.heading}:</b> {item.text}
-            </li>
-          ))}
-        </ul>
+        {data.overview?.map((para, idx) => (
+          <p key={idx} className="text-gray-700 mb-3">
+            {para}
+          </p>
+        ))}
       </div>
 
       {/* Links */}
@@ -72,6 +44,47 @@ const TemplateDetails = ({ data }) => {
         >
           Make it Yours
         </a>
+      </div>
+
+      {/* Getting Started Steps */}
+      <div>
+        <h3 className="font-semibold mb-2">Getting Started</h3>
+        <ul className="list-disc pl-6 space-y-2">
+          {data.gettingStartedSteps?.map((stepObj, idx) => (
+            <li key={idx}>
+              <span className="font-semibold">{stepObj.step}:</span>{" "}
+              {stepObj.description}
+              {stepObj.commands && <Command stepObj={stepObj} />}
+              {stepObj.note && (
+                <p className="text-gray-500 text-sm mt-1">{stepObj.note}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Why Choose */}
+      <div>
+        <h3 className="font-semibold mb-2">Why Choose This Template?</h3>
+        <ul className="list-none space-y-2">
+          {data.whyChoose?.map((item, idx) => (
+            <li
+              className={
+                idx === 0
+                  ? "mb-4"
+                  : idx === data.whyChoose.length - 1
+                  ? "mt-4"
+                  : "mt-0 mb-2"
+              }
+              key={idx}
+            >
+              {item.heading && (
+                <span className="font-semibold">{item.heading}:</span>
+              )}{" "}
+              {item.text}
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Customization */}
