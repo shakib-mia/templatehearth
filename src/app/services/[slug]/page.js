@@ -1,17 +1,13 @@
 import PageHeader from "@/app/components/PageHeader/PageHeader";
 import RestServices from "@/app/components/RestServices/RestServices";
-import axios from "axios";
-import fs from "fs/promises";
+import { db } from "@/app/lib/mongodb";
 import Image from "next/image";
-import path from "path";
 import React from "react";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-
-  const service = (
-    await axios.get("https://templatehearth-be.onrender.com/services/" + slug)
-  ).data;
+  const servicesCollection = db.collection("services");
+  const service = await servicesCollection.findOne({ slug });
 
   if (!service) {
     return {
@@ -28,11 +24,9 @@ export async function generateMetadata({ params }) {
 
 const Page = async ({ params }) => {
   const { slug } = await params;
-  // console.log({ slug });
 
-  const service = (
-    await axios.get("https://templatehearth-be.onrender.com/services/" + slug)
-  ).data;
+  const servicesCollection = db.collection("services");
+  const service = await servicesCollection.findOne({ slug });
 
   if (!service) {
     return <div>Service Not Found</div>;

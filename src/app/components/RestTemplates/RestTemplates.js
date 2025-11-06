@@ -1,12 +1,14 @@
+import { db } from "@/app/lib/mongodb";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const RestTemplates = async ({ slug }) => {
-  const response = await fetch(
-    "https://templatehearth-be.onrender.com/rest-templates/" + slug
-  );
-  const templates = await response.json();
+  const templatesCollection = db.collection("templates");
+  const templates = await templatesCollection
+    .find({ slug: { $ne: slug } })
+    .toArray();
+  console.log(templates);
 
   if (templates.length > 0) {
     return (

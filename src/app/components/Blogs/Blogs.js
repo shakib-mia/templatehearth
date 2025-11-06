@@ -1,16 +1,14 @@
-import axios from "axios";
+import { db } from "@/app/lib/mongodb";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Blogs = async ({ route = "/" }) => {
-  const blogs = (
-    await axios.get("https://templatehearth-be.onrender.com/blogs", {
-      headers: {
-        route,
-      },
-    })
-  ).data;
+  const blogsCollection = db.collection("blogs");
+  const blogs = await blogsCollection
+    .find({})
+    .limit(route === "/" ? 4 : 0)
+    .toArray();
 
   return (
     <>

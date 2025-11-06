@@ -10,24 +10,12 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { TbBrandGumroad } from "react-icons/tb";
-import axios from "axios";
 import { HiMiniChevronDoubleRight } from "react-icons/hi2";
-// import { useEffect, useState } from "react";
-// import { useState } from "react";
+import { db } from "@/app/lib/mongodb";
 
 export default async function Footer() {
-  // const [services, setServices] = useState([]);
-  const { data: services } = await axios.get(
-    "https://templatehearth-be.onrender.com/services/all"
-  );
-
-  // console.log(services);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("https://templatehearth-be.onrender.com/services/all")
-  //     .then(({ data }) => setServices(data));
-  // }, []);
+  const servicesCollection = db.collection("services");
+  const services = await servicesCollection.find({}).toArray();
 
   return (
     <footer className="bg-muted-100 pt-10 pb-8">

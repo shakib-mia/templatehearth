@@ -1,23 +1,13 @@
 import React from "react";
-import axios from "axios";
 import PageHeader from "@/app/components/PageHeader/PageHeader";
 import BlogDetails from "@/app/components/BlogDetails/BlogDetails";
 import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
+import { db } from "@/app/lib/mongodb";
 
 // Optional: dynamic metadata
 export async function generateMetadata({ params }) {
   const { slug } = await params; // params আসবে route থেকে, await লাগবে না
-  const res = await fetch(
-    `https://templatehearth-be.onrender.com/blogs/${slug}`
-  );
-  if (!res.ok) {
-    // যদি fetch ব্যর্থ হয়, fallback metadata দিতে পারো
-    return {
-      title: "Template Hearth Blog",
-      description: "Read our latest blog posts on web design and templates.",
-    };
-  }
-  const blog = await res.json();
+  const blog = await getBlogBySlug(slug);
 
   return {
     title: `${blog.title} - Template Hearth`,
@@ -83,13 +73,7 @@ export default BlogDetailsPage;
 
 // Helper function to fetch single blog by slug
 const getBlogBySlug = async (slug) => {
-  try {
-    const res = await axios.get(
-      `https://templatehearth-be.onrender.com/blogs/${slug}`
-    );
-    return res.data;
-  } catch (err) {
-    console.error("Error fetching blog:", err);
-    return null;
-  }
+  const blogsCollection = db.collection("blogs");
+  const blog = await blogsCollection.findOne({ slug });
+  return blog;
 };

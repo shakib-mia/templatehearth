@@ -1,22 +1,17 @@
-import fs from "fs/promises";
-import path from "path";
 import Link from "next/link";
 import React from "react";
-import axios from "axios";
 import Button from "../Button/Button";
 import Image from "next/image";
+import { db } from "@/app/lib/mongodb";
 
 const Services = async ({ route }) => {
-  const res = await axios.get(
-    "https://templatehearth-be.onrender.com/services",
-    {
-      headers: {
-        route,
-      },
-    }
-  );
+  const servicesCollection = db.collection("services");
+  const services = await servicesCollection
+    .find({})
+    .limit(route === "/" ? 6 : 0)
+    .toArray();
 
-  const services = res.data;
+  // const services = res.data;
 
   return (
     <section className={`container`}>
