@@ -1,4 +1,5 @@
 import { db } from "@/app/lib/mongodb";
+import shuffleItems from "@/app/utils/shuffleItems";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -10,11 +11,12 @@ const RestBlogs = async ({ slug }) => {
   // const blogs = await response.json();
   const blogsCollection = db.collection("blogs");
   const blogs = await blogsCollection.find({ slug: { $ne: slug } }).toArray();
+  // console.log();
 
   if (blogs.length > 0) {
     return (
       <div className="space-y-4">
-        {blogs.map((item) => (
+        {shuffleItems(blogs).map((item) => (
           <Link
             href={`/blogs/${item.slug}`}
             className="flex gap-2 items-center"

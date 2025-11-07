@@ -3,16 +3,28 @@ import Button from "../components/Button/Button";
 import { PricingGrid } from "../components/PricingGrid/PricingGrid";
 import PlanCategorySelector from "../components/PlanCategorySelector/PlanCategorySelector";
 import PlansSelectorWrapper from "../components/PlansSelectorWrapper/PlansSelectorWrapper";
+import { db } from "../lib/mongodb";
 
-// PricingPage কে async Server Component বানালাম
+const title = `Pricing - Template Hearth`;
+
+const description =
+  "Explore custom web development pricing for Next.js + MERN stack projects. Get premium, scalable, and SEO-friendly landing pages, multipage websites, ecommerce stores, and SaaS solutions tailored to your business";
+
+export async function generateMetadata() {
+  return {
+    title,
+    description,
+  };
+}
+
 const PricingPage = async () => {
-  // Plans fetch from backend
-  const plansRes = await fetch("https://templatehearth-be.onrender.com/plans", {
-    cache: "no-store", // always fresh
-  });
-  const pricing = await plansRes.json();
+  const pricingCollection = db.collection("plans");
+  const rawData = await pricingCollection.find({}).toArray();
 
-  // console.log(pricing);
+  const pricing = rawData.map((item) => ({
+    ...item,
+    _id: item._id.toString(),
+  }));
 
   // Get IP & Country
   const ipRes = await fetch("https://api.ipify.org?format=json", {
@@ -32,10 +44,7 @@ const PricingPage = async () => {
   // console.log(countryData);
 
   const currency = country === "BD" ? "BDT" : country === "IN" ? "INR" : "USD";
-  // const [cateogry, setCategory] = useState('')
-  // let category = "web-design-and-development";
 
-  // Expand/Collapse client side দরকার, তাই ছোট client component বানাই
   return (
     <>
       <PageHeader

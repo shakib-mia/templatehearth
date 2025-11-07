@@ -1,4 +1,5 @@
 import { db } from "@/app/lib/mongodb";
+import shuffleItems from "@/app/utils/shuffleItems";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,7 +14,7 @@ const RestTemplates = async ({ slug }) => {
   if (templates.length > 0) {
     return (
       <div className="space-y-4">
-        {templates.map((item) => (
+        {shuffleItems(templates).map((item) => (
           <Link
             href={`/templates/${item.slug}`}
             className="flex gap-2 flex-col lg:flex-row items-center"
