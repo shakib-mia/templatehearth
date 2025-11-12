@@ -4,6 +4,25 @@ import Image from "next/image";
 import Button from "./components/Button/Button";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Page Not Found | TemplateHearth",
+  description:
+    "Oops! The page you are looking for on TemplateHearth does not exist. Explore our high-quality website templates instead!",
+  openGraph: {
+    title: "Page Not Found | TemplateHearth",
+    description:
+      "Oops! The page you are looking for on TemplateHearth does not exist. Explore our high-quality website templates instead!",
+    images: [
+      {
+        url: "/assets/404.png",
+        width: 1200,
+        height: 630,
+        alt: "TemplateHearth Page Not Found",
+      },
+    ],
+  },
+};
+
 const page = () => {
   return (
     <div className="pb-10 lg:pb-16 container">

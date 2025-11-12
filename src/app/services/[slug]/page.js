@@ -2,6 +2,7 @@ import PageHeader from "@/app/components/PageHeader/PageHeader";
 import RestServices from "@/app/components/RestServices/RestServices";
 import { servicesCollection } from "@/app/lib/mongodb";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import React from "react";
 
 export async function generateMetadata({ params }) {
@@ -27,10 +28,8 @@ const Page = async ({ params }) => {
   const service = await servicesCollection.findOne({ slug });
 
   if (!service) {
-    return <div>Service Not Found</div>;
+    notFound();
   }
-
-  // বাকি সার্ভিসগুলো filter করে নিচ্ছি
 
   return (
     <>

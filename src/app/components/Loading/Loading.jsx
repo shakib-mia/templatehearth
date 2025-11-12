@@ -3,7 +3,7 @@ import styles from "./Loading.module.css";
 
 const Loading = () => {
   return (
-    <div className="h-screen w-screen fixed top-0 left-0 flex justify-center items-center backdrop-blur-2xl z-40">
+    <div className="h-screen w-screen fixed top-0 left-0 flex justify-center items-center backdrop-blur-2xl bg-white/70 z-40">
       <div className="w-28 aspect-square space-y-2">
         <div className="h-1/2 flex gap-2">
           <div
