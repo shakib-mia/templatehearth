@@ -3,6 +3,7 @@ import PageHeader from "@/app/components/PageHeader/PageHeader";
 import BlogDetails from "@/app/components/BlogDetails/BlogDetails";
 import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
 import { blogsCollection } from "@/app/lib/mongodb";
+import { notFound } from "next/navigation";
 
 // Optional: dynamic metadata
 export async function generateMetadata({ params }) {
@@ -49,7 +50,7 @@ const BlogDetailsPage = async ({ params }) => {
   const { slug } = await params;
 
   const blog = await getBlogBySlug(slug);
-  if (!blog) return <div>Not found</div>;
+  if (!blog) notFound();
 
   return (
     <>
