@@ -2,7 +2,7 @@ import React from "react";
 import PageHeader from "@/app/components/PageHeader/PageHeader";
 import BlogDetails from "@/app/components/BlogDetails/BlogDetails";
 import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
-import { db } from "@/app/lib/mongodb";
+import { blogsCollection } from "@/app/lib/mongodb";
 
 // Optional: dynamic metadata
 export async function generateMetadata({ params }) {
@@ -73,7 +73,6 @@ export default BlogDetailsPage;
 
 // Helper function to fetch single blog by slug
 const getBlogBySlug = async (slug) => {
-  const blogsCollection = db.collection("blogs");
   const blog = await blogsCollection.findOne({ slug });
   return blog;
 };

@@ -1,7 +1,7 @@
 import PageHeader from "@/app/components/PageHeader/PageHeader";
 import RestTemplates from "@/app/components/RestTemplates/RestTemplates";
 import TemplateDetails from "@/app/components/TemplateDetails/TemplateDetails";
-import { db } from "@/app/lib/mongodb";
+import { templatesCollection } from "@/app/lib/mongodb";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -9,7 +9,6 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
 
   try {
-    const templatesCollection = db.collection("templates");
     const template = await templatesCollection.findOne({ slug });
 
     if (template) {
@@ -35,7 +34,6 @@ const page = async ({ params }) => {
   const { slug } = await params;
 
   try {
-    const templatesCollection = db.collection("templates");
     const template = await templatesCollection.findOne({ slug });
 
     if (!template) {

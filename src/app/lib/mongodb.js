@@ -28,5 +28,8 @@ if (process.env.NODE_ENV === "development") {
 const clientCollection = await clientPromise;
 
 export const db = clientCollection.db("templatehearth");
+export const blogsCollection = db.collection("blogs");
+export const servicesCollection = db.collection("services");
+export const templatesCollection = db.collection("templates");
 
 export default clientPromise;

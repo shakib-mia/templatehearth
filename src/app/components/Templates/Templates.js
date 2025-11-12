@@ -1,7 +1,6 @@
-import Image from "next/image";
 import React from "react";
-import Link from "next/link";
 import { db } from "@/app/lib/mongodb";
+import Template from "../Template/Template";
 
 const Templates = async ({ route }) => {
   const templatesCollection = db.collection("templates");
@@ -13,17 +12,7 @@ const Templates = async ({ route }) => {
         {templates
           .slice(0, route === "/" ? 4 : templates.length)
           .map((work, key) => (
-            <Link href={"/templates/" + work.slug} key={key}>
-              <Image
-                width={600}
-                height={100}
-                src={work.image}
-                alt={work.headline}
-                className="w-full rounded-lg aspect-video object-cover object-center"
-              />
-              <h4 className="font-semibold mt-4 mb-2">{work.headline}</h4>
-              <p>{work.shortDescription}</p>
-            </Link>
+            <Template key={key} {...work} />
           ))}
       </div>
     </>
