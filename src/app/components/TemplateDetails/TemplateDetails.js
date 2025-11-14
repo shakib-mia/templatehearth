@@ -81,7 +81,15 @@ const TemplateDetails = ({ data }) => {
               {item.heading && (
                 <span className="font-semibold">{item.heading}:</span>
               )}{" "}
-              {item.text}
+              {item.text.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                i % 2 === 1 ? (
+                  <span className="font-semibold" key={i}>
+                    {part}
+                  </span>
+                ) : (
+                  part
+                )
+              )}
             </li>
           ))}
         </ul>
