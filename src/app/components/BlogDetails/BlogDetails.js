@@ -24,6 +24,7 @@ const BlogDetails = ({ blog }) => {
         alt={blog.title}
         width={800}
         height={450}
+        priority
         className="w-full rounded-2xl mb-6 object-cover aspect-video"
       />
 
