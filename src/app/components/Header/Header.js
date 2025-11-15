@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import hero from "@/app/assets/hero-2.png";
 import Button from "../Button/Button";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -28,7 +29,9 @@ const Header = () => {
             stunning online experiences with ease.
           </p>
 
-          <Button>Get Started</Button>
+          <Link href={"/templates"}>
+            <Button>Get Started</Button>
+          </Link>
         </div>
       </div>
     </div>
