@@ -5,10 +5,6 @@ import Link from "next/link";
 import React from "react";
 
 const RestServices = async ({ slug }) => {
-  // const response = await fetch(
-  //   "https://templatehearth-be.onrender.com/rest-services/" + slug
-  // );
-  // const services = await response.json();
   const servicesCollection = db.collection("services");
   const services = await servicesCollection
     .find({ slug: { $ne: slug } })

@@ -3,15 +3,27 @@ import RestServices from "@/app/components/RestServices/RestServices";
 import { servicesCollection } from "@/app/lib/mongodb";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React from "react";
 
+// -------------------------
 // Helper: fetch service by slug
+// -------------------------
 const getServiceBySlug = async (slug) => {
-  const service = await servicesCollection.findOne({ slug });
-  return service;
+  return await servicesCollection.findOne({ slug });
 };
 
+// -------------------------
+// Helper: fetch all other services (excluding current)
+// -------------------------
+const getOtherServices = async (slug) => {
+  return await servicesCollection
+    .find({ slug: { $ne: slug } })
+    .limit(5)
+    .toArray();
+};
+
+// -------------------------
 // Dynamic metadata for SEO
+// -------------------------
 export async function generateMetadata({ params }) {
   const { slug } = params;
   const service = await getServiceBySlug(slug);
@@ -60,11 +72,16 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const ServicePage = async ({ params }) => {
+// -------------------------
+// Main page component
+// -------------------------
+export default async function ServicePage({ params }) {
   const { slug } = params;
   const service = await getServiceBySlug(slug);
 
   if (!service) return notFound();
+
+  const moreServices = await getOtherServices(slug); // Server-side fetch
 
   return (
     <>
@@ -139,12 +156,22 @@ const ServicePage = async ({ params }) => {
             <h3 className="text-xl font-semibold mb-4 text-gray-800">
               More Services
             </h3>
-            <RestServices slug={slug} />
+            <RestServices slug={service.slug} />
+            {/* <ul className="space-y-3">
+              {moreServices.map((s) => (
+                <li key={s._id}>
+                  <a
+                    href={`/services/${s.slug}`}
+                    className="text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    {s.title}
+                  </a>
+                </li>
+              ))}
+            </ul> */}
           </div>
         </aside>
       </div>
     </>
   );
-};
-
-export default ServicePage;
+}
