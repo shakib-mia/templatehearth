@@ -12,16 +12,6 @@ const getServiceBySlug = async (slug) => {
 };
 
 // -------------------------
-// Helper: fetch all other services (excluding current)
-// -------------------------
-const getOtherServices = async (slug) => {
-  return await servicesCollection
-    .find({ slug: { $ne: slug } })
-    .limit(5)
-    .toArray();
-};
-
-// -------------------------
 // Dynamic metadata for SEO
 // -------------------------
 export async function generateMetadata({ params }) {
@@ -80,8 +70,6 @@ export default async function ServicePage({ params }) {
   const service = await getServiceBySlug(slug);
 
   if (!service) return notFound();
-
-  const moreServices = await getOtherServices(slug); // Server-side fetch
 
   return (
     <>
@@ -156,7 +144,7 @@ export default async function ServicePage({ params }) {
             <h3 className="text-xl font-semibold mb-4 text-gray-800">
               More Services
             </h3>
-            <RestServices data={moreServices} />
+            <RestServices slug={slug} />
             {/* <ul className="space-y-3">
               {moreServices.map((s) => (
                 <li key={s._id}>
