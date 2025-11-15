@@ -5,82 +5,99 @@ import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
 import { blogsCollection } from "@/app/lib/mongodb";
 import { notFound } from "next/navigation";
 
-// Helper function to fetch single blog by slug
-const getBlogBySlug = async (slug) => {
-  const blog = await blogsCollection.findOne({ slug });
-  return blog;
-};
+// -------------------------
+// 1) PRE-GENERATE ALL SLUGS
+// -------------------------
+export async function generateStaticParams() {
+  try {
+    const blogs = await blogsCollection.find().toArray();
 
-// Dynamic metadata for each blog
+    return blogs.map((t) => ({
+      slug: t.slug,
+    }));
+  } catch (e) {
+    return [];
+  }
+}
+
+// -------------------------
+// 2) SEO METADATA
+// -------------------------
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const blog = await getBlogBySlug(slug);
 
-  if (!blog) {
+  try {
+    const blog = await blogsCollection.findOne({ slug });
+
+    if (!blog) {
+      return {
+        title: "Blog Not Found",
+        description: "This blog does not exist in our collection.",
+      };
+    }
+
     return {
-      title: "Blog Not Found - Template Hearth",
-      description: "The requested blog was not found.",
+      title: blog.title,
+      description: blog.shortDescription,
+      openGraph: {
+        title: blog.title,
+        description: blog.shortDescription,
+        url: `https://templatehearth.vercel.app/blogs/${slug}`,
+        type: "article",
+        images: [
+          {
+            url: blog.image, // thumbnail URL
+            width: 1200,
+            height: 630,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: blog.title,
+        description: blog.shortDescription,
+        images: [blog.image],
+      },
+      alternates: {
+        canonical: `/blogs/${slug}`,
+      },
+    };
+  } catch (e) {
+    return {
+      title: "Template Not Found",
     };
   }
-
-  return {
-    title: `${blog.title} - Template Hearth`,
-    description: blog.shortDescription,
-    keywords: blog.tags?.map((tag) => tag.replace(/^#/, "")).join(", "),
-    openGraph: {
-      title: blog.title,
-      description: blog.shortDescription,
-      type: "article",
-      url: `https://templatehearth.vercel.app/blogs/${slug}`,
-      images: [
-        {
-          url:
-            blog.image ||
-            "https://templatehearth.vercel.app/default-og-image.jpg",
-          width: 1200,
-          height: 630,
-          alt: `${blog.title} - Template Hearth`,
-        },
-      ],
-      siteName: "Template Hearth",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: blog.title,
-      description: blog.shortDescription,
-      images: [
-        blog.image || "https://templatehearth.vercel.app/default-og-image.jpg",
-      ],
-      creator: "@TemplateHearth",
-    },
-    alternates: {
-      canonical: `https://templatehearth.vercel.app/blogs/${slug}`,
-    },
-  };
 }
 
 const BlogDetailsPage = async ({ params }) => {
   const { slug } = await params;
 
-  const blog = await getBlogBySlug(slug);
-  if (!blog) return notFound();
+  try {
+    const blog = await blogsCollection.findOne({ slug });
 
-  return (
-    <>
-      <PageHeader title={blog.title} description={blog.shortDescription} />
+    if (!blog) {
+      return notFound();
+    }
 
-      <div className="flex flex-col xl:flex-row container gap-8 py-10">
-        <aside className="w-full xl:w-2/3 text-justify">
-          <BlogDetails blog={blog} />
-        </aside>
+    return (
+      <>
+        <PageHeader title={blog.title} description={blog.shortDescription} />
 
-        <aside className="w-full xl:w-1/3 sticky top-10 h-fit">
-          <h2 className="font-semibold mb-4">More Blogs</h2>
-          <RestBlogs slug={blog.slug} />
-        </aside>
-      </div>
-    </>
-  );
+        <div className="flex flex-col xl:flex-row container gap-8 py-10">
+          <aside className="w-full xl:w-2/3 text-justify">
+            <BlogDetails blog={blog} />
+          </aside>
+
+          <aside className="w-full xl:w-1/3 sticky top-10 h-fit">
+            <h2 className="font-semibold mb-4">More Blogs</h2>
+            <RestBlogs slug={blog.slug} />
+          </aside>
+        </div>
+      </>
+    );
+  } catch (e) {
+    return notFound();
+  }
 };
 
 export default BlogDetailsPage;
