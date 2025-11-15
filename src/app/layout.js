@@ -6,25 +6,59 @@ import { Poppins } from "next/font/google";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins", // optional, if you want CSS variable
+  variable: "--font-poppins",
 });
 
 export const metadata = {
-  title: "Template Hearth - Ready. Set. Launch",
+  metadataBase: new URL("https://templatehearth.vercel.app"),
+  title: {
+    default: "TemplateHearth – Ready. Set. Launch",
+    template: "%s | TemplateHearth",
+  },
   description: "Modern Designs for Ambitious Brands Simplified",
+
+  keywords: [
+    "website templates",
+    "landing page templates",
+    "Next.js templates",
+    "HTML templates",
+    "business templates",
+    "portfolio templates",
+  ],
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: "TemplateHearth – Ready. Set. Launch",
+    description: "Modern Designs for Ambitious Brands Simplified",
+    url: "https://templatehearth.vercel.app",
+    siteName: "TemplateHearth",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "TemplateHearth – Ready. Set. Launch",
+    description: "Modern Designs for Ambitious Brands Simplified",
+    site: "@TemplateHearth", // optional Twitter handle
+  },
+
+  alternates: {
+    canonical: "/",
+  },
+
+  verification: {
+    google: "6mY5DUE_r-6_TFQBAgw6akpZgBgyjYxF4GXrYDaz6lI",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>
-      <head>
-        <meta name="robots" content="index, follow" />
-        <meta
-          name="google-site-verification"
-          content="6mY5DUE_r-6_TFQBAgw6akpZgBgyjYxF4GXrYDaz6lI"
-        />
-      </head>
-      <body className={`antialiased`}>
+      <body className="antialiased">
         <Animation />
         <Layout>{children}</Layout>
       </body>

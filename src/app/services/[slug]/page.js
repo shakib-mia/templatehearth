@@ -5,31 +5,66 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
+// Helper: fetch service by slug
+const getServiceBySlug = async (slug) => {
   const service = await servicesCollection.findOne({ slug });
+  return service;
+};
+
+// Dynamic metadata for SEO
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const service = await getServiceBySlug(slug);
 
   if (!service) {
     return {
-      title: "Not Found",
-      description: "",
+      title: "Service Not Found - TemplateHearth",
+      description: "The requested service was not found.",
     };
   }
 
   return {
-    title: service.title + " - Template Hearth",
+    title: `${service.title} - TemplateHearth`,
     description: service.shortDescription || "",
+    keywords: service.tags?.map((tag) => tag.replace(/^#/, "")).join(", "),
+    openGraph: {
+      title: service.title,
+      description: service.shortDescription || "",
+      type: "website",
+      url: `https://templatehearth.vercel.app/services/${slug}`,
+      images: [
+        {
+          url:
+            service.image ||
+            "https://templatehearth.vercel.app/default-og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${service.title} - TemplateHearth`,
+        },
+      ],
+      siteName: "TemplateHearth",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: service.title,
+      description: service.shortDescription || "",
+      images: [
+        service.image ||
+          "https://templatehearth.vercel.app/default-og-image.jpg",
+      ],
+      creator: "@TemplateHearth",
+    },
+    alternates: {
+      canonical: `https://templatehearth.vercel.app/services/${slug}`,
+    },
   };
 }
 
-const Page = async ({ params }) => {
-  const { slug } = await params;
+const ServicePage = async ({ params }) => {
+  const { slug } = params;
+  const service = await getServiceBySlug(slug);
 
-  const service = await servicesCollection.findOne({ slug });
-
-  if (!service) {
-    notFound();
-  }
+  if (!service) return notFound();
 
   return (
     <>
@@ -41,7 +76,7 @@ const Page = async ({ params }) => {
       <div className="container mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-10 mt-10 pb-8">
         <main className="lg:w-8/12 w-full">
           <Image
-            src={service.image}
+            src={service.image || "/default-og-image.jpg"}
             width={600}
             height={600}
             alt={service.slug}
@@ -66,10 +101,16 @@ const Page = async ({ params }) => {
             </section>
           ))}
 
-          <h3 className="text-2xl font-semibold mb-3 text-gray-800">
-            Conclusion
-          </h3>
-          <p className="text-gray-600 leading-relaxed">{service.conclusion}</p>
+          {service.conclusion && (
+            <>
+              <h3 className="text-2xl font-semibold mb-3 text-gray-800">
+                Conclusion
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {service.conclusion}
+              </p>
+            </>
+          )}
         </main>
 
         <aside className="lg:w-4/12 w-full sticky top-20 self-start h-fit space-y-8">
@@ -94,7 +135,6 @@ const Page = async ({ params }) => {
             </ul>
           </div>
 
-          {/* এখানে বাকি সার্ভিস গুলো দেখানো */}
           <div className="bg-gray-50 rounded-lg p-6 shadow-md">
             <h3 className="text-xl font-semibold mb-4 text-gray-800">
               More Services
@@ -107,4 +147,4 @@ const Page = async ({ params }) => {
   );
 };
 
-export default Page;
+export default ServicePage;

@@ -9,7 +9,6 @@ const RestTemplates = async ({ slug }) => {
   const templates = await templatesCollection
     .find({ slug: { $ne: slug } })
     .toArray();
-  console.log(templates);
 
   if (templates.length > 0) {
     return (

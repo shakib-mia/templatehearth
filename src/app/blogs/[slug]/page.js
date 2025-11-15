@@ -5,15 +5,28 @@ import RestBlogs from "@/app/components/RestBlogs/RestBlogs";
 import { blogsCollection } from "@/app/lib/mongodb";
 import { notFound } from "next/navigation";
 
-// Optional: dynamic metadata
+// Helper function to fetch single blog by slug
+const getBlogBySlug = async (slug) => {
+  const blog = await blogsCollection.findOne({ slug });
+  return blog;
+};
+
+// Dynamic metadata for each blog
 export async function generateMetadata({ params }) {
-  const { slug } = await params; // params আসবে route থেকে, await লাগবে না
+  const { slug } = await params;
   const blog = await getBlogBySlug(slug);
+
+  if (!blog) {
+    return {
+      title: "Blog Not Found - Template Hearth",
+      description: "The requested blog was not found.",
+    };
+  }
 
   return {
     title: `${blog.title} - Template Hearth`,
     description: blog.shortDescription,
-    keywords: blog.tags?.map((tag) => tag.replace(/^#/, "")).join(", "), // # সরিয়ে comma separated string
+    keywords: blog.tags?.map((tag) => tag.replace(/^#/, "")).join(", "),
     openGraph: {
       title: blog.title,
       description: blog.shortDescription,
@@ -38,7 +51,7 @@ export async function generateMetadata({ params }) {
       images: [
         blog.image || "https://templatehearth.vercel.app/default-og-image.jpg",
       ],
-      creator: "@TemplateHearth", // Twitter হ্যান্ডেল
+      creator: "@TemplateHearth",
     },
     alternates: {
       canonical: `https://templatehearth.vercel.app/blogs/${slug}`,
@@ -50,7 +63,7 @@ const BlogDetailsPage = async ({ params }) => {
   const { slug } = await params;
 
   const blog = await getBlogBySlug(slug);
-  if (!blog) notFound();
+  if (!blog) return notFound();
 
   return (
     <>
@@ -71,9 +84,3 @@ const BlogDetailsPage = async ({ params }) => {
 };
 
 export default BlogDetailsPage;
-
-// Helper function to fetch single blog by slug
-const getBlogBySlug = async (slug) => {
-  const blog = await blogsCollection.findOne({ slug });
-  return blog;
-};
