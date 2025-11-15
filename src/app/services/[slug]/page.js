@@ -156,7 +156,7 @@ export default async function ServicePage({ params }) {
             <h3 className="text-xl font-semibold mb-4 text-gray-800">
               More Services
             </h3>
-            <RestServices slug={service.slug} />
+            <RestServices data={moreServices} />
             {/* <ul className="space-y-3">
               {moreServices.map((s) => (
                 <li key={s._id}>

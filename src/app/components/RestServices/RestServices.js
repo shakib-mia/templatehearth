@@ -4,16 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const RestServices = async ({ slug }) => {
-  const servicesCollection = db.collection("services");
-  const services = await servicesCollection
-    .find({ slug: { $ne: slug } })
-    .toArray();
-
-  if (services.length > 0) {
+const RestServices = async ({ data }) => {
+  if (data.length > 0) {
     return (
       <div className="space-y-4">
-        {shuffleItems(services).map((item) => (
+        {shuffleItems(data).map((item) => (
           <Link
             href={`/services/${item.slug}`}
             className="flex gap-2 flex-col lg:flex-row items-center"
