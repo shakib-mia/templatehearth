@@ -6,7 +6,7 @@ import { blogsCollection } from "@/app/lib/mongodb";
 import { notFound } from "next/navigation";
 
 // -------------------------
-// 1) PRE-GENERATE ALL SLUGS
+// 1) IF THERE ARE DYNAMIC BLOG PAGES THIS WILL PRE-GENERATE THEM
 // -------------------------
 export async function generateStaticParams() {
   try {
