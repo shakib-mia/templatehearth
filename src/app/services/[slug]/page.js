@@ -36,10 +36,10 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: service.headline,
+      title: service.title,
       description: service.shortDescription,
       openGraph: {
-        title: service.headline,
+        title: service.title,
         description: service.shortDescription,
         url: `https://servicehearth.vercel.app/services/${slug}`,
         type: "article",
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: "summary_large_image",
-        title: service.headline,
+        title: service.title,
         description: service.shortDescription,
         images: [service.image],
       },
