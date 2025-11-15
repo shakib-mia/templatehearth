@@ -1,39 +1,42 @@
-import fs from "fs/promises";
-import path from "path";
 import Link from "next/link";
 import React from "react";
-import axios from "axios";
 import Button from "../Button/Button";
 import Image from "next/image";
+import { db } from "@/app/lib/mongodb";
 
+// -------------------------
+// 1) IF THERE ARE DYNAMIC SERVICE PAGES THIS WILL PRE-GENERATE THEM
+// -------------------------
+export async function generateStaticParams() {
+  const servicesCollection = db.collection("services");
+  const services = await servicesCollection.find({}).toArray();
+
+  return services.map((service) => ({
+    slug: service.slug, // jodi slug-based service page thake
+  }));
+}
+
+// -------------------------
+// 2) MAIN COMPONENT (SSG STYLE)
+// -------------------------
 const Services = async ({ route }) => {
-  const res = await axios.get(
-    "https://templatehearth-be.onrender.com/services",
-    {
-      headers: {
-        route,
-      },
-    }
-  );
-
-  const services = res.data;
+  const servicesCollection = db.collection("services");
+  const limit = route === "/" ? 6 : 0;
+  const services = await servicesCollection.find({}).limit(limit).toArray();
 
   return (
     <section className={`container`}>
-      {route === "/" ? (
+      {route === "/" && (
         <>
-          {" "}
           <h5 className="text-primary">What we do</h5>
           <h3 className="font-semibold lg:w-5/12 mt-4">
             We provide the Perfect Solution to your business growth
           </h3>
         </>
-      ) : (
-        <></>
       )}
 
       <div
-        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ${
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${
           route === "/" ? "mt-10" : "!mt-0"
         } gap-4 md:gap-6`}
       >
@@ -47,7 +50,7 @@ const Services = async ({ route }) => {
               src={service.image}
               width={600}
               height={600}
-              className="w-full aspect-video"
+              className="w-full aspect-video object-cover"
               alt={service.slug}
             />
             <div className="p-6">

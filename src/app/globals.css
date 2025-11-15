@@ -3,7 +3,7 @@
 
 /* Default Light Theme Colors */
 :root {
-  /* Default Colors (Base - same as original you gave) */
+  /* Default Colors */
   --background: #ffffff; /* White Background */
   --foreground: #171717; /* Almost Black Text */
   --primary: #5b1592; /* Deep Purple */
@@ -16,7 +16,7 @@
   --background-100: #f7f7f9;
   --background-200: #efeff3;
   --background-300: #e5e5eb;
-  --background-400: #ffffff; /* same as --background */
+  --background-400: #d3d3da; /* corrected midtone */
   --background-500: #dcdce2;
   --background-600: #c3c3cc;
   --background-700: #a9a9b6;
@@ -40,35 +40,35 @@
   --primary-100: #d5c5f5;
   --primary-200: #b9a2ef;
   --primary-300: #9d7fed;
-  --primary-400: #5b1592; /* same as --primary */
-  --primary-500: #4a137a;
-  --primary-600: #3a0f61;
-  --primary-700: #2a0b48;
-  --primary-800: #1a062f;
-  --primary-900: #0a0317;
+  --primary-400: #8052b8;
+  --primary-500: #5b1592; /* same as --primary */
+  --primary-600: #4a137a;
+  --primary-700: #3a0f61;
+  --primary-800: #2a0b48;
+  --primary-900: #1a062f;
 
   /* Accent Shades */
   --accent-50: #f4e8ff;
   --accent-100: #d9c3ff;
   --accent-200: #be9fff;
   --accent-300: #a57bff;
-  --accent-400: #7f00e1; /* same as --accent */
-  --accent-500: #6a00b9;
-  --accent-600: #540091;
-  --accent-700: #3e0068;
-  --accent-800: #280040;
-  --accent-900: #140020;
+  --accent-400: #9254f0;
+  --accent-500: #7f00e1; /* same as --accent */
+  --accent-600: #6a00b9;
+  --accent-700: #540091;
+  --accent-800: #3e0068;
+  --accent-900: #280040;
 
   /* Muted Shades */
   --muted-50: #faf7fd;
   --muted-100: #ede7f8;
   --muted-200: #ded4f1;
   --muted-300: #d0c1ea;
-  --muted-400: #e5d9f2; /* same as --muted */
-  --muted-500: #bca9d6;
-  --muted-600: #9a80b7;
-  --muted-700: #7f6696;
-  --muted-800: #654d75;
+  --muted-400: #c3b0e0;
+  --muted-500: #e5d9f2; /* same as --muted */
+  --muted-600: #bca9d6;
+  --muted-700: #9a80b7;
+  --muted-800: #7f6696;
   --muted-900: #493653;
 
   /* Highlight Shades */
@@ -76,22 +76,81 @@
   --highlight-100: #ffea99;
   --highlight-200: #ffe066;
   --highlight-300: #ffd433;
-  --highlight-400: #ffb400; /* same as --highlight */
-  --highlight-500: #e6a200;
-  --highlight-600: #b37800;
-  --highlight-700: #805200;
-  --highlight-800: #4d2b00;
-  --highlight-900: #1a0500;
+  --highlight-400: #ffc21a;
+  --highlight-500: #ffb400; /* same as --highlight */
+  --highlight-600: #e6a200;
+  --highlight-700: #b37800;
+  --highlight-800: #805200;
+  --highlight-900: #4d2b00;
 }
 
 /* Tailwind Inline Theme Tokens */
 @theme {
+  /* Base Tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-highlight: var(--highlight);
+
+  /* Shades Tokens */
+  --color-background-50: var(--background-50);
+  --color-background-100: var(--background-100);
+  --color-background-200: var(--background-200);
+  --color-background-300: var(--background-300);
+  --color-background-400: var(--background-400);
+  --color-background-500: var(--background-500);
+  --color-background-600: var(--background-600);
+  --color-background-700: var(--background-700);
+  --color-background-800: var(--background-800);
+  --color-background-900: var(--background-900);
+
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+
+  --color-muted-50: var(--muted-50);
+  --color-muted-100: var(--muted-100);
+  --color-muted-200: var(--muted-200);
+  --color-muted-300: var(--muted-300);
+  --color-muted-400: var(--muted-400);
+  --color-muted-500: var(--muted-500);
+  --color-muted-600: var(--muted-600);
+  --color-muted-700: var(--muted-700);
+  --color-muted-800: var(--muted-800);
+  --color-muted-900: var(--muted-900);
+
+  --color-highlight-50: var(--highlight-50);
+  --color-highlight-100: var(--highlight-100);
+  --color-highlight-200: var(--highlight-200);
+  --color-highlight-300: var(--highlight-300);
+  --color-highlight-400: var(--highlight-400);
+  --color-highlight-500: var(--highlight-500);
+  --color-highlight-600: var(--highlight-600);
+  --color-highlight-700: var(--highlight-700);
+  --color-highlight-800: var(--highlight-800);
+  --color-highlight-900: var(--highlight-900);
+
+  /* Font */
   --font-poppins: "Poppins", "sans-serif";
   --font-borel: var(--font-borel);
 }

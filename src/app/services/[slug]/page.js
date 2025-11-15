@@ -1,119 +1,176 @@
 import PageHeader from "@/app/components/PageHeader/PageHeader";
 import RestServices from "@/app/components/RestServices/RestServices";
-import axios from "axios";
-import fs from "fs/promises";
+import { servicesCollection } from "@/app/lib/mongodb";
 import Image from "next/image";
-import path from "path";
-import React from "react";
+import { notFound } from "next/navigation";
 
+// -------------------------
+// 1) PRE-GENERATE ALL SLUGS
+// -------------------------
+export async function generateStaticParams() {
+  try {
+    const services = await servicesCollection.find().toArray();
+
+    return services.map((t) => ({
+      slug: t.slug,
+    }));
+  } catch (e) {
+    return [];
+  }
+}
+
+// -------------------------
+// 2) SEO METADATA
+// -------------------------
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
-  const service = (
-    await axios.get("https://templatehearth-be.onrender.com/services/" + slug)
-  ).data;
+  try {
+    const service = await servicesCollection.findOne({ slug });
 
-  if (!service) {
+    if (!service) {
+      return {
+        title: "Service Not Found",
+        description: "This service does not exist in our collection.",
+      };
+    }
+
     return {
-      title: "Not Found",
-      description: "",
+      title: service.title,
+      description: service.shortDescription,
+      openGraph: {
+        title: service.title,
+        description: service.shortDescription,
+        url: `https://servicehearth.vercel.app/services/${slug}`,
+        type: "article",
+        images: [
+          {
+            url: service.image, // thumbnail URL
+            width: 1200,
+            height: 630,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: service.title,
+        description: service.shortDescription,
+        images: [service.image],
+      },
+      alternates: {
+        canonical: `/services/${slug}`,
+      },
+    };
+  } catch (e) {
+    return {
+      title: "service Not Found",
     };
   }
-
-  return {
-    title: service.title + " - Template Hearth",
-    description: service.shortDescription || "",
-  };
 }
 
-const Page = async ({ params }) => {
-  const { slug } = await params;
-  // console.log({ slug });
+// -------------------------
+// Main page component
+// -------------------------
+export default async function ServicePage({ params }) {
+  const { slug } = params;
+  try {
+    const service = await servicesCollection.findOne({ slug });
 
-  const service = (
-    await axios.get("https://templatehearth-be.onrender.com/services/" + slug)
-  ).data;
+    if (!service) return notFound();
 
-  if (!service) {
-    return <div>Service Not Found</div>;
-  }
+    return (
+      <>
+        <PageHeader
+          title={service.title}
+          description={service.shortDescription}
+        />
 
-  // বাকি সার্ভিসগুলো filter করে নিচ্ছি
+        <div className="container mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-10 mt-10 pb-8">
+          <main className="lg:w-8/12 w-full">
+            <Image
+              src={service.image || "/default-og-image.jpg"}
+              width={600}
+              height={600}
+              alt={service.slug}
+              className="w-full aspect-video rounded-lg mb-8 object-cover"
+            />
+            <p className="mb-8 text-lg leading-relaxed text-gray-700 text-justify">
+              {service.fullDescription}
+            </p>
 
-  return (
-    <>
-      <PageHeader
-        title={service.title}
-        description={service.shortDescription}
-      />
+            {service.features?.map((section, idx) => (
+              <section
+                id={section.title.split(" ").join("-").toLowerCase()}
+                key={idx}
+                className="mb-6 !py-0"
+              >
+                <h2 className="text-2xl font-semibold mb-3 text-gray-800">
+                  {section.title}
+                </h2>
+                <p className="text-gray-600 leading-relaxed text-justify">
+                  {section.description}
+                </p>
+              </section>
+            ))}
 
-      <div className="container mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-10 mt-10 pb-8">
-        <main className="lg:w-8/12 w-full">
-          <Image
-            src={service.image}
-            width={600}
-            height={600}
-            alt={service.slug}
-            className="w-full aspect-video rounded-lg mb-8"
-          />
-          <p className="mb-8 text-lg leading-relaxed text-gray-700 text-justify">
-            {service.fullDescription}
-          </p>
+            {service.conclusion && (
+              <>
+                <h3 className="text-2xl font-semibold mb-3 text-gray-800">
+                  Conclusion
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.conclusion}
+                </p>
+              </>
+            )}
+          </main>
 
-          {service.features?.map((section, idx) => (
-            <section
-              id={section.title.split(" ").join("-").toLowerCase()}
-              key={idx}
-              className="mb-6 !py-0"
-            >
-              <h2 className="text-2xl font-semibold mb-3 text-gray-800">
-                {section.title}
-              </h2>
-              <p className="text-gray-600 leading-relaxed text-justify">
-                {section.description}
-              </p>
-            </section>
-          ))}
+          <aside className="lg:w-4/12 w-full sticky top-20 self-start h-fit space-y-8">
+            <div className="bg-gray-50 rounded-lg p-6 shadow-md">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">
+                Quick Links
+              </h3>
+              <ul className="space-y-3 mb-6">
+                {service.features?.map((section, idx) => (
+                  <li key={idx}>
+                    <a
+                      href={`#${section.title
+                        .split(" ")
+                        .join("-")
+                        .toLowerCase()}`}
+                      className="text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      {section.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <h3 className="text-2xl font-semibold mb-3 text-gray-800">
-            Conclusion
-          </h3>
-          <p className="text-gray-600 leading-relaxed">{service.conclusion}</p>
-        </main>
-
-        <aside className="lg:w-4/12 w-full sticky top-20 self-start h-fit space-y-8">
-          <div className="bg-gray-50 rounded-lg p-6 shadow-md">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800">
-              Quick Links
-            </h3>
-            <ul className="space-y-3 mb-6">
-              {service.features?.map((section, idx) => (
-                <li key={idx}>
+            <div className="bg-gray-50 rounded-lg p-6 shadow-md">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">
+                More Services
+              </h3>
+              <RestServices slug={slug} />
+              {/* <ul className="space-y-3">
+              {moreServices.map((s) => (
+                <li key={s._id}>
                   <a
-                    href={`#${section.title
-                      .split(" ")
-                      .join("-")
-                      .toLowerCase()}`}
+                    href={`/services/${s.slug}`}
                     className="text-blue-600 hover:text-blue-800 transition-colors"
                   >
-                    {section.title}
+                    {s.title}
                   </a>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* এখানে বাকি সার্ভিস গুলো দেখানো */}
-          <div className="bg-gray-50 rounded-lg p-6 shadow-md">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800">
-              More Services
-            </h3>
-            <RestServices slug={slug} />
-          </div>
-        </aside>
-      </div>
-    </>
-  );
-};
-
-export default Page;
+            </ul> */}
+            </div>
+          </aside>
+        </div>
+      </>
+    );
+  } catch (error) {
+    console.log("Service fetch failed:", error);
+    throw error;
+  }
+}

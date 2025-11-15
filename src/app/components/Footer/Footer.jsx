@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import Link from "next/link";
 import Button from "../Button/Button";
@@ -10,10 +10,15 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { TbBrandGumroad } from "react-icons/tb";
+import { HiMiniChevronDoubleRight } from "react-icons/hi2";
+import { db } from "@/app/lib/mongodb";
 
-export default function Footer() {
+export default async function Footer() {
+  const servicesCollection = db.collection("services");
+  const services = await servicesCollection.find({}).toArray();
+
   return (
-    <footer className="bg-muted pt-10 pb-8">
+    <footer className="bg-muted-100 pt-10 pb-8">
       <div className="px-4 max-w-7xl mx-auto mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
@@ -86,23 +91,49 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover">
+                <Link
+                  href="/"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
                   Home
                 </Link>
               </li>
+
               <li>
-                <Link href="/about" className="hover">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover">
+                <Link
+                  href="/services"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover">
-                  Contact
+                <Link
+                  href="/templates"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
+                  Templates
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blogs"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
+                  Blogs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/pricing"
+                  className="hover:text-primary flex gap-1 items-center"
+                >
+                  <HiMiniChevronDoubleRight />
+                  Pricing
                 </Link>
               </li>
             </ul>
@@ -110,23 +141,18 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-3">Resources</h4>
+            <h4 className="text-lg font-semibold mb-3">Services</h4>
             <ul className="space-y-2">
-              <li>
-                <Link href="/blogs" className="hover">
-                  Blogs
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="hover">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover">
-                  Terms & Conditions
-                </Link>
-              </li>
+              {services.map(({ _id, title, slug }) => (
+                <li key={_id}>
+                  <Link
+                    href={`/services/${slug}`}
+                    className="flex gap-1 items-center hover:text-primary"
+                  >
+                    <HiMiniChevronDoubleRight /> {title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

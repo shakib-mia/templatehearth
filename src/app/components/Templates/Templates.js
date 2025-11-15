@@ -1,37 +1,34 @@
-import Image from "next/image";
 import React from "react";
-import Link from "next/link";
-import axios from "axios";
+import { db } from "@/app/lib/mongodb";
+import Template from "../Template/Template";
 
+// -------------------------
+// 1) IF THERE ARE DYNAMIC TEMPLATE PAGES THIS WILL PRE-GENERATE THEM
+// -------------------------
+export async function generateStaticParams() {
+  const templatesCollection = db.collection("templates");
+  const templates = await templatesCollection.find({}).toArray();
+
+  return templates.map((t) => ({
+    slug: t.slug, // jodi tui dynamic template pages generate korte chas
+  }));
+}
+
+// -------------------------
+// 2) MAIN COMPONENT (SSG STYLE)
+// -------------------------
 const Templates = async ({ route }) => {
-  const templates = (
-    await axios.get("https://templatehearth-be.onrender.com/templates", {
-      headers: { route },
-    })
-  ).data;
+  const templatesCollection = db.collection("templates");
+  const templates = await templatesCollection.find({}).toArray();
 
-  // let templates;
-
-  // const templates = [];
+  const displayedTemplates = route === "/" ? templates.slice(0, 4) : templates;
 
   return (
-    <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {templates.map((work, key) => (
-          <Link href={"/templates/" + work.slug} key={key}>
-            <Image
-              width={600}
-              height={100}
-              src={work.image}
-              alt={work.headline}
-              className="w-full rounded-lg aspect-video object-cover object-center"
-            />
-            <h4 className="font-semibold mt-4 mb-2">{work.headline}</h4>
-            <p>{work.shortDescription}</p>
-          </Link>
-        ))}
-      </div>
-    </>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
+      {displayedTemplates.map((template, key) => (
+        <Template key={key} {...template} />
+      ))}
+    </div>
   );
 };
 

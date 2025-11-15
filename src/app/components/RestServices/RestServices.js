@@ -1,17 +1,19 @@
+import { db } from "@/app/lib/mongodb";
+import shuffleItems from "@/app/utils/shuffleItems";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const RestServices = async ({ slug }) => {
-  const response = await fetch(
-    "https://templatehearth-be.onrender.com/rest-services/" + slug
-  );
-  const services = await response.json();
+  const servicesCollection = db.collection("services");
+  const services = await servicesCollection
+    .find({ slug: { $ne: slug } })
+    .toArray();
 
   if (services.length > 0) {
     return (
       <div className="space-y-4">
-        {services.map((item) => (
+        {shuffleItems(services).map((item) => (
           <Link
             href={`/services/${item.slug}`}
             className="flex gap-2 flex-col lg:flex-row items-center"

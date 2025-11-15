@@ -1,16 +1,32 @@
+// app/pricing/page.js
 import PageHeader from "../components/PageHeader/PageHeader";
-import Button from "../components/Button/Button";
-import { PricingGrid } from "../components/PricingGrid/PricingGrid";
+import PlansSelectorWrapper from "../components/PlansSelectorWrapper/PlansSelectorWrapper";
+import { db } from "../lib/mongodb";
 
-// PricingPage কে async Server Component বানালাম
+// -------------------------
+// SEO Metadata
+// -------------------------
+const title = "Pricing - Template Hearth";
+const description =
+  "Explore custom web development pricing for Next.js + MERN stack projects. Get premium, scalable, and SEO-friendly landing pages, multipage websites, ecommerce stores, and SaaS solutions tailored to your business";
+export async function generateMetadata() {
+  return { title, description };
+}
+
+// -------------------------
+// SSG or Server Component
+// -------------------------
 const PricingPage = async () => {
-  // Plans fetch from backend
-  const plansRes = await fetch("https://templatehearth-be.onrender.com/plans", {
-    cache: "no-store", // always fresh
-  });
-  const pricing = await plansRes.json();
+  // Fetch plans from MongoDB
+  const pricingCollection = db.collection("plans");
+  const rawData = await pricingCollection.find({}).toArray();
 
-  // Get IP & Country
+  const pricing = rawData.map((item) => ({
+    ...item,
+    _id: item._id.toString(),
+  }));
+
+  // Get visitor IP & country (Server-side fetch)
   const ipRes = await fetch("https://api.ipify.org?format=json", {
     cache: "no-store",
   });
@@ -18,30 +34,25 @@ const PricingPage = async () => {
 
   const countryRes = await fetch(
     `https://ipinfo.io/${ip}?token=1ea4859427fd67`,
-    {
-      cache: "no-store",
-    }
+    { cache: "no-store" }
   );
   const countryData = await countryRes.json();
   const country = countryData?.country || "unknown";
 
   const currency = country === "BD" ? "BDT" : country === "IN" ? "INR" : "USD";
 
-  // Expand/Collapse client side দরকার, তাই ছোট client component বানাই
   return (
     <>
-      <PageHeader
-        title="Pricing"
-        description="Explore custom web development pricing for Next.js + MERN stack projects. Get premium, scalable, and SEO-friendly landing pages, multipage websites, ecommerce stores, and SaaS solutions tailored to your business"
-      />
+      <PageHeader title="Pricing" description={description} />
 
-      <div className="container my-10">
-        <PricingGrid pricing={pricing} country={country} currency={currency} />
-      </div>
+      {/* Client component for Expand/Collapse */}
+      <PlansSelectorWrapper
+        pricing={pricing}
+        currency={currency}
+        country={country}
+      />
     </>
   );
 };
 
 export default PricingPage;
-
-// এটা ছোট client component শুধু Expand/Collapse এর জন্য

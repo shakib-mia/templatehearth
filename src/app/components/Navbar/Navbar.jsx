@@ -93,7 +93,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: CTA Button */}
-          <Link href={"/contact"} className="hidden lg:flex flex-1 justify-end">
+          <Link href={"/contact"} className="hidden lg:flex justify-end">
             <Button>Contact Us</Button>
           </Link>
 
