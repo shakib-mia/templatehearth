@@ -5,19 +5,19 @@ import Button from "./components/Button/Button";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Page Not Found | TemplateHearth",
+  title: "Page Not Found | Template Hearth",
   description:
-    "Oops! The page you are looking for on TemplateHearth does not exist. Explore our high-quality website templates instead!",
+    "Oops! The page you are looking for on Template Hearth does not exist. Explore our high-quality website templates instead!",
   openGraph: {
-    title: "Page Not Found | TemplateHearth",
+    title: "Page Not Found | Template Hearth",
     description:
-      "Oops! The page you are looking for on TemplateHearth does not exist. Explore our high-quality website templates instead!",
+      "Oops! The page you are looking for on Template Hearth does not exist. Explore our high-quality website templates instead!",
     images: [
       {
         url: "/assets/404.png",
         width: 1200,
         height: 630,
-        alt: "TemplateHearth Page Not Found",
+        alt: "Template Hearth Page Not Found",
       },
     ],
   },
