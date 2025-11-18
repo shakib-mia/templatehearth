@@ -25,7 +25,7 @@ export default async function sitemap() {
 
     // Blog URLs
     const blogUrls = blogs.map((item) => ({
-      url: `${baseUrl}/blog/${item.slug}`,
+      url: `${baseUrl}/blogs/${item.slug}`,
       lastModified: item.updatedAt || new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
@@ -43,7 +43,7 @@ export default async function sitemap() {
     const staticUrls = [
       "",
       "/services",
-      "/blog",
+      "/blogs",
       "/contact",
       "/templates",
       "/pricing",
