@@ -72,7 +72,7 @@ export async function generateMetadata({ params }) {
 // Main page component
 // -------------------------
 export default async function ServicePage({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   try {
     const service = await servicesCollection.findOne({ slug });
 

@@ -20,8 +20,8 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL("https://templatehearth.vercel.app"),
   title: {
-    default: "TemplateHearth – Ready. Set. Launch",
-    template: "%s | TemplateHearth",
+    default: "Template Hearth – Ready. Set. Launch",
+    template: "%s | Template Hearth",
   },
   description: "Modern Designs for Ambitious Brands Simplified",
 
@@ -40,18 +40,18 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "TemplateHearth – Ready. Set. Launch",
+    title: "Template Hearth – Ready. Set. Launch",
     description: "Modern Designs for Ambitious Brands Simplified",
     url: "https://templatehearth.vercel.app",
-    siteName: "TemplateHearth",
+    siteName: "Template Hearth",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "TemplateHearth – Ready. Set. Launch",
+    title: "Template Hearth – Ready. Set. Launch",
     description: "Modern Designs for Ambitious Brands Simplified",
-    site: "@TemplateHearth", // optional Twitter handle
+    site: "@Template Hearth", // optional Twitter handle
   },
 
   alternates: {

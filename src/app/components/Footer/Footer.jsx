@@ -23,7 +23,7 @@ export default async function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold">TemplateHearth</h3>
+            <h3 className="text-xl font-bold">Template Hearth</h3>
             <p className="text-sm my-4">
               Your trusted hub for beautiful & modern templates. Ready. Set.
               Launch.
@@ -40,7 +40,7 @@ export default async function Footer() {
               </a>
 
               <a
-                href="https://www.youtube.com/@TemplateHearth"
+                href="https://www.youtube.com/@Template Hearth"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
@@ -58,7 +58,7 @@ export default async function Footer() {
               </a>
 
               <a
-                href="https://x.com/TemplateHearth"
+                href="https://x.com/Template Hearth"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
@@ -175,7 +175,7 @@ export default async function Footer() {
       <div className="w-full h-px bg-primary"></div>
       {/* Bottom */}
       <div className="mt-8 text-sm text-center">
-        © {new Date().getFullYear()} TemplateHearth. All rights reserved.
+        © {new Date().getFullYear()} Template Hearth. All rights reserved.
       </div>
     </footer>
   );

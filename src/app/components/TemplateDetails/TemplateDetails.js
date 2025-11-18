@@ -46,23 +46,6 @@ const TemplateDetails = ({ data }) => {
         </a>
       </div>
 
-      {/* Getting Started Steps */}
-      <div>
-        <h3 className="font-semibold mb-2">Getting Started</h3>
-        <ul className="list-disc pl-6 space-y-2">
-          {data.gettingStartedSteps?.map((stepObj, idx) => (
-            <li key={idx}>
-              <span className="font-semibold">{stepObj.step}:</span>{" "}
-              {stepObj.description}
-              {stepObj.commands && <Command stepObj={stepObj} />}
-              {stepObj.note && (
-                <p className="text-gray-500 text-sm mt-1">{stepObj.note}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       {/* Why Choose */}
       <div>
         <h3 className="font-semibold mb-2">Why Choose This Template?</h3>
@@ -89,6 +72,23 @@ const TemplateDetails = ({ data }) => {
                 ) : (
                   part
                 )
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Getting Started Steps */}
+      <div>
+        <h3 className="font-semibold mb-2">Getting Started</h3>
+        <ul className="list-disc pl-6 space-y-2">
+          {data.gettingStartedSteps?.map((stepObj, idx) => (
+            <li key={idx}>
+              <span className="font-semibold">{stepObj.step}:</span>{" "}
+              {stepObj.description}
+              {stepObj.commands && <Command stepObj={stepObj} />}
+              {stepObj.note && (
+                <p className="text-gray-500 text-sm mt-1">{stepObj.note}</p>
               )}
             </li>
           ))}
