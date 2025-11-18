@@ -28,7 +28,7 @@ const TechSelector = async () => {
   }
 
   return (
-    <aside className="col-span-1 sticky top-12 left-0 h-fit">
+    <aside className="col-span-5 lg:col-span-1 sticky top-0 left-0 h-fit bg-white">
       <TechSelectorClient items={items} counts={counts} />
     </aside>
   );

@@ -12,10 +12,6 @@ export default function Navbar() {
   const [show, setShow] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
   const lastScrollY = useRef(0);
-  const pathname = usePathname();
-
-  console.log(pathname);
-
   const toggleMenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
@@ -24,7 +20,7 @@ export default function Navbar() {
 
       setIsAtTop(currentScrollY === 0);
 
-      if (currentScrollY > lastScrollY.current && currentScrollY > 40) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 0) {
         setShow(false); // scrolling down
       } else {
         setShow(true); // scrolling up
@@ -64,6 +60,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 w-full py-2 lg:py-4 z-50 transition-all duration-300 ${
         show ? "translate-y-0" : "-translate-y-[150%]"
       } ${isAtTop ? "bg-transparent shadow-none" : "bg-white shadow-lg"}`}
+      id="navbar"
     >
       <div className="container">
         <div className="relative flex items-center h-16">
