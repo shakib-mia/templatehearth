@@ -38,6 +38,7 @@ export async function generateMetadata({ params }) {
     return {
       title: template.headline,
       description: template.shortDescription,
+      keywords: template.relatedKeywords || [], // <-- ekhane keywords add korlam
       openGraph: {
         title: template.headline,
         description: template.shortDescription,
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }) {
         type: "article",
         images: [
           {
-            url: template.image, // thumbnail URL
+            url: template.image,
             width: 1200,
             height: 630,
           },

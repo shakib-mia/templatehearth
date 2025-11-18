@@ -18,7 +18,7 @@ export async function generateMetadata() {
 const page = () => {
   return (
     <>
-      <PageHeader description={description} />
+      <PageHeader title={title} description={description} />
       <Services route="services" />
     </>
   );

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Templates from "../components/Templates/Templates";
 import Head from "next/head";
+import TechSelector from "../components/TechSelector/TechSelector";
 
 export const metadata = {
   title: "Templates - Template Hearth",
@@ -11,7 +12,10 @@ export const metadata = {
     "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
 };
 
-const page = () => {
+const page = async ({ searchParams }) => {
+  // console.log(searchParams);
+  const data = await searchParams;
+
   return (
     <>
       <PageHeader
@@ -20,9 +24,10 @@ const page = () => {
           "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project."
         }
       />
+      <section className="grid grid-cols-5 gap-8 container">
+        <TechSelector />
 
-      <section className="container">
-        <Templates />
+        <Templates keyword={data.query} />
       </section>
     </>
   );
