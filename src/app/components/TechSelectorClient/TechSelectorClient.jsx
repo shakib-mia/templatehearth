@@ -14,7 +14,6 @@ const TechSelectorClient = ({ items, counts }) => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrollY(currentScrollY);
-      console.log(window.screenY);
 
       // setIsAtTop(currentScrollY === 0);
 
@@ -30,8 +29,6 @@ const TechSelectorClient = ({ items, counts }) => {
     // console.log();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navbar = document?.getElementById("navbar");
 
   return (
     <>
