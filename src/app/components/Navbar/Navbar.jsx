@@ -18,23 +18,23 @@ export default function Navbar() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const currentScrollY = window.scrollY;
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-  //     setIsAtTop(currentScrollY === 0);
+      setIsAtTop(currentScrollY === 0);
 
-  //     if (currentScrollY > lastScrollY.current && currentScrollY > 40) {
-  //       setShow(false); // scrolling down
-  //     } else {
-  //       setShow(true); // scrolling up
-  //     }
-  //     lastScrollY.current = currentScrollY;
-  //   };
+      if (currentScrollY > lastScrollY.current && currentScrollY > 40) {
+        setShow(false); // scrolling down
+      } else {
+        setShow(true); // scrolling up
+      }
+      lastScrollY.current = currentScrollY;
+    };
 
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const links = [
     {
@@ -61,8 +61,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full py-2 lg:py-4 z-50 transition-all duration-300`}
-      id="navbar"
+      className={`fixed top-0 left-0 w-full py-2 lg:py-4 z-50 transition-all duration-300 ${
+        show ? "translate-y-0" : "-translate-y-[150%]"
+      } ${isAtTop ? "bg-transparent shadow-none" : "bg-white shadow-lg"}`}
     >
       <div className="container">
         <div className="relative flex items-center h-16">
