@@ -3,7 +3,7 @@ import Services from "../components/Services/Services";
 import PageHeader from "../components/PageHeader/PageHeader";
 import Button from "../components/Button/Button";
 
-const title = `Services - Template Hearth`;
+const title = `Services`;
 
 const description =
   "Discover our professional web services designed to accelerate your brand’s online presence. From custom website development to full-scale digital solutions — explore how Template Hearth empowers your success.";
