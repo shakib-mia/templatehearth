@@ -1,90 +1,78 @@
 import {
+  templatesCollection,
   blogsCollection,
   servicesCollection,
-  templatesCollection,
 } from "@/app/lib/mongodb";
-import { connectToDB } from "@/app/lib/mongodb";
 
-export async function GET() {
-  await connectToDB();
-
-  const blogs = await blogsCollection
-    .find({}, { projection: { slug: 1, updatedAt: 1 } })
-    .toArray();
-
-  const services = await servicesCollection
-    .find({}, { projection: { slug: 1, updatedAt: 1 } })
-    .toArray();
-
-  const templates = await templatesCollection
-    .find({}, { projection: { slug: 1, updatedAt: 1 } })
-    .toArray();
-
+export default async function sitemap() {
   const baseUrl = "https://templatehearth.vercel.app";
 
-  const staticPages = [
-    "",
-    "/blogs",
-    "/services",
-    "/templates",
-    "/contact",
-    "/pricing",
-  ];
+  try {
+    const [templates, blogs, services] = await Promise.all([
+      templatesCollection.find().toArray(),
+      blogsCollection.find().toArray(),
+      servicesCollection.find().toArray(),
+    ]);
 
-  const urls = [];
+    // STEP 1: Get unique types: ["html", "nextjs"]
+    const templateTypes = [...new Set(templates.map((t) => t.type))];
 
-  // Static Pages
-  staticPages.forEach((page) => {
-    urls.push(`
-      <url>
-        <loc>${baseUrl}${page}</loc>
-        <priority>0.8</priority>
-      </url>
-    `);
-  });
+    // STEP 2: Add type-based listing pages
+    const templateTypeUrls = templateTypes.map((type) => ({
+      url: `${baseUrl}/templates/type/${type}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    }));
 
-  // Dynamic Blog Pages
-  blogs.forEach((item) => {
-    urls.push(`
-      <url>
-        <loc>${baseUrl}/blogs/${item.slug}</loc>
-        <lastmod>${item.updatedAt || new Date().toISOString()}</lastmod>
-        <priority>0.9</priority>
-      </url>
-    `);
-  });
+    // STEP 3: Single Template URLs
+    const templateUrls = templates.map((item) => ({
+      url: `${baseUrl}/templates/${item.slug}`,
+      lastModified: item.updatedAt || new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    }));
 
-  // Dynamic Service Pages
-  services.forEach((item) => {
-    urls.push(`
-      <url>
-        <loc>${baseUrl}/services/${item.slug}</loc>
-        <lastmod>${item.updatedAt || new Date().toISOString()}</lastmod>
-        <priority>0.9</priority>
-      </url>
-    `);
-  });
+    // Blogs
+    const blogUrls = blogs.map((item) => ({
+      url: `${baseUrl}/blogs/${item.slug}`,
+      lastModified: item.updatedAt || new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
 
-  // Dynamic Template Pages
-  templates.forEach((item) => {
-    urls.push(`
-      <url>
-        <loc>${baseUrl}/templates/${item.slug}</loc>
-        <lastmod>${item.updatedAt || new Date().toISOString()}</lastmod>
-        <priority>0.9</priority>
-      </url>
-    `);
-  });
+    // Services
+    const serviceUrls = services.map((item) => ({
+      url: `${baseUrl}/services/${item.slug}`,
+      lastModified: item.updatedAt || new Date(),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    }));
 
-  // Final XML
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${urls.join("")}
-  </urlset>`;
+    // Static pages
+    const staticUrls = [
+      "",
+      "/services",
+      "/blogs",
+      "/contact",
+      "/templates",
+      "/pricing",
+    ].map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
 
-  return new Response(xml, {
-    headers: {
-      "Content-Type": "application/xml",
-    },
-  });
+    return [
+      ...staticUrls,
+      ...templateTypeUrls,
+      ...templateUrls,
+      ...blogUrls,
+      ...serviceUrls,
+    ];
+  } catch (error) {
+    console.error("Sitemap generation error:", error);
+    return [];
+  }
 }
