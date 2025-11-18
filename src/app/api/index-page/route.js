@@ -1,7 +1,22 @@
+import fs from "fs";
 import xml2js from "xml2js";
+import { google } from "googleapis";
 
 async function indexFromSitemap() {
   try {
+    // Load service account credentials
+    const key = JSON.parse(fs.readFileSync("./service-account.json", "utf8"));
+
+    const SCOPES = ["https://www.googleapis.com/auth/indexing"];
+    const jwtClient = new google.auth.JWT(
+      key.client_email,
+      null,
+      key.private_key,
+      SCOPES
+    );
+
+    console.log("Google Auth Initialized!");
+
     // 1️⃣ Fetch sitemap
     const res = await fetch("https://templatehearth.vercel.app/sitemap.xml");
     const xmlText = await res.text();
@@ -14,38 +29,31 @@ async function indexFromSitemap() {
     const urls = result.urlset.url.map((u) => u.loc[0]);
     console.log(`Total URLs found: ${urls.length}`);
 
-    // 4️⃣ Loop through URLs & send indexing request
+    // 4️⃣ Google Indexing API client
+    const indexing = google.indexing({ version: "v3", auth: jwtClient });
+
+    // 5️⃣ Loop through URLs & index
     for (const url of urls) {
       try {
-        const res = await fetch(
-          "https://templatehearth.vercel.app/api/indexPage",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url }),
-          }
-        );
+        const resp = await indexing.urlNotifications.publish({
+          requestBody: {
+            url,
+            type: "URL_UPDATED",
+          },
+        });
 
-        let data;
-        try {
-          data = await res.json(); // Safely parse JSON
-          console.log({ data });
-        } catch {
-          data = { error: "No JSON returned from API" };
-        }
+        console.log("Indexed:", url);
+        console.log(resp.data);
 
-        console.log(url, data);
-
-        // Optional: short delay to avoid hitting rate limits
-        await new Promise((r) => setTimeout(r, 500)); // 0.5 sec
+        await new Promise((r) => setTimeout(r, 500));
       } catch (err) {
-        console.error(`Error indexing URL: ${url}`, err);
+        console.error("Error indexing:", url);
+        console.error(err.response?.data || err.message);
       }
     }
   } catch (err) {
-    console.error("Error fetching/parsing sitemap:", err);
+    console.error("MAIN ERROR:", err);
   }
 }
 
-// Run the function
 indexFromSitemap();
