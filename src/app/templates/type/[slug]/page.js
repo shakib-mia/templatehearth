@@ -34,6 +34,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${formattedType} Templates | TemplateHearth`,
       description: `Explore all ${formattedType} templates, fully responsive, ready to use, and easy to customize.`,
+      robots: { index: true, follow: true },
       images: [
         {
           url: "/default-og-image.jpg",
