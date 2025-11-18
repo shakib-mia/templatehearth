@@ -7,7 +7,7 @@ export async function POST(req) {
     const jwt = new google.auth.JWT(
       process.env.GOOGLE_CLIENT_EMAIL,
       null,
-      process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+      process.env.GOOGLE_CLIENT_PRIVATE_KEY.replace(/\\n/g, "\n"),
       ["https://www.googleapis.com/auth/indexing"]
     );
 
