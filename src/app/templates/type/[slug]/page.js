@@ -2,44 +2,44 @@ import PageHeader from "@/app/components/PageHeader/PageHeader";
 import TechSelector from "@/app/components/TechSelector/TechSelector";
 import Templates from "@/app/components/Templates/Templates";
 import { templatesCollection } from "@/app/lib/mongodb";
+import { notFound } from "next/navigation";
 import React from "react";
 
 // -------------------------
 // 1) Dynamic Metadata (Mongo fetch)
 // -------------------------
+function formatType(type) {
+  return type
+    .split("-") // ["html", "landing", "page"]
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" "); // "Html Landing Page"
+}
+
 export async function generateMetadata({ params }) {
   const { slug: type } = await params;
   const templates = await templatesCollection.find({ type }).toArray();
 
+  const formattedType = formatType(type); // <-- cleaned + capitalized text
+
   if (!templates.length) {
     return {
       title: "No templates found | TemplateHearth",
-      description: `No templates available for ${type}`,
+      description: `No templates available for ${formattedType}`,
     };
   }
 
   return {
-    title: `${
-      type.charAt(0).toUpperCase() + type.slice(1)
-    } Templates | TemplateHearth`,
-    description: `Explore all ${type.replace(
-      "-",
-      " "
-    )} templates, fully responsive, ready to use, and easy to customize.`,
+    title: `${formattedType} Templates | TemplateHearth`,
+    description: `Explore all ${formattedType} templates, fully responsive, ready to use, and easy to customize.`,
     openGraph: {
-      title: `${
-        type.charAt(0).toUpperCase() + type.slice(1)
-      } Templates | TemplateHearth`,
-      description: `Explore all ${type.replace(
-        "-",
-        " "
-      )} templates, fully responsive, ready to use, and easy to customize.`,
+      title: `${formattedType} Templates | TemplateHearth`,
+      description: `Explore all ${formattedType} templates, fully responsive, ready to use, and easy to customize.`,
       images: [
         {
           url: "/default-og-image.jpg",
           width: 1200,
           height: 630,
-          alt: `${type} Templates`,
+          alt: `${formattedType} Templates`,
         },
       ],
     },
@@ -64,7 +64,7 @@ const Page = async ({ params }) => {
 
   const templates = await templatesCollection.find({ type }).toArray();
 
-  if (!templates.length) return <div>No templates found for {type}.</div>;
+  if (!templates.length) return notFound();
 
   return (
     <>
