@@ -7,8 +7,8 @@ const Plan = ({
   price,
   features,
   delivery_days,
-  country,
-  currency,
+  // country,
+  // currency,
 }) => {
   return (
     <div className="p-6 bg-white border border-gray-200  rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between">
@@ -21,12 +21,13 @@ const Plan = ({
       {/* Price */}
       <div className="mb-4">
         <span className="text-2xl font-semibold text-purple-600 ">
-          {currency}{" "}
+          {/* {currency}{" "}
           {country === "BD"
             ? (price.usd * 105).toLocaleString()
             : country === "IN"
             ? (price.usd * 85).toLocaleString()
-            : price.usd.toLocaleString()}
+            : price.usd.toLocaleString()} */}
+          ${price.usd.toLocaleString()}
         </span>
         <span className="text-sm text-gray-500 ml-1">starting</span>
       </div>

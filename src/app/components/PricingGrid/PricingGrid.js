@@ -8,7 +8,11 @@ export const PricingGrid = ({ pricing, country, currency }) => {
     <>
       <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`}>
         {pricing[0].plans.map((plan, key) => (
-          <Plan {...plan} key={key} country={country} currency={currency} />
+          <Plan
+            {...plan}
+            key={key}
+            // country={country} currency={currency}
+          />
         ))}
       </div>
     </>

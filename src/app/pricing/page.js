@@ -14,8 +14,10 @@ export async function generateMetadata() {
 }
 
 // -------------------------
-// SSG or Server Component
+// SSG Component
 // -------------------------
+export const revalidate = 3600; // 1 hour SSG cache (optional)
+
 const PricingPage = async () => {
   // Fetch plans from MongoDB
   const pricingCollection = db.collection("plans");
@@ -27,19 +29,19 @@ const PricingPage = async () => {
   }));
 
   // Get visitor IP & country (Server-side fetch)
-  const ipRes = await fetch("https://api.ipify.org?format=json", {
-    cache: "no-store",
-  });
-  const { ip } = await ipRes.json();
+  // const ipRes = await fetch("https://api.ipify.org?format=json", {
+  //   cache: "no-store",
+  // });
+  // const { ip } = await ipRes.json();
 
-  const countryRes = await fetch(
-    `https://ipinfo.io/${ip}?token=1ea4859427fd67`,
-    { cache: "no-store" }
-  );
-  const countryData = await countryRes.json();
-  const country = countryData?.country || "unknown";
+  // const countryRes = await fetch(
+  //   `https://ipinfo.io/${ip}?token=1ea4859427fd67`,
+  //   { cache: "no-store" }
+  // );
+  // const countryData = await countryRes.json();
+  // const country = countryData?.country || "unknown";
 
-  const currency = country === "BD" ? "BDT" : country === "IN" ? "INR" : "USD";
+  // const currency = country === "BD" ? "BDT" : country === "IN" ? "INR" : "USD";
 
   return (
     <>
@@ -48,8 +50,8 @@ const PricingPage = async () => {
       {/* Client component for Expand/Collapse */}
       <PlansSelectorWrapper
         pricing={pricing}
-        currency={currency}
-        country={country}
+        // currency={currency}
+        // country={country}
       />
     </>
   );
