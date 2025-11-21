@@ -1,17 +1,17 @@
 import { templatesCollection } from "@/app/lib/mongodb";
 import TechSelectorClient from "../TechSelectorClient/TechSelectorClient";
 
-const TechSelector = async () => {
+const TechSelector = async ({ searchParams }) => {
   const items = [
     { label: "All", href: "/templates", type: null },
     {
       label: "Landing Page",
-      href: "/templates/type/landing-page",
+      href: "/templates?type=landing-page",
       type: "landing-page",
     },
     {
       label: "Full Site",
-      href: "/templates/type/full-site",
+      href: "/templates?type=full-site",
       type: "full-site",
     },
   ];
@@ -29,7 +29,11 @@ const TechSelector = async () => {
 
   return (
     <aside className="col-span-5 lg:col-span-1 sticky top-0 left-0 h-fit bg-white">
-      <TechSelectorClient items={items} counts={counts} />
+      <TechSelectorClient
+        items={items}
+        counts={counts}
+        searchParams={searchParams}
+      />
     </aside>
   );
 };

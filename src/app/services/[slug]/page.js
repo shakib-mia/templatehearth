@@ -92,6 +92,7 @@ export default async function ServicePage({ params }) {
               width={600}
               height={600}
               alt={service.slug}
+              priority
               className="w-full aspect-video rounded-lg mb-8 object-cover"
             />
             <p className="mb-8 text-lg leading-relaxed text-gray-700 text-justify">

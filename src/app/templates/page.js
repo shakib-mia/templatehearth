@@ -9,9 +9,9 @@ export const metadata = {
     "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
 };
 
-const page = async () => {
+const page = async ({ searchParams }) => {
   // console.log(searchParams);
-
+  const { type } = await searchParams;
   return (
     <>
       <PageHeader
@@ -21,9 +21,9 @@ const page = async () => {
         }
       />
       <section className="grid grid-cols-5 gap-8 container">
-        <TechSelector />
+        <TechSelector searchParams={type} />
 
-        <Templates />
+        <Templates searchParams={type} />
       </section>
     </>
   );
