@@ -1,4 +1,4 @@
-export const revalidate = 60; // ISR enabled
+export const revalidate = 1; // ISR enabled
 
 import Template from "../Template/Template";
 import { db } from "@/app/lib/mongodb";
