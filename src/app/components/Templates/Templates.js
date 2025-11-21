@@ -11,10 +11,10 @@ export async function generateStaticParams() {
 }
 
 export default async function TemplatesPage({ params }) {
-  const { type } = params;
-
   const templatesCollection = db.collection("templates");
-  const templates = await templatesCollection.find({ type }).toArray();
+
+  const query = params?.type ? { type: params.type } : {};
+  const templates = await templatesCollection.find(query).toArray();
 
   return (
     <div className="col-span-5 lg:col-span-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
