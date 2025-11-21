@@ -8,14 +8,24 @@ export default async function sitemap() {
   const baseUrl = "https://templatehearth.vercel.app";
 
   try {
-    // Fetch all dynamic items in parallel (faster)
     const [templates, blogs, services] = await Promise.all([
       templatesCollection.find().toArray(),
       blogsCollection.find().toArray(),
       servicesCollection.find().toArray(),
     ]);
 
-    // Template URLs
+    // STEP 1: Get unique types: ["html", "nextjs"]
+    const templateTypes = [...new Set(templates.map((t) => t.type))];
+
+    // STEP 2: Add type-based listing pages
+    const templateTypeUrls = templateTypes.map((type) => ({
+      url: `${baseUrl}/templates/type/${type}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    }));
+
+    // STEP 3: Single Template URLs
     const templateUrls = templates.map((item) => ({
       url: `${baseUrl}/templates/${item.slug}`,
       lastModified: item.updatedAt || new Date(),
@@ -23,7 +33,7 @@ export default async function sitemap() {
       priority: 0.9,
     }));
 
-    // Blog URLs
+    // Blogs
     const blogUrls = blogs.map((item) => ({
       url: `${baseUrl}/blogs/${item.slug}`,
       lastModified: item.updatedAt || new Date(),
@@ -31,7 +41,7 @@ export default async function sitemap() {
       priority: 0.8,
     }));
 
-    // Service URLs
+    // Services
     const serviceUrls = services.map((item) => ({
       url: `${baseUrl}/services/${item.slug}`,
       lastModified: item.updatedAt || new Date(),
@@ -39,13 +49,14 @@ export default async function sitemap() {
       priority: 0.85,
     }));
 
-    // Static URLs
+    // Static pages
     const staticUrls = [
       "",
       "/services",
       "/blogs",
       "/contact",
       "/templates",
+      "/templates/type",
       "/pricing",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
@@ -54,8 +65,13 @@ export default async function sitemap() {
       priority: 0.7,
     }));
 
-    // Return everything combined
-    return [...staticUrls, ...templateUrls, ...blogUrls, ...serviceUrls];
+    return [
+      ...staticUrls,
+      ...templateTypeUrls,
+      ...templateUrls,
+      ...blogUrls,
+      ...serviceUrls,
+    ];
   } catch (error) {
     console.error("Sitemap generation error:", error);
     return [];
