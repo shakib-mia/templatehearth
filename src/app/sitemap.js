@@ -56,7 +56,6 @@ export default async function sitemap() {
       "/blogs",
       "/contact",
       "/templates",
-      "/templates/type",
       "/pricing",
     ].map((path) => ({
       url: `${baseUrl}${path}`,
