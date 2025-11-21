@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export default async function TemplatesPage({ params }) {
   const templatesCollection = db.collection("templates");
 
-  const query = params?.type ? { type: params.type } : {};
+  const query = params ? { type: params } : {};
   const templates = await templatesCollection.find(query).toArray();
 
   return (
