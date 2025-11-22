@@ -4,10 +4,12 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const TechSelectorClient = ({ items, counts, searchParams }) => {
+const TechSelectorClient = ({ items, counts }) => {
   const [show, setShow] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const pathname = usePathname();
+  // console.log(pathname);
+  // console.log(items);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -42,8 +44,7 @@ const TechSelectorClient = ({ items, counts, searchParams }) => {
       </h4>
       <ul className="mt-4 flex lg:flex-col justify-between space-y-2">
         {items.map((item) => {
-          const path = pathname + (searchParams ? "/type/" + searchParams : "");
-          const isActive = path === item.href;
+          const isActive = pathname === item.href;
 
           return (
             <li key={item.href}>

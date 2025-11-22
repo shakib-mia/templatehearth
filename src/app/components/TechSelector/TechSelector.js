@@ -1,7 +1,7 @@
 import { templatesCollection } from "@/app/lib/mongodb";
 import TechSelectorClient from "../TechSelectorClient/TechSelectorClient";
 
-const TechSelector = async ({ searchParams }) => {
+const TechSelector = async () => {
   const items = [
     { label: "All", href: "/templates", type: null },
     {
@@ -29,11 +29,7 @@ const TechSelector = async ({ searchParams }) => {
 
   return (
     <aside className="col-span-5 lg:col-span-1 sticky top-0 left-0 h-fit bg-white">
-      <TechSelectorClient
-        items={items}
-        counts={counts}
-        searchParams={searchParams}
-      />
+      <TechSelectorClient items={items} counts={counts} />
     </aside>
   );
 };
