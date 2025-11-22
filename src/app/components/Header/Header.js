@@ -9,14 +9,11 @@ const Header = () => {
     <div className="relative">
       <Image
         src={hero}
-        // style={{
-        //   backgroundImage: `url(${hero.src})`,
-        // }}
         alt="hero"
         fetchPriority="high"
         priority
         className="bg-no-repeat bg-none lg:bg-cover bg-right hide-bg-mobile absolute left-1/2 top-0 w-1/2 h-full object-cover"
-      ></Image>
+      />
       <div className="w-full h-full absolute left-0 top-0 from-gray-50 via-gray-100 to-transparent bg-gradient-to-r z-[0]"></div>
       <div className="container relative">
         <div className="pt-20 pb-10 lg:pb-16 lg:pt-28 w-full lg:w-8/12">
