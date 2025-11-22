@@ -42,7 +42,7 @@ const TechSelectorClient = ({ items, counts, searchParams }) => {
       </h4>
       <ul className="mt-4 flex lg:flex-col justify-between space-y-2">
         {items.map((item) => {
-          const path = pathname + (searchParams ? "?type=" + searchParams : "");
+          const path = pathname + (searchParams ? "/type/" + searchParams : "");
           const isActive = path === item.href;
 
           return (

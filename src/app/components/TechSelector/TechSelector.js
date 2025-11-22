@@ -6,12 +6,12 @@ const TechSelector = async ({ searchParams }) => {
     { label: "All", href: "/templates", type: null },
     {
       label: "Landing Page",
-      href: "/templates?type=landing-page",
+      href: "/templates/type/landing-page",
       type: "landing-page",
     },
     {
       label: "Full Site",
-      href: "/templates?type=full-site",
+      href: "/templates/type/full-site",
       type: "full-site",
     },
   ];
