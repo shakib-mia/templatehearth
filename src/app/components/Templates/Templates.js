@@ -19,7 +19,7 @@ export default async function TemplatesPage({ params, route }) {
   return (
     <div className="col-span-5 lg:col-span-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
       {templates
-        .slice(0, route === "/" ? 4 : templates.length - 1)
+        .slice(0, route === "/" ? 4 : templates.length)
         .map((template) => (
           <Template key={template.slug} {...template} />
         ))}
