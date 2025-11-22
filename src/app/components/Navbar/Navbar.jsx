@@ -12,6 +12,8 @@ export default function Navbar() {
   const [show, setShow] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
   const lastScrollY = useRef(0);
+  const pathname = usePathname();
+  // console.log(pathname);
   const toggleMenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
@@ -83,7 +85,13 @@ export default function Navbar() {
               <Link
                 href={href}
                 key={key}
-                className="text-gray-700 hover:text-indigo-600 font-medium"
+                className={`${
+                  href !== "/" && pathname.includes(href)
+                    ? "text-indigo-600"
+                    : href === "/" && pathname === "/"
+                    ? "text-indigo-600"
+                    : "text-gray-700"
+                } hover:text-indigo-600 font-medium`}
               >
                 {text}
               </Link>
