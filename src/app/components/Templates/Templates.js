@@ -18,25 +18,19 @@ export async function generateStaticParams() {
   }));
 }
 
-// ------------------------------------------------------
-// 2) MAIN COMPONENT (ISR + SSG)
-// ------------------------------------------------------
-export default async function Templates({ params, route, searchParams }) {
-  // const { type } = params || {};
-  // console.log({  });
-
-  const query = searchParams ? { type: searchParams } : {};
-
+export default async function TemplatesPage({ params, route }) {
   const templatesCollection = db.collection("templates");
-  const templates = await templatesCollection.find(query).toArray();
 
-  const displayedTemplates = route === "/" ? templates.slice(0, 4) : templates;
+  const query = params ? { type: params } : {};
+  const templates = await templatesCollection.find(query).toArray();
 
   return (
     <div className="col-span-5 lg:col-span-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {displayedTemplates.map((template) => (
-        <Template key={template.slug} {...template} />
-      ))}
+      {templates
+        .slice(0, route === "/" ? 4 : templates.length)
+        .map((template) => (
+          <Template key={template.slug} {...template} />
+        ))}
     </div>
   );
 }
