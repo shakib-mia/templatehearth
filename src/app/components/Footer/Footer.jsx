@@ -18,7 +18,7 @@ export default async function Footer() {
   const services = await servicesCollection.find({}).toArray();
 
   return (
-    <footer className="bg-muted-100 pt-10 pb-8">
+    <footer className="bg-gray-100 pt-10 pb-8">
       <div className="px-4 max-w-7xl mx-auto mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}

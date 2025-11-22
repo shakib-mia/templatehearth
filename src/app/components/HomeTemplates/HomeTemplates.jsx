@@ -4,7 +4,7 @@ import SeeAllButton from "../SeeAllButton/SeeAllButton";
 
 const HomeTemplates = () => {
   return (
-    <section className="bg-muted-100">
+    <section className="bg-gray-100">
       <div className="container">
         <h5 className="text-primary">Top Templates</h5>
         <h3 className="font-semibold lg:w-5/12 mt-4">

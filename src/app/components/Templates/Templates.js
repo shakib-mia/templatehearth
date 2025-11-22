@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   return types.map((type) => ({ type }));
 }
 
-export default async function TemplatesPage({ params }) {
+export default async function TemplatesPage({ params, route }) {
   const templatesCollection = db.collection("templates");
 
   const query = params ? { type: params } : {};
@@ -18,9 +18,11 @@ export default async function TemplatesPage({ params }) {
 
   return (
     <div className="col-span-5 lg:col-span-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {templates.map((template) => (
-        <Template key={template.slug} {...template} />
-      ))}
+      {templates
+        .slice(0, route === "/" ? 4 : templates.length - 1)
+        .map((template) => (
+          <Template key={template.slug} {...template} />
+        ))}
     </div>
   );
 }
