@@ -12,6 +12,9 @@ export async function generateMetadata() {
   return {
     title,
     description,
+    alternates: {
+      canonical: "https://templatehearth.vercel.app/services",
+    },
   };
 }
 

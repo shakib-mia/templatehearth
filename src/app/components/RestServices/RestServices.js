@@ -27,7 +27,7 @@ const RestServices = async ({ slug }) => {
               alt={item.slug}
             />
 
-            <aside className="lg:w-2/3">
+            <aside className="lg:w-2/3 text-gray-800">
               <h5 className="font-semibold">{item.title}</h5>
               <p>{item.shortDescription}</p>
             </aside>

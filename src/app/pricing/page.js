@@ -28,6 +28,8 @@ const PricingPage = async () => {
     _id: item._id.toString(),
   }));
 
+  console.log(pricing);
+
   // Get visitor IP & country (Server-side fetch)
   // const ipRes = await fetch("https://api.ipify.org?format=json", {
   //   cache: "no-store",

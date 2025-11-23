@@ -128,9 +128,7 @@ export default async function ServicePage({ params }) {
 
           <aside className="lg:w-4/12 w-full sticky top-20 self-start h-fit space-y-8">
             <div className="bg-gray-50 rounded-lg p-6 shadow-md">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                Quick Links
-              </h3>
+              <h3 className="font-semibold mb-4 text-gray-900">Quick Links</h3>
               <ul className="space-y-3 mb-6">
                 {service.features?.map((section, idx) => (
                   <li key={idx}>
@@ -149,22 +147,10 @@ export default async function ServicePage({ params }) {
             </div>
 
             <div className="bg-gray-50 rounded-lg p-6 shadow-md">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">
+              <h3 className="font-semibold mb-4 text-gray-800">
                 More Services
               </h3>
               <RestServices slug={slug} />
-              {/* <ul className="space-y-3">
-              {moreServices.map((s) => (
-                <li key={s._id}>
-                  <a
-                    href={`/services/${s.slug}`}
-                    className="text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    {s.title}
-                  </a>
-                </li>
-              ))}
-            </ul> */}
             </div>
           </aside>
         </div>

@@ -1,4 +1,7 @@
 import React from "react";
+import Button from "../Button/Button";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa6";
 
 const Plan = ({
   _id,
@@ -40,9 +43,20 @@ const Plan = ({
       </ul>
 
       {/* Footer */}
-      <div className="mt-auto pt-4 border-t border-gray-200 text-gray-500 text-sm">
+      <div className="mt-auto pt-4 border-t border-gray-200 text-gray-500 text-sm mb-8">
         Delivery: <span className="font-medium">{delivery_days} days</span>
       </div>
+
+      <Link
+        href={"https://wa.me/+8801832492467"}
+        target="_blank"
+        className="inline-block w-full"
+      >
+        <Button className={"justify-center text-xl w-full"}>
+          <FaWhatsapp className="text-2xl" />
+          Chat on whatsapp
+        </Button>
+      </Link>
     </div>
   );
 };

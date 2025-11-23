@@ -28,7 +28,7 @@ const Services = async ({ route }) => {
     <section className={`container`}>
       {route === "/" && (
         <>
-          <h5 className="text-primary">What we do</h5>
+          <h4 className="text-primary">What we do</h4>
           <h3 className="font-semibold lg:w-5/12 mt-4">
             We provide the Perfect Solution to your business growth
           </h3>

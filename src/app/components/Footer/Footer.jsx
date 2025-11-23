@@ -34,6 +34,7 @@ export default async function Footer() {
                 href="https://www.facebook.com/templatehearth"
                 target="_blank"
                 rel="noreferrer"
+                name="Facebook"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaFacebookF />
@@ -43,6 +44,7 @@ export default async function Footer() {
                 href="https://www.youtube.com/@Template Hearth"
                 target="_blank"
                 rel="noreferrer"
+                name="YouTube"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaYoutube />
@@ -52,15 +54,17 @@ export default async function Footer() {
                 href="https://www.linkedin.com/in/templatehearth"
                 target="_blank"
                 rel="noreferrer"
+                name="LinkedIn"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaLinkedinIn />
               </a>
 
               <a
-                href="https://x.com/Template Hearth"
+                href="https://x.com/TemplateHearth"
                 target="_blank"
                 rel="noreferrer"
+                name="X Twitter"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaXTwitter />
@@ -70,6 +74,7 @@ export default async function Footer() {
                 href="https://www.instagram.com/templatehearth"
                 target="_blank"
                 rel="noreferrer"
+                name="Instagram"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <FaInstagram />
@@ -79,6 +84,7 @@ export default async function Footer() {
                 href="https://templatehearth.gumroad.com/"
                 target="_blank"
                 rel="noreferrer"
+                name="Gumroad"
                 className="inline-flex justify-center items-center w-10 aspect-square rounded-full bg-accent text-white border border-accent hover:bg-white hover:text-accent transition text-xl"
               >
                 <TbBrandGumroad />

@@ -7,9 +7,9 @@ export const PricingGrid = ({ pricing, country, currency }) => {
   return (
     <>
       <div
-        className={`grid grid-cols-1 md:grid-cols-2 lg:max-w-4/6 mx-auto gap-6`}
+        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-6`}
       >
-        {pricing[0].plans.map((plan, key) => (
+        {pricing[1].plans.map((plan, key) => (
           <Plan
             {...plan}
             key={key}
