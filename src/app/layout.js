@@ -66,6 +66,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="Zs-QzNH-jV2hUMXXG5kMstw34xaWCgYonUTtRwMOZTA"
+        />
+      </head>
       <body className="antialiased">
         <Animation />
         <Layout>{children}</Layout>
