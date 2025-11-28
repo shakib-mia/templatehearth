@@ -58,9 +58,9 @@ export const metadata = {
     canonical: "/",
   },
 
-  verification: {
-    google: "Zs-QzNH-jV2hUMXXG5kMstw34xaWCgYonUTtRwMOZTA",
-  },
+  // verification: {
+  //   google: "Zs-QzNH-jV2hUMXXG5kMstw34xaWCgYonUTtRwMOZTA",
+  // },
 };
 
 export default function RootLayout({ children }) {
