@@ -9,7 +9,7 @@ const description =
 
 export async function generateMetadata() {
   const domain = process.env.DOMAIN_NAME;
-  const canonical = `${domain}/pricing`;
+  const canonical = `${domain}pricing`;
 
   return {
     title,
@@ -20,7 +20,7 @@ export async function generateMetadata() {
     },
 
     openGraph: {
-      title,
+      title: `${title} | Template Hearth`,
       description,
       url: canonical,
       siteName: "Template Hearth",

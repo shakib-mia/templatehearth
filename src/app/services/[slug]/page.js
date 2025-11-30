@@ -1,7 +1,6 @@
 import PageHeader from "@/app/components/PageHeader/PageHeader";
 import RestServices from "@/app/components/RestServices/RestServices";
 import { servicesCollection } from "@/app/lib/mongodb";
-import { headers } from "next/headers";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -24,35 +23,34 @@ export async function generateStaticParams() {
 // 2) SEO METADATA
 // -------------------------
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-
-  // Dynamic domain
-  const header = await headers();
-  const host = await header.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const domain = `${protocol}://${host}`;
+  const { slug } = await params; // dynamic slug, jodi specific service page hoy
+  const domain = process.env.DOMAIN_NAME;
 
   try {
-    const service = await servicesCollection.findOne({ slug });
-    if (!service) {
-      return {
-        title: "Service Not Found - Template Hearth",
-        description: "This service does not exist in our collection.",
-        robots: "noindex, nofollow",
-      };
+    // Jodi slug thake, single service fetch
+    let service;
+    if (slug) {
+      service = await servicesCollection.findOne({ slug });
+      if (!service) {
+        return {
+          title: "service Not Found - Template Hearth",
+          description: "This service does not exist in our collection.",
+          robots: "noindex, nofollow",
+        };
+      }
     }
 
-    const title = service.title;
-    const description = service.shortDescription;
-    const image = service.image
-      ? `${domain}${service.image}`
-      : `${domain}/default-og-image.jpg`;
-    const canonical = `${domain}/services/${slug}`;
+    const title = service ? service.title : "Services | Template Hearth";
+    const description = service
+      ? service.shortDescription
+      : "Explore web design insights, template tips, updates, and inspiration to help you build better websites faster with Template Hearth.";
+    const image = service?.image ? `${service.image}` : `${domain}favicon.ico`;
+    const canonical = slug ? `${domain}services/${slug}` : `${domain}services`;
 
     return {
       title,
       description,
-      keywords: service.keywords || [
+      keywords: service?.keywords || [
         "services",
         "web development",
         "templates",
@@ -65,7 +63,7 @@ export async function generateMetadata({ params }) {
         title,
         description,
         url: canonical,
-        type: "article",
+        type: slug ? "article" : "website",
         siteName: "Template Hearth",
         locale: "en_US",
         images: [{ url: image, width: 1200, height: 630 }],
@@ -79,8 +77,9 @@ export async function generateMetadata({ params }) {
     };
   } catch (e) {
     return {
-      title: "Service Not Found - Template Hearth",
-      description: "This service does not exist in our collection.",
+      title: "services - Template Hearth",
+      description:
+        "Explore web design insights, template tips, updates, and inspiration to help you build better websites faster with Template Hearth.",
       robots: "noindex, nofollow",
     };
   }
@@ -106,7 +105,7 @@ export default async function ServicePage({ params }) {
         <div className="container mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-10 mt-10 pb-8">
           <main className="lg:w-8/12 w-full">
             <Image
-              src={service.image || "/default-og-image.jpg"}
+              src={service.image || "/favicon.ico"}
               width={600}
               height={600}
               alt={service.slug}

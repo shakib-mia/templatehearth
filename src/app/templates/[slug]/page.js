@@ -38,13 +38,13 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: template.headline,
+      title: `${template.headline}`,
       description: template.shortDescription,
       keywords: template.relatedKeywords || [], // <-- ekhane keywords add korlam
       openGraph: {
         title: template.headline,
         description: template.shortDescription,
-        url: `https://templatehearth.vercel.app/templates/${slug}`,
+        url: `${process.env.DOMAIN_NAME}templates/${slug}`,
         type: "article",
         images: [
           {
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }) {
         images: [template.image],
       },
       alternates: {
-        canonical: `/templates/${slug}`,
+        canonical: `${process.env.DOMAIN_NAME}templates/${slug}`,
       },
     };
   } catch (e) {

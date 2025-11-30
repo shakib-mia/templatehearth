@@ -19,7 +19,7 @@ export default async function sitemap() {
 
     // STEP 2: Add type-based listing pages
     const templateTypeUrls = templateTypes.map((type) => ({
-      url: `${baseUrl}/templates/type/${type}`,
+      url: `${process.env.DOMAIN_NAME}templates/type/${type}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.85,
@@ -27,7 +27,7 @@ export default async function sitemap() {
 
     // STEP 3: Single Template URLs
     const templateUrls = templates.map((item) => ({
-      url: `${baseUrl}/templates/${item.slug}`,
+      url: `${process.env.DOMAIN_NAME}templates/${item.slug}`,
       lastModified: item.updatedAt || new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
@@ -35,7 +35,7 @@ export default async function sitemap() {
 
     // Blogs
     const blogUrls = blogs.map((item) => ({
-      url: `${baseUrl}/blogs/${item.slug}`,
+      url: `${process.env.DOMAIN_NAME}blogs/${item.slug}`,
       lastModified: item.updatedAt || new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
@@ -43,7 +43,7 @@ export default async function sitemap() {
 
     // Services
     const serviceUrls = services.map((item) => ({
-      url: `${baseUrl}/services/${item.slug}`,
+      url: `${process.env.DOMAIN_NAME}services/${item.slug}`,
       lastModified: item.updatedAt || new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
@@ -58,7 +58,7 @@ export default async function sitemap() {
       "/templates",
       "/pricing",
     ].map((path) => ({
-      url: `${baseUrl}${path}`,
+      url: `${process.env.DOMAIN_NAME}${path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,

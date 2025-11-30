@@ -2,7 +2,6 @@ import React from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import Templates from "../components/Templates/Templates";
 import TechSelector from "../components/TechSelector/TechSelector";
-import { templatesCollection } from "../lib/mongodb";
 
 // -------------------------
 // SEO Metadata
@@ -11,11 +10,7 @@ export async function generateMetadata() {
   const domain = process.env.DOMAIN_NAME;
 
   try {
-    // প্রথম template থেকে OG image নিলে সাধারণ fallback হবে
-    const firstTemplate = await templatesCollection.findOne({});
-    const ogImage = firstTemplate?.image
-      ? `${domain}${firstTemplate.image}`
-      : `${domain}/favicon.ico`;
+    const ogImage = `${domain}/favicon.ico`;
 
     return {
       title: "Templates - Template Hearth",

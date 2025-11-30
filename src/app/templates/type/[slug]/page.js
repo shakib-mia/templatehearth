@@ -34,6 +34,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${formattedType} Templates`,
     description: `Explore all ${formattedType} templates, fully responsive, ready to use, and easy to customize.`,
+    alternates: { canonical: `${process.env.DOMAIN_NAME}templates/${type}` },
     openGraph: {
       title: `${formattedType} Templates `,
       description: `Explore all ${formattedType} templates, fully responsive, ready to use, and easy to customize.`,

@@ -1,6 +1,4 @@
 export default function robots() {
-  const baseUrl = "https://templatehearth.vercel.app";
-
   return {
     rules: [
       {
@@ -9,6 +7,6 @@ export default function robots() {
         disallow: ["/admin", "/dashboard", "/api", "/private"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${process.env.DOMAIN_NAME}sitemap.xml`,
   };
 }

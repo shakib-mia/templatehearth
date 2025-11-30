@@ -15,7 +15,7 @@ export async function generateMetadata() {
   const ogImage = `${domain}/favicon.ico`;
 
   return {
-    title,
+    title: `${title}`,
     description,
     keywords: ["services", "web development", "templates", "Next.js", "MERN"],
     robots: "index, follow",

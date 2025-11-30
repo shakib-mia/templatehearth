@@ -1,9 +1,7 @@
-import Script from "next/script";
 import Animation from "./components/Animation/Animation";
 import Layout from "./components/Layout/Layout";
 import "./globals.css";
 import { Poppins } from "next/font/google";
-import Navbar from "./components/Navbar/Navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -11,14 +9,8 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-// const borel = Borel({
-//   subsets: ["latin"],
-//   weight: ["400"],
-//   variable: "--font-borel",
-// });
-
 export const metadata = {
-  metadataBase: new URL("https://templatehearth.vercel.app"),
+  metadataBase: new URL(process.env.DOMAIN_NAME),
   title: {
     default: "Template Hearth – Ready. Set. Launch",
     template: "%s | Template Hearth",
@@ -39,23 +31,38 @@ export const metadata = {
     follow: true,
   },
 
+  // openGraph: {
+  //   title: "Template Hearth – Ready. Set. Launch",
+  //   description: "Modern Designs for Ambitious Brands Simplified",
+  //   url: "https://templatehearth.vercel.app",
+  //   siteName: "Template Hearth",
+  //   type: "website",
+  // },
   openGraph: {
     title: "Template Hearth – Ready. Set. Launch",
     description: "Modern Designs for Ambitious Brands Simplified",
-    url: "https://templatehearth.vercel.app",
-    siteName: "Template Hearth",
+    url: process.env.DOMAIN_NAME,
     type: "website",
+    siteName: "Template Hearth",
+    locale: "en_US",
+    images: [
+      {
+        url: `${process.env.DOMAIN_NAME}favicon.ico`,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
     title: "Template Hearth – Ready. Set. Launch",
     description: "Modern Designs for Ambitious Brands Simplified",
-    site: "@Template Hearth", // optional Twitter handle
+    site: "@TemplateHearth",
   },
 
   alternates: {
-    canonical: "/",
+    canonical: process.env.DOMAIN_NAME,
   },
 
   // verification: {
