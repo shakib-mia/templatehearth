@@ -56,9 +56,6 @@ export async function generateMetadata() {
 // Page Component
 // -------------------------
 const page = async () => {
-  const res = await templatesCollection.find().toArray();
-  const templates = JSON.parse(JSON.stringify(res));
-
   return (
     <>
       <PageHeader
@@ -68,7 +65,7 @@ const page = async () => {
 
       <section className="grid grid-cols-5 gap-8 container">
         <TechSelector />
-        <Templates data={templates} />
+        <Templates />
       </section>
     </>
   );
