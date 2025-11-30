@@ -13,10 +13,7 @@ export default function PageHeader({ description, title }) {
     <header className="bg-gray-50 pt-20 lg:pt-40 pb-10 text-center">
       <div className="container">
         <h1 className="text-2xl lg:text-6xl font-bold mb-2 text-gray-900 leading-[1.5] capitalize">
-          {title.includes("-")
-            ? title.replace("-", " ")
-            : title ||
-              (pageTitle.includes("-") ? pageTitle.split("-")[0] : pageTitle)}
+          {title}
         </h1>
         <p className="text-center text-base lg:w-7/12 mx-auto">{description}</p>
       </div>
