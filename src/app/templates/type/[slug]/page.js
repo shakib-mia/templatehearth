@@ -65,6 +65,7 @@ export const revalidate = 3600; // 1 hour
 // -------------------------
 const Page = async ({ params }) => {
   const { slug: type } = await params;
+
   const templates = await templatesCollection.find({ type }).toArray();
 
   if (!templates.length) return notFound();
@@ -79,7 +80,7 @@ const Page = async ({ params }) => {
 
       <section className="grid grid-cols-5 gap-8 container">
         <TechSelector />
-        <Templates data={templates} />
+        <Templates params={type} />
       </section>
     </>
   );

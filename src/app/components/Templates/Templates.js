@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function TemplatesPage({ params, route, data }) {
+export default async function TemplatesPage({ params, route }) {
   const templatesCollection = db.collection("templates");
 
   const query = params ? { type: params } : {};
