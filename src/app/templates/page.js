@@ -56,7 +56,7 @@ const page = async () => {
 
       <section className="grid grid-cols-5 gap-8 container">
         <TechSelector />
-        <Templates />
+        <Templates route="/templates" />
       </section>
     </>
   );

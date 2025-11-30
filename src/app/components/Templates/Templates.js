@@ -21,9 +21,11 @@ export async function generateStaticParams() {
 export default async function TemplatesPage({ params, route = "/" }) {
   const templatesCollection = db.collection("templates");
 
-  const limit = route === "/" ? 4 : 0;
+  const isHome = route === "/";
+  const limit = isHome ? 4 : 0;
 
   const query = params ? { type: params } : {};
+
   const templates = await templatesCollection
     .find(query)
     .limit(limit)

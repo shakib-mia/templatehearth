@@ -81,7 +81,7 @@ const Page = async ({ params }) => {
 
       <section className="grid grid-cols-5 gap-8 container">
         <TechSelector />
-        <Templates params={type} />
+        <Templates route="/templates" params={type} />
       </section>
     </>
   );
