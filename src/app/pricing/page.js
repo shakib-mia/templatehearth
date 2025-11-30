@@ -2,15 +2,63 @@
 import PageHeader from "../components/PageHeader/PageHeader";
 import PlansSelectorWrapper from "../components/PlansSelectorWrapper/PlansSelectorWrapper";
 import { db } from "../lib/mongodb";
+// -------------------------
+// SEO Metadata (Refined + Dynamic + OG/Twitter)
+// -------------------------
+import { headers } from "next/headers";
 
-// -------------------------
-// SEO Metadata
-// -------------------------
-const title = "Pricing - Template Hearth";
+const title = "Pricing";
 const description =
-  "Explore custom web development pricing for Next.js + MERN stack projects. Get premium, scalable, and SEO-friendly landing pages, multipage websites, ecommerce stores, and SaaS solutions tailored to your business";
+  "Explore custom web development pricing for Next.js + MERN stack projects. Get premium, scalable, SEO-friendly landing pages, multipage websites, ecommerce stores, and SaaS solutions tailored to your business.";
+
 export async function generateMetadata() {
-  return { title, description };
+  const header = await headers();
+  const host = header.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+
+  const domain = `${protocol}://${host}`;
+  const canonical = `${domain}/pricing`;
+
+  return {
+    title,
+    description,
+
+    alternates: {
+      canonical,
+    },
+
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Template Hearth",
+      type: "website",
+      images: [
+        {
+          url: `${domain}/favicon.ico`,
+          width: 1200,
+          height: 630,
+          alt: "Template Hearth Pricing Overview",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${domain}/favicon.ico`],
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+  };
 }
 
 // -------------------------
@@ -27,8 +75,6 @@ const PricingPage = async () => {
     ...item,
     _id: item._id.toString(),
   }));
-
-  console.log(pricing);
 
   // Get visitor IP & country (Server-side fetch)
   // const ipRes = await fetch("https://api.ipify.org?format=json", {
@@ -47,7 +93,7 @@ const PricingPage = async () => {
 
   return (
     <>
-      <PageHeader title="Pricing" description={description} />
+      <PageHeader title={title} description={description} />
 
       {/* Client component for Expand/Collapse */}
       <PlansSelectorWrapper

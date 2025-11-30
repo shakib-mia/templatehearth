@@ -1,24 +1,56 @@
 import React from "react";
 import Services from "../components/Services/Services";
 import PageHeader from "../components/PageHeader/PageHeader";
-import Button from "../components/Button/Button";
+import { headers } from "next/headers";
 
 const title = `Services`;
-
 const description =
   "Discover our professional web services designed to accelerate your brand’s online presence. From custom website development to full-scale digital solutions — explore how Template Hearth empowers your success.";
 
+// ধরুন Services page-এ mainImage আছে, না থাকলে fallback হবে
+
 export async function generateMetadata() {
+  const header = headers();
+  const host = await header.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const domain = `${protocol}://${host}`;
+  const canonical = `${domain}/services`;
+
+  const ogImage = `${domain}/favicon.ico`;
+
   return {
     title,
     description,
+    keywords: ["services", "web development", "templates", "Next.js", "MERN"],
+    robots: "index, follow",
     alternates: {
-      canonical: "https://templatehearth.vercel.app/services",
+      canonical,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "website",
+      siteName: "Template Hearth",
+      locale: "en_US",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
     },
   };
 }
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <PageHeader title={title} description={description} />
@@ -27,4 +59,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

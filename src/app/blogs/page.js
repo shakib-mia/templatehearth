@@ -5,13 +5,13 @@ import { headers } from "next/headers";
 
 export async function generateMetadata() {
   const header = await headers();
-  const host = header.get("host");
+  const host = await header.get("host");
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
   const domain = `${protocol}://${host}`;
   const canonical = `${domain}/blogs`;
 
   const description =
-    "Explore web design insights, template tips, updates, and inspiration to help you build better websites faster with Template Hearth. Stay ahead with the latest trends and creative strategies.";
+    "Explore web design insights, template tips, updates, and inspiration to help you build better websites faster with Template Hearth.";
 
   return {
     title: "Blogs - Template Hearth",

@@ -1,6 +1,7 @@
 import PageHeader from "@/app/components/PageHeader/PageHeader";
 import RestServices from "@/app/components/RestServices/RestServices";
 import { servicesCollection } from "@/app/lib/mongodb";
+import { headers } from "next/headers";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -25,45 +26,62 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
+  // Dynamic domain
+  const header = await headers();
+  const host = await header.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const domain = `${protocol}://${host}`;
+
   try {
     const service = await servicesCollection.findOne({ slug });
-
     if (!service) {
       return {
-        title: "Service Not Found",
+        title: "Service Not Found - Template Hearth",
         description: "This service does not exist in our collection.",
+        robots: "noindex, nofollow",
       };
     }
 
+    const title = service.title;
+    const description = service.shortDescription;
+    const image = service.image
+      ? `${domain}${service.image}`
+      : `${domain}/default-og-image.jpg`;
+    const canonical = `${domain}/services/${slug}`;
+
     return {
-      title: service.title,
-      description: service.shortDescription,
+      title,
+      description,
+      keywords: service.keywords || [
+        "services",
+        "web development",
+        "templates",
+        "Next.js",
+        "MERN",
+      ],
+      robots: "index, follow",
+      alternates: { canonical },
       openGraph: {
-        title: service.title,
-        description: service.shortDescription,
-        url: `https://servicehearth.vercel.app/services/${slug}`,
+        title,
+        description,
+        url: canonical,
         type: "article",
-        images: [
-          {
-            url: service.image, // thumbnail URL
-            width: 1200,
-            height: 630,
-          },
-        ],
+        siteName: "Template Hearth",
+        locale: "en_US",
+        images: [{ url: image, width: 1200, height: 630 }],
       },
       twitter: {
         card: "summary_large_image",
-        title: service.title,
-        description: service.shortDescription,
-        images: [service.image],
-      },
-      alternates: {
-        canonical: `/services/${slug}`,
+        title,
+        description,
+        images: [image],
       },
     };
   } catch (e) {
     return {
-      title: "service Not Found",
+      title: "Service Not Found - Template Hearth",
+      description: "This service does not exist in our collection.",
+      robots: "noindex, nofollow",
     };
   }
 }

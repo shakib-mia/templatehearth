@@ -3,33 +3,71 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import Templates from "../components/Templates/Templates";
 import TechSelector from "../components/TechSelector/TechSelector";
 import { templatesCollection } from "../lib/mongodb";
+import { headers } from "next/headers";
 
-export const metadata = {
-  title: "Templates - Template Hearth",
-  description:
-    "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
-};
+// -------------------------
+// SEO Metadata
+// -------------------------
+export async function generateMetadata() {
+  const header = await headers();
+  const host = await header.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const domain = `${protocol}://${host}`;
 
+  try {
+    // প্রথম template থেকে OG image নিলে সাধারণ fallback হবে
+    const firstTemplate = await templatesCollection.findOne({});
+    const ogImage = firstTemplate?.image
+      ? `${domain}${firstTemplate.image}`
+      : `${domain}/favicon.ico`;
+
+    return {
+      title: "Templates - Template Hearth",
+      description:
+        "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
+      alternates: { canonical: `${domain}/templates` },
+      openGraph: {
+        title: "Templates - Template Hearth",
+        description:
+          "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
+        url: `${domain}/templates`,
+        type: "website",
+        siteName: "Template Hearth",
+        images: [{ url: ogImage, width: 1200, height: 630 }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Templates - Template Hearth",
+        description:
+          "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
+        images: [ogImage],
+      },
+    };
+  } catch (e) {
+    return {
+      title: "Templates - Template Hearth",
+      description:
+        "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
+    };
+  }
+}
+
+// -------------------------
+// Page Component
+// -------------------------
 const page = async () => {
-  // সব templates একবারে fetch করা
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/templates`);
-  // const templates = await res.json();
   const res = await templatesCollection.find().toArray();
   const templates = JSON.parse(JSON.stringify(res));
 
   return (
     <>
       <PageHeader
-        title={`Templates`}
-        description={
-          "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project."
-        }
+        title="Templates"
+        description="Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project."
       />
 
       <section className="grid grid-cols-5 gap-8 container">
         <TechSelector />
-
-        {/* Client-side filtering এর জন্য data pass করছ */}
         <Templates data={templates} />
       </section>
     </>
