@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   }
 }
 
-export const revalidate = 1; // seconds, ei page 1 second por update hote pare
+export const revalidate = 3600; // seconds, ei page 1 second por update hote pare
 
 // -------------------------
 // 2) SEO METADATA

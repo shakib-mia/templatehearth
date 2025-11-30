@@ -1,4 +1,4 @@
-export const revalidate = 1; // ISR enabled
+export const revalidate = 3600; // ISR enabled
 
 import React from "react";
 import { db } from "@/app/lib/mongodb";
