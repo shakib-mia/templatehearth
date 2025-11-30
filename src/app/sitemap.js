@@ -5,8 +5,6 @@ import {
 } from "@/app/lib/mongodb";
 
 export default async function sitemap() {
-  const baseUrl = "https://templatehearth.vercel.app";
-
   try {
     const [templates, blogs, services] = await Promise.all([
       templatesCollection.find().toArray(),
@@ -14,44 +12,39 @@ export default async function sitemap() {
       servicesCollection.find().toArray(),
     ]);
 
-    // STEP 1: Get unique types: ["html", "nextjs"]
     const templateTypes = [...new Set(templates.map((t) => t.type))];
 
-    // STEP 2: Add type-based listing pages
     const templateTypeUrls = templateTypes.map((type) => ({
-      url: `${process.env.DOMAIN_NAME}templates/type/${type}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.85,
+      url: `${process.env.DOMAIN_NAME}/templates/type/${type}`,
+      lastModified: new Date().toISOString(),
     }));
 
-    // STEP 3: Single Template URLs
     const templateUrls = templates.map((item) => ({
-      url: `${process.env.DOMAIN_NAME}templates/${item.slug}`,
-      lastModified: item.updatedAt || new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
+      url: `${process.env.DOMAIN_NAME}/templates/${item.slug}`,
+      lastModified: item.updatedAt
+        ? new Date(item.updatedAt).toISOString()
+        : new Date().toISOString(),
     }));
 
-    // Blogs
     const blogUrls = blogs.map((item) => ({
-      url: `${process.env.DOMAIN_NAME}blogs/${item.slug}`,
-      lastModified: item.updatedAt || new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
+      url: `${process.env.DOMAIN_NAME}/blogs/${item.slug}`,
+      lastModified: item.updatedAt
+        ? new Date(item.updatedAt).toISOString()
+        : new Date().toISOString(),
     }));
 
-    // Services
     const serviceUrls = services.map((item) => ({
-      url: `${process.env.DOMAIN_NAME}services/${item.slug}`,
-      lastModified: item.updatedAt || new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
+      url: `${process.env.DOMAIN_NAME}/services/${item.slug}`,
+      lastModified: item.updatedAt
+        ? new Date(item.updatedAt).toISOString()
+        : new Date().toISOString(),
     }));
 
-    // Static pages
+    // Static pages with fixed lastModified
+    const staticLastMod = "2025-11-30T15:17:00.000Z";
+
     const staticUrls = [
-      "",
+      "/",
       "/services",
       "/blogs",
       "/contact",
@@ -59,9 +52,7 @@ export default async function sitemap() {
       "/pricing",
     ].map((path) => ({
       url: `${process.env.DOMAIN_NAME}${path}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      lastModified: staticLastMod,
     }));
 
     return [
@@ -71,8 +62,8 @@ export default async function sitemap() {
       ...blogUrls,
       ...serviceUrls,
     ];
-  } catch (error) {
-    console.error("Sitemap generation error:", error);
+  } catch (err) {
+    console.error("Sitemap error:", err);
     return [];
   }
 }
