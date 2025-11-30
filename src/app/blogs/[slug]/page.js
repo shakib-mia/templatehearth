@@ -125,7 +125,7 @@ const BlogDetailsPage = async ({ params }) => {
     const blog = await blogsCollection.findOne({ slug });
     const { _id, ...rest } = blog;
 
-    if (!rest.id.length) {
+    if (!rest.slug.length) {
       return notFound();
     }
 
