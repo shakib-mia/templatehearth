@@ -2,21 +2,13 @@
 import PageHeader from "../components/PageHeader/PageHeader";
 import PlansSelectorWrapper from "../components/PlansSelectorWrapper/PlansSelectorWrapper";
 import { db } from "../lib/mongodb";
-// -------------------------
-// SEO Metadata (Refined + Dynamic + OG/Twitter)
-// -------------------------
-import { headers } from "next/headers";
 
 const title = "Pricing";
 const description =
   "Explore custom web development pricing for Next.js + MERN stack projects. Get premium, scalable, SEO-friendly landing pages, multipage websites, ecommerce stores, and SaaS solutions tailored to your business.";
 
 export async function generateMetadata() {
-  const header = await headers();
-  const host = header.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-
-  const domain = `${protocol}://${host}`;
+  const domain = process.env.DOMAIN_NAME;
   const canonical = `${domain}/pricing`;
 
   return {

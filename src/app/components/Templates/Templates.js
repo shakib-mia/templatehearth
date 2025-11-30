@@ -18,19 +18,22 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function TemplatesPage({ params, route }) {
+export default async function TemplatesPage({ params, route = "/" }) {
   const templatesCollection = db.collection("templates");
 
+  const limit = route === "/" ? 4 : 0;
+
   const query = params ? { type: params } : {};
-  const templates = await templatesCollection.find(query).toArray();
+  const templates = await templatesCollection
+    .find(query)
+    .limit(limit)
+    .toArray();
 
   return (
     <div className="col-span-5 lg:col-span-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {templates
-        .slice(0, route === "/" ? 4 : templates.length)
-        .map((template) => (
-          <Template key={template.slug} {...template} />
-        ))}
+      {templates.map((template) => (
+        <Template key={template.slug} {...template} />
+      ))}
     </div>
   );
 }

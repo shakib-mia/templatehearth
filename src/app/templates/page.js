@@ -3,16 +3,12 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import Templates from "../components/Templates/Templates";
 import TechSelector from "../components/TechSelector/TechSelector";
 import { templatesCollection } from "../lib/mongodb";
-import { headers } from "next/headers";
 
 // -------------------------
 // SEO Metadata
 // -------------------------
 export async function generateMetadata() {
-  const header = await headers();
-  const host = await header.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const domain = `${protocol}://${host}`;
+  const domain = process.env.DOMAIN_NAME;
 
   try {
     // প্রথম template থেকে OG image নিলে সাধারণ fallback হবে

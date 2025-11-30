@@ -1,7 +1,6 @@
 import React from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import ContactForm from "../components/ContactForm/ContactForm";
-import { headers } from "next/headers";
 import Script from "next/script";
 
 const pageTitle = "Contact - Template Hearth";
@@ -12,10 +11,7 @@ const pageDescription =
 // SEO METADATA
 // -------------------------
 export async function generateMetadata() {
-  const header = await headers();
-  const host = header.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const domain = `${protocol}://${host}`;
+  const domain = process.env.DOMAIN_NAME;
   const canonical = `${domain}/contact`;
 
   return {

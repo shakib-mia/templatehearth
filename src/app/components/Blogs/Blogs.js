@@ -8,7 +8,7 @@ import Blog from "../Blog/Blog";
 export async function generateStaticParams() {
   const blogs = await blogsCollection.find({}).toArray();
   return blogs.map((blog) => ({
-    slug: blog.slug, // jodi slug-based blog page thake
+    slug: blog.slug,
   }));
 }
 

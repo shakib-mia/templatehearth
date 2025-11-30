@@ -1,7 +1,6 @@
 import React from "react";
 import Services from "../components/Services/Services";
 import PageHeader from "../components/PageHeader/PageHeader";
-import { headers } from "next/headers";
 
 const title = `Services`;
 const description =
@@ -10,10 +9,7 @@ const description =
 // ধরুন Services page-এ mainImage আছে, না থাকলে fallback হবে
 
 export async function generateMetadata() {
-  const header = headers();
-  const host = await header.get("host");
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const domain = `${protocol}://${host}`;
+  const domain = process.env.DOMAIN_NAME;
   const canonical = `${domain}/services`;
 
   const ogImage = `${domain}/favicon.ico`;
