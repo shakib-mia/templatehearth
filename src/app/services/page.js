@@ -23,7 +23,7 @@ export async function generateMetadata() {
       canonical,
     },
     openGraph: {
-      title,
+      title: title + " | Template Hearth",
       description,
       url: canonical,
       type: "website",

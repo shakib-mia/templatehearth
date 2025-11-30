@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
     description: `Explore all ${formattedType} templates, fully responsive, ready to use, and easy to customize.`,
     alternates: { canonical: `${process.env.DOMAIN_NAME}templates/${type}` },
     openGraph: {
-      title: `${formattedType} Templates `,
+      title: `${formattedType} Templates | Template Hearth`,
       description: `Explore all ${formattedType} templates, fully responsive, ready to use, and easy to customize.`,
       robots: { index: true, follow: true },
       images: [

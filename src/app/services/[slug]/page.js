@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
       robots: "index, follow",
       alternates: { canonical },
       openGraph: {
-        title,
+        title: title + " | Template Hearth",
         description,
         url: canonical,
         type: slug ? "article" : "website",

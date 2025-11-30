@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       description: template.shortDescription,
       keywords: template.relatedKeywords || [], // <-- ekhane keywords add korlam
       openGraph: {
-        title: template.headline,
+        title: template.headline + " | Template Hearth",
         description: template.shortDescription,
         url: `${process.env.DOMAIN_NAME}templates/${slug}`,
         type: "article",
