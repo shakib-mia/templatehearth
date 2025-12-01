@@ -19,6 +19,8 @@ export default async function sitemap() {
       lastModified: new Date().toISOString(),
     }));
 
+    console.log(templateTypeUrls);
+
     const templateUrls = templates.map((item) => ({
       url: `${process.env.DOMAIN_NAME}templates/${item.slug}`,
       lastModified: item.updatedAt
@@ -44,16 +46,18 @@ export default async function sitemap() {
     const staticLastMod = "2025-11-30T15:17:00.000Z";
 
     const staticUrls = [
-      "/",
-      "/services",
-      "/blogs",
-      "/contact",
-      "/templates",
-      "/pricing",
+      "",
+      "services",
+      "blogs",
+      "contact",
+      "templates",
+      "pricing",
     ].map((path) => ({
       url: `${process.env.DOMAIN_NAME}${path}`,
       lastModified: staticLastMod,
     }));
+
+    console.log({ staticUrls });
 
     return [
       ...staticUrls,
