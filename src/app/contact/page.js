@@ -12,7 +12,7 @@ const pageDescription =
 // -------------------------
 export async function generateMetadata() {
   const domain = process.env.DOMAIN_NAME;
-  const canonical = `${domain}/contact`;
+  const canonical = `${domain}contact`;
 
   return {
     title: pageTitle,

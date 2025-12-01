@@ -10,9 +10,9 @@ const description =
 
 export async function generateMetadata() {
   const domain = process.env.DOMAIN_NAME;
-  const canonical = `${domain}/services`;
+  const canonical = `${domain}services`;
 
-  const ogImage = `${domain}/favicon.ico`;
+  const ogImage = `${domain}favicon.ico`;
 
   return {
     title: `${title}`,

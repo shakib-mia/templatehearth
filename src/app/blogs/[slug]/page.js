@@ -34,8 +34,8 @@ export async function generateMetadata({ params }) {
   const header = await headers();
   const host = await header.get("host");
   const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const domain = `${protocol}://${host}`;
-  const canonical = `${domain}/blogs/${slug}`;
+  const domain = process.env.DOMAIN_NAME;
+  const canonical = `${domain}blogs/${slug}`;
 
   try {
     const blog = await blogsCollection.findOne({ slug });
