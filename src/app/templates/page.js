@@ -10,18 +10,18 @@ export async function generateMetadata() {
   const domain = process.env.DOMAIN_NAME;
 
   try {
-    const ogImage = `${domain}/favicon.ico`;
+    const ogImage = `${domain}favicon.ico`;
 
     return {
       title: "Templates - Template Hearth",
       description:
         "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
-      alternates: { canonical: `${domain}/templates` },
+      alternates: { canonical: `${domain}templates` },
       openGraph: {
         title: "Templates - Template Hearth",
         description:
           "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
-        url: `${domain}/templates`,
+        url: `${domain}templates`,
         type: "website",
         siteName: "Template Hearth",
         images: [{ url: ogImage, width: 1200, height: 630 }],
