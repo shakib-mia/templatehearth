@@ -15,26 +15,26 @@ export default async function sitemap() {
     const templateTypes = [...new Set(templates.map((t) => t.type))];
 
     const templateTypeUrls = templateTypes.map((type) => ({
-      url: `${process.env.DOMAIN_NAME}/templates/type/${type}`,
+      url: `${process.env.DOMAIN_NAME}templates/type/${type}`,
       lastModified: new Date().toISOString(),
     }));
 
     const templateUrls = templates.map((item) => ({
-      url: `${process.env.DOMAIN_NAME}/templates/${item.slug}`,
+      url: `${process.env.DOMAIN_NAME}templates/${item.slug}`,
       lastModified: item.updatedAt
         ? new Date(item.updatedAt).toISOString()
         : new Date().toISOString(),
     }));
 
     const blogUrls = blogs.map((item) => ({
-      url: `${process.env.DOMAIN_NAME}/blogs/${item.slug}`,
+      url: `${process.env.DOMAIN_NAME}blogs/${item.slug}`,
       lastModified: item.updatedAt
         ? new Date(item.updatedAt).toISOString()
         : new Date().toISOString(),
     }));
 
     const serviceUrls = services.map((item) => ({
-      url: `${process.env.DOMAIN_NAME}/services/${item.slug}`,
+      url: `${process.env.DOMAIN_NAME}services/${item.slug}`,
       lastModified: item.updatedAt
         ? new Date(item.updatedAt).toISOString()
         : new Date().toISOString(),
