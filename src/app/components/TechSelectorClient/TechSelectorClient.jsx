@@ -2,69 +2,50 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 
-const TechSelectorClient = ({ items, counts }) => {
-  const [show, setShow] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
+const TechSelectorClient = ({ items, counts, headline, allCount }) => {
   const pathname = usePathname();
-  // console.log(pathname);
-  // console.log(items);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-
-      // setIsAtTop(currentScrollY === 0);
-
-      if (currentScrollY > lastScrollY.current && currentScrollY > 288) {
-        setShow(false); // scrolling down
-      } else {
-        setShow(true); // scrolling up
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    // console.log();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const searchParams = useSearchParams();
+  // console.log(searchParams.values());
+  const categories = searchParams.get("categories");
+  const type = searchParams.get("type");
+  console.log(items.sort((a, b) => a.label - b.label));
 
   return (
     <>
-      <h4
-        className={`border-b pb-4 transition-all duration-300 pt-4`}
-        style={{
-          marginTop: show && scrollY > 350 ? 100 : 0 + "px",
-        }}
-      >
-        Filters
+      <h4 className={`border-b pb-4 transition-all duration-300 pt-4`}>
+        {headline}
       </h4>
       <ul className="mt-4 flex lg:flex-col justify-between space-y-2">
-        {items.map((item) => {
-          const isActive = pathname === item.href;
+        {items
+          .sort((a, b) => a.label.localeCompare(b.label))
+          .map((item) => {
+            const isActive =
+              pathname === item.href ||
+              categories === item.label ||
+              type === item.label.replace(" ", "-").toLowerCase() ||
+              (type === null && item.label === "All");
 
-          return (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="inline-flex gap-2 items-center justify-start w-full cursor-pointer transition-colors"
-              >
-                <input
-                  type="checkbox"
-                  className="!w-fit"
-                  checked={isActive}
-                  readOnly
-                />
-                <span>
-                  {item.label} ({counts[item.label]})
-                </span>
-              </Link>
-            </li>
-          );
-        })}
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="inline-flex gap-2 items-center justify-start w-full cursor-pointer transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    className="!w-fit"
+                    checked={isActive}
+                    readOnly
+                  />
+                  <span className="capitalize">
+                    {item.label.replace("-", " ")} (
+                    {counts[item.label] || counts.all})
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
       </ul>
     </>
   );

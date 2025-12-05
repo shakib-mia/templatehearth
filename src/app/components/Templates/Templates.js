@@ -18,13 +18,45 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function TemplatesPage({ params, route = "/" }) {
+export default async function TemplatesPage({
+  params,
+  providedTemplates,
+  searchParams,
+  route = "/",
+}) {
+  const data = route !== "/" && (await searchParams);
+  const { type, categories, search } = data;
   const templatesCollection = db.collection("templates");
 
   const isHome = route === "/";
   const limit = isHome ? 4 : 0;
 
-  const query = params ? { type: params } : {};
+  const query = {};
+
+  // type filter
+  if (type) query.type = type;
+
+  // categories/niches filter
+  if (categories) {
+    query.niches = {
+      $in: [
+        new RegExp("^" + categories.replace(/[-\s]/g, "[-\\s]") + "$", "i"),
+      ],
+    };
+  }
+
+  // search keyword filter
+  if (search) {
+    const regex = new RegExp(search, "i"); // case-insensitive
+    query.$or = [
+      { relatedKeyword: regex },
+      { niches: regex },
+      { headline: regex },
+      { slug: regex },
+      { shortDescription: regex },
+      { whyChoose: regex },
+    ];
+  }
 
   const templates = await templatesCollection
     .find(query)
@@ -32,8 +64,8 @@ export default async function TemplatesPage({ params, route = "/" }) {
     .toArray();
 
   return (
-    <div className="col-span-5 lg:col-span-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {templates.map((template) => (
+    <div className="col-span-5 lg:col-span-4 grid grid-cols-1 lg:grid-cols-2 gap-4 h-fit">
+      {(providedTemplates || templates).map((template) => (
         <Template key={template.slug} {...template} />
       ))}
     </div>

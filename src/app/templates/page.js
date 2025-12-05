@@ -46,7 +46,8 @@ export async function generateMetadata() {
 // -------------------------
 // Page Component
 // -------------------------
-const page = async () => {
+const page = async ({ searchParams }) => {
+  // console.log(data);
   return (
     <>
       <PageHeader
@@ -55,8 +56,8 @@ const page = async () => {
       />
 
       <section className="grid grid-cols-5 gap-8 container">
-        <TechSelector />
-        <Templates route="/templates" />
+        <TechSelector searchParams={searchParams} />
+        <Templates searchParams={searchParams} route="/templates" />
       </section>
     </>
   );
