@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 const TechSelectorClient = ({ items, counts, headline, allCount }) => {
   const pathname = usePathname();
@@ -10,15 +11,19 @@ const TechSelectorClient = ({ items, counts, headline, allCount }) => {
   const categories = searchParams.get("categories");
   const type = searchParams.get("type");
   console.log(items.sort((a, b) => a.label - b.label));
+  const [seeMore, setSeeMore] = useState(false);
 
   return (
     <>
-      <h4 className={`border-b pb-4 transition-all duration-300 pt-4`}>
+      <h4
+        className={`border-b pb-2 transition-all duration-300 font-semibold pt-4`}
+      >
         {headline}
       </h4>
       <ul className="mt-4 flex lg:flex-col justify-between space-y-2">
         {items
           .sort((a, b) => a.label.localeCompare(b.label))
+          .slice(0, seeMore ? items.length : 10)
           .map((item) => {
             const isActive =
               pathname === item.href ||
