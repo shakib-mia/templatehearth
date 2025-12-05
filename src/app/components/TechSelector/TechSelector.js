@@ -24,7 +24,7 @@ const TechSelector = async ({ searchParams }) => {
 
   // 1️⃣ Type filter
   const typeArray = [
-    { label: "All", href: "/templates", type: null },
+    { label: "All", href: "/templates?type=all", type: "all" },
     {
       label: "Landing Page",
       href: "/templates?type=landing-page",
@@ -91,7 +91,7 @@ const TechSelector = async ({ searchParams }) => {
   });
 
   return (
-    <aside className="col-span-5 lg:col-span-1 sticky top-0 left-0 h-fit bg-white space-y-6">
+    <aside className="col-span-5 lg:col-span-1 sticky top-10 left-0 h-fit bg-white space-y-6">
       <SearchTemplate />
 
       {/* Type filter */}

@@ -34,7 +34,10 @@ export default async function TemplatesPage({
   const query = {};
 
   // type filter
-  if (type) query.type = type;
+  // type filter
+  if (type && type !== "all") {
+    query.type = type;
+  }
 
   // categories/niches filter
   if (categories) {

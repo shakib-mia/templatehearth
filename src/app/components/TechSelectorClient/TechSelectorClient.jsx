@@ -4,14 +4,15 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-const TechSelectorClient = ({ items, counts, headline, allCount }) => {
+const TechSelectorClient = ({ items, counts, headline }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   // console.log(searchParams.values());
   const categories = searchParams.get("categories");
   const type = searchParams.get("type");
-  console.log(items.sort((a, b) => a.label - b.label));
   const [seeMore, setSeeMore] = useState(false);
+
+  console.log(type);
 
   return (
     <>
@@ -25,6 +26,7 @@ const TechSelectorClient = ({ items, counts, headline, allCount }) => {
           .sort((a, b) => a.label.localeCompare(b.label))
           .slice(0, seeMore ? items.length : 10)
           .map((item) => {
+            console.log(pathname, item.href, type);
             const isActive =
               pathname === item.href ||
               categories === item.label ||
@@ -52,6 +54,22 @@ const TechSelectorClient = ({ items, counts, headline, allCount }) => {
             );
           })}
       </ul>
+      {headline === "Category" && (
+        <div className="flex gap-2">
+          <span
+            onClick={() => setSeeMore((data) => !data)}
+            className="text-primary underline underline-offset-4 hover:no-underline cursor-pointer"
+          >
+            See {seeMore ? "less" : "more"}
+          </span>
+          <Link
+            href={"/templates"}
+            className="text-primary underline underline-offset-4 hover:no-underline cursor-pointer"
+          >
+            Reset Search
+          </Link>
+        </div>
+      )}
     </>
   );
 };
