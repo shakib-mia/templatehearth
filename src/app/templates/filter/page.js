@@ -1,7 +1,7 @@
+import PageHeader from "@/app/components/PageHeader/PageHeader";
+import TechSelector from "@/app/components/TechSelector/TechSelector";
+import TemplatesPage from "@/app/components/Templates/Templates";
 import React from "react";
-import PageHeader from "../components/PageHeader/PageHeader";
-import Templates from "../components/Templates/Templates";
-import TechSelector from "../components/TechSelector/TechSelector";
 
 // -------------------------
 // SEO Metadata
@@ -46,7 +46,8 @@ export async function generateMetadata() {
 // -------------------------
 // Page Component
 // -------------------------
-const page = async () => {
+const Page = ({ params }) => {
+  // console.log(params);
   return (
     <>
       <PageHeader
@@ -56,10 +57,10 @@ const page = async () => {
 
       <section className="grid grid-cols-5 gap-8 container">
         <TechSelector />
-        <Templates route="/templates" />
+        <TemplatesPage route="/templates" />
       </section>
     </>
   );
 };
 
-export default page;
+export default Page;

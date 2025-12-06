@@ -10,7 +10,7 @@ export default function PageHeader({ description, title }) {
   }, []);
 
   return (
-    <header className="bg-gray-50 pt-20 lg:pt-40 pb-10 text-center">
+    <header className="bg-gray-50 pt-28 lg:pt-40 pb-10 text-center">
       <div className="container">
         <h1 className="text-2xl lg:text-6xl font-bold mb-2 text-gray-900 leading-[1.5] capitalize">
           {title}

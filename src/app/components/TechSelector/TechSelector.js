@@ -1,10 +1,8 @@
 import { templatesCollection } from "@/app/lib/mongodb";
 import TechSelectorClient from "../TechSelectorClient/TechSelectorClient";
 import { getFieldCount } from "@/app/lib/getFieldCount";
-import Input from "../Input/Input";
 import SearchTemplate from "../SearchTemplate/SearchTemplate";
 
-// simple slugify function
 function slugify(text) {
   return text
     ?.toString()
@@ -16,67 +14,71 @@ function slugify(text) {
     ?.replace(/-+$/, "");
 }
 
+// ---------------------------------------------------------
+// FLEXIBLE URL BUILDER (DIVERSIFIED)
+// ---------------------------------------------------------
+function buildUrl({ type, category }) {
+  let url = "/templates";
+
+  if (type) url += `/type/${slugify(type)}`;
+  if (category) url += `/category/${slugify(category)}`;
+
+  return url;
+}
+
 const TechSelector = async ({ searchParams }) => {
   const search = (await searchParams) || {};
+
   const currentType = search.type || null;
+  const currentCategory = search.category || null;
 
-  console.log({ search });
-
-  // 1️⃣ Type filter
+  // -----------------------------------------------------
+  // TYPE FILTER
+  // -----------------------------------------------------
   const typeArray = [
-    { label: "All", href: "/templates?type=all", type: "all" },
-    {
-      label: "Landing Page",
-      href: "/templates?type=landing-page",
-      type: "landing-page",
-    },
-    {
-      label: "Full Site",
-      href: "/templates?type=full-site",
-      type: "full-site",
-    },
+    { label: "All", type: "all" },
+    { label: "Landing Page", type: "landing-page" },
+    { label: "Full Site", type: "full-site" },
   ];
 
-  // Type filter dynamic generate
-  const typeItems = typeArray.map((n) => {
-    const typeSlug = n.type ? slugify(n.type) : null;
-    let href = n.type ? `/templates?type=${typeSlug}` : "/templates";
+  const typeItems = typeArray.map((t) => {
+    const slug = t.type === "all" ? null : slugify(t.type);
 
-    // current category preserve
-    if (search.categories) {
-      href += n.type
-        ? `&categories=${search?.categories}`
-        : `?categories=${search?.categories}`;
-    }
+    const href = buildUrl({
+      type: slug,
+      category: currentCategory,
+    });
 
     return {
-      label: n.label,
+      label: t.label,
       href,
-      type: typeSlug,
+      type: slug,
     };
   });
 
-  // Count for type filter
   const typeCounts = {};
-  typeCounts.all = await templatesCollection.countDocuments({}); // total templates
-  for (const item of typeItems) {
-    if (item.type) {
-      typeCounts[item.label] = await templatesCollection.countDocuments({
-        type: { $regex: `^${item.type}$`, $options: "i" }, // case-insensitive
+  typeCounts.All = await templatesCollection.countDocuments({});
+  for (const t of typeItems) {
+    if (t.type) {
+      typeCounts[t.label] = await templatesCollection.countDocuments({
+        type: { $regex: `^${t.type}$`, $options: "i" },
       });
     }
   }
 
-  // 2️⃣ Niche filter
+  // -----------------------------------------------------
+  // CATEGORY FILTER
+  // -----------------------------------------------------
   const nicheArray = await getFieldCount(templatesCollection, "niches");
 
-  // Convert niches to same structure as typeItems and include current type
   const nicheItems = nicheArray.map((n) => {
     const slug = slugify(n.label);
-    let href = `/templates?categories=${slug}`;
-    if (currentType) {
-      href += `&type=${currentType}`;
-    }
+
+    const href = buildUrl({
+      type: currentType,
+      category: slug,
+    });
+
     return {
       label: n.label,
       href,
@@ -84,26 +86,23 @@ const TechSelector = async ({ searchParams }) => {
     };
   });
 
-  // Count for niche filter
   const nicheCounts = {};
   nicheArray.forEach((n) => {
     nicheCounts[n.label] = n.count;
   });
 
   return (
-    <aside className="col-span-5 lg:col-span-1 sticky top-10 left-0 h-fit bg-white space-y-6">
+    <aside className="hidden lg:block col-span-5 lg:col-span-1 sticky top-10 h-fit space-y-6 bg-white">
       <SearchTemplate />
 
-      {/* Type filter */}
       <TechSelectorClient
-        headline={"Kit Type"}
+        headline="Kit Type"
         items={typeItems}
         counts={typeCounts}
       />
 
-      {/* Niche filter */}
       <TechSelectorClient
-        headline={"Category"}
+        headline="Category"
         items={nicheItems}
         counts={nicheCounts}
       />
