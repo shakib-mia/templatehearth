@@ -54,8 +54,9 @@ const page = async () => {
         description="Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project."
       />
 
-      <section className="grid grid-cols-5 gap-8 container">
-        <TechSelector />
+      {/* <section className="grid grid-cols-5 gap-8 container"> */}
+      <section className="container">
+        {/* <TechSelector /> */}
         <Templates route="/templates" />
       </section>
     </>
