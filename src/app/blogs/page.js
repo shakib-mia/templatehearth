@@ -8,7 +8,7 @@ export async function generateMetadata() {
   const ogImage = `${domain}favicon.ico`; // fallback og image
 
   return {
-    title: "Blogs - Template Hearth",
+    title: "Blogs | Template Hearth",
     description:
       "Explore web design insights, template tips, updates, and inspiration to help you build better websites faster with Template Hearth.",
     keywords: [
@@ -25,7 +25,7 @@ export async function generateMetadata() {
     },
 
     openGraph: {
-      title: "Blogs - Template Hearth",
+      title: "Blogs | Template Hearth",
       description:
         "Explore web design insights, template tips, updates, and inspiration to help you build better websites.",
       url,
@@ -43,7 +43,7 @@ export async function generateMetadata() {
 
     twitter: {
       card: "summary_large_image",
-      title: "Blogs - Template Hearth",
+      title: "Blogs | Template Hearth",
       description:
         "Explore design insights, updates, and inspiration for building better websites.",
       images: [ogImage],

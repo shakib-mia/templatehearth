@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
       service = await servicesCollection.findOne({ slug });
       if (!service) {
         return {
-          title: "service Not Found - Template Hearth",
+          title: "service Not Found | Template Hearth",
           description: "This service does not exist in our collection.",
           robots: "noindex, nofollow",
         };
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }) {
     };
   } catch (e) {
     return {
-      title: "services - Template Hearth",
+      title: "services | Template Hearth",
       description:
         "Explore web design insights, template tips, updates, and inspiration to help you build better websites faster with Template Hearth.",
       robots: "noindex, nofollow",

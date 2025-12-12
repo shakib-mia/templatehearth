@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
 
     if (!blog) {
       return {
-        title: "Blog Not Found - Template Hearth",
+        title: "Blog Not Found | Template Hearth",
         description: "This blog does not exist in our collection.",
         robots: "noindex, nofollow",
       };
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }) {
     };
   } catch (e) {
     return {
-      title: "Blog Not Found - Template Hearth",
+      title: "Blog Not Found | Template Hearth",
     };
   }
 }

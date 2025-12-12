@@ -13,12 +13,12 @@ export async function generateMetadata() {
     const ogImage = `${domain}favicon.ico`;
 
     return {
-      title: "Templates - Template Hearth",
+      title: "Templates | Template Hearth",
       description:
         "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
       alternates: { canonical: `${domain}templates` },
       openGraph: {
-        title: "Templates - Template Hearth",
+        title: "Templates | Template Hearth",
         description:
           "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
         url: `${domain}templates`,
@@ -28,7 +28,7 @@ export async function generateMetadata() {
       },
       twitter: {
         card: "summary_large_image",
-        title: "Templates - Template Hearth",
+        title: "Templates | Template Hearth",
         description:
           "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
         images: [ogImage],
@@ -36,7 +36,7 @@ export async function generateMetadata() {
     };
   } catch (e) {
     return {
-      title: "Templates - Template Hearth",
+      title: "Templates | Template Hearth",
       description:
         "Discover ready-to-use, high-quality templates built for speed, style, and easy customization—ideal for any project.",
     };

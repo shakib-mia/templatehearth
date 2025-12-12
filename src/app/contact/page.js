@@ -3,7 +3,7 @@ import PageHeader from "../components/PageHeader/PageHeader";
 import ContactForm from "../components/ContactForm/ContactForm";
 import Script from "next/script";
 
-const pageTitle = "Contact - Template Hearth";
+const pageTitle = "Contact | Template Hearth";
 const pageDescription =
   "We'd love to hear from you. Whether you have a question, a project idea, or just want to say hello — our inbox is always open.";
 
@@ -47,7 +47,7 @@ const Page = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Contact - Template Hearth",
+    name: "Contact | Template Hearth",
     description: pageDescription,
     url: "https://templatehearth.com/contact",
     publisher: {
